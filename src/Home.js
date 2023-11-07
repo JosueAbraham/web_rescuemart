@@ -21,6 +21,9 @@ const Home = () => {
                 <div>
                     <img src="im3.jpg" alt="Imagen 3" />
                 </div>
+                <div>
+                    <img src="im4.jpg" alt="Imagen 4" />
+                </div>
             </Carousel>
             <InformationContainer>
                 <InformationTitle>¿Quiénes somos?</InformationTitle>
