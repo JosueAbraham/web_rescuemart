@@ -8,6 +8,14 @@ const productos = [
     { id: 2, titulo: 'Biolight M70C pulsioxímetro de dedo azul', precio: 1000.00, imagen: 's6.1.jpg' },
     { id: 3, titulo: 'Mascarilla RCP con estuche', precio: 500.00, imagen: '21.jpg' },
     { id: 4, titulo: 'Estetoscopio Rappaport negro', precio: 1100.00, imagen: 'Prueba1.jpg' },
+    { id: 5, titulo: 'Cutimed® Sorbion® Sorbact® 10 cm x 10 cm', precio: 400.00, imagen: 'Prueba2.jpg' },
+    { id: 6, titulo: 'Octenilin Solución riego heridas 350 ml', precio: 650.00, imagen: 'Prueba3.jpg' },
+    { id: 7, titulo: 'Pequeño botiquín de primeros auxilios táctico ShuxiuWang 8390605897733', precio: 607.00, imagen: 'Prueba4.jpg' },
+    { id: 8, titulo: 'tg Vendaje Tubular 5m | 1', precio: 230.00, imagen: 'Prueba5.jpg' },
+    { id: 9, titulo: 'Vendaje de gasa Peha, 4 m 4cm', precio: 150.00, imagen: 'Prueba6.jpg' },
+    { id: 4, titulo: 'Vendajes De Emergencia Vendaje Vendajes médicos Transpirable Primeros auxilios para las articulaciones (Color de piel 7.5cmx4.5m) Ndcxsfigh Para Estrenar', precio: 99.99, imagen: 'Prueba7.jpg' },
+
+
     // Agrega más productos aquí
 ];
 
