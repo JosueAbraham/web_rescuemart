@@ -6,6 +6,7 @@ import Home from './Home';
 import Catalogo from './Catalogo';
 import DetalleProducto from './DetalleProducto';
 import Footer from './Footer';
+import GoogleAnalytics from './GoogleAnalytics';
 
 
 
@@ -22,6 +23,8 @@ const Content = styled.main`
 
 const App = () => {
   return (
+    <>
+    <GoogleAnalytics />
     <Router>
       <AppContainer>
         <Header />
@@ -35,6 +38,7 @@ const App = () => {
         <Footer />
       </AppContainer>
     </Router>
+    </>
   );
 }
 
