@@ -76,7 +76,7 @@ const DetalleProducto = () => {
         <h1>Detalles del Producto</h1>
       </Header>
       <Container>
-        <img src="8.jpg" alt="Descripción de la imagen" />
+        <img src="https://web-rescuemart.vercel.app/8.jpg/" alt="Descripción de la imagen" />
         <Product>
           <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
           <Price><strong>Precio habitual:</strong> $700.00 MXN</Price>
