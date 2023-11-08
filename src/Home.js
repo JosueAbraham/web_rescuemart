@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import { Helmet } from "react-helmet";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styled from 'styled-components';
 
@@ -10,6 +11,11 @@ const CarouselContainer = styled.div`
 
 const Home = () => {
     return (
+        <div>
+        <Helmet>
+        <title>RescueMart - Tu Tienda de Productos de Primeros Auxilios</title>
+        <meta name="description" content="Bienvenido a RescueMart, tu fuente confiable para productos de primeros auxilios de alta calidad. Estamos comprometidos en proporcionar los mejores productos y servicios para tu seguridad y bienestar." />
+      </Helmet>
         <CarouselContainer>
             <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
                 <div>
@@ -43,7 +49,7 @@ const Home = () => {
                     Nuestra visión en Rescuemart es convertirnos en un referente líder en la industria de productos de primeros auxilios y seguridad. Buscamos expandir nuestra presencia y alcance a nivel nacional e internacional, brindando a las personas y organizaciones las mejores opciones para la preparación en situaciones de emergencia. Nos esforzamos por ser reconocidos por la excelencia, la innovación y el compromiso con la seguridad, contribuyendo a un mundo más seguro y preparado para afrontar cualquier desafío.
                 </InformationText>
             </InformationContainer>
-        </CarouselContainer>
+        </CarouselContainer></div>
     );
 }
 

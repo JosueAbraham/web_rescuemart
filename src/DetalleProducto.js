@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { Helmet } from "react-helmet";
 
 const DetalleProductoContainer = styled.div`
   font-family: Arial, sans-serif;
@@ -71,6 +72,14 @@ const DetalleProducto = () => {
   const { id } = useParams();
 
   return (
+    <div>
+    <Helmet>
+    <title>Botiquín de Primeros Auxilios DIN 13169 - Precio, Descripción y Detalles del Producto</title>
+    <meta name="description" content="Explora nuestro completo Botiquín de Primeros Auxilios según DIN 13169, con carcasa resistente, suministro esencial y materiales de alta calidad. Asegura tu preparación para situaciones de emergencia con este botiquín confiable."/>
+    <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación"/>
+
+
+  </Helmet>
     <DetalleProductoContainer>
       <Header>
         <h1>Detalles del Producto</h1>
@@ -104,7 +113,7 @@ const DetalleProducto = () => {
           </ul>
         </Product>
       </Container>
-    </DetalleProductoContainer>
+    </DetalleProductoContainer></div>
   );
 }
 

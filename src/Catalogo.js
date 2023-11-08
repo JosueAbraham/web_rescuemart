@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 
 const productos = [
@@ -23,6 +24,10 @@ const productos = [
 const Catalogo = () => {
     return (
         <CatalogoContainer>
+            <Helmet>
+                <title>Catálogo de Productos - RescueMart</title>
+                <meta name="description" content="Explora nuestra amplia selección de productos de primeros auxilios en el catálogo de RescueMart. Encuentra productos de alta calidad a los mejores precios." />
+            </Helmet>
             <h1>Productos</h1>
             <ProductosList>
                 {productos.map((producto) => (
