@@ -7,7 +7,7 @@ import Catalogo from './Catalogo';
 import DetalleProducto from './DetalleProducto';
 import Footer from './Footer';
 import GoogleAnalytics from './GoogleAnalytics';
-
+import CookieConsent from 'react-cookie-consent';
 
 
 const AppContainer = styled.div`
@@ -19,6 +19,29 @@ const AppContainer = styled.div`
 
 const Content = styled.main`
   flex: 1; /* Permite que el contenido principal ocupe el espacio disponible */
+`;
+
+const StyledCookieConsent = styled(CookieConsent)`
+  /* Estilos personalizados aquí */
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 40px; /* Aumenté el padding */
+  font-size: 24px; /* Aumenté el tamaño de la fuente */
+  text-align: center;
+
+  & button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 20px 40px; /* Aumenté el padding del botón */
+    cursor: pointer;
+    font-size: 18px; /* Aumenté el tamaño de la fuente del botón */
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
 `;
 
 const App = () => {
@@ -39,6 +62,18 @@ const App = () => {
         <Footer />
       </AppContainer>
     </Router>
+    <StyledCookieConsent
+        location="bottom"
+        buttonText="Aceptar"
+        cookieName="miCookie"
+        enableDeclineButton
+        declineButtonText="Rechazar"
+      >
+       Este sitio web utiliza cookies para mejorar tu experiencia. 
+       Al continuar utilizando este sitio, aceptas nuestro uso de cookies. 
+       Para obtener más información, consulta nuestra política de privacidad.
+     
+      </StyledCookieConsent>
     </>
   );
 }
