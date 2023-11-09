@@ -75,7 +75,6 @@ const DetalleProducto = () => {
     <div>
     <Helmet>
     <title>Botiquín de Primeros Auxilios DIN 13169 - RescueMart</title>
-    <meta name="description" content="Descripción de la página" />
     <meta name='description' content="Explora nuestro completo Botiquín de Primeros Auxilios según DIN 13169, con carcasa resistente, suministro esencial y materiales de alta calidad. Asegura tu preparación para situaciones de emergencia con este botiquín confiable."/>
     <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación"/>
 

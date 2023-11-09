@@ -50,7 +50,9 @@ const App = () => {
     <GoogleAnalytics />
     <Router>
       <AppContainer>
-        <Header />
+        <Header>
+        <meta name="description" content="Bienvenido a RescueMart, tu fuente confiable para productos de primeros auxilios de alta calidad. Estamos comprometidos en proporcionar los mejores productos y servicios para tu seguridad y bienestar." />
+        </Header>
         <Content>
           <Routes>
             <Route path="/" element={<Home />} />
