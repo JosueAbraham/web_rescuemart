@@ -14,7 +14,8 @@ const Home = () => {
         <div>
         <Helmet>
         <title>RescueMart - Tu Tienda de Productos de Primeros Auxilios</title>
-          </Helmet>
+        <meta name="description" content="Bienvenido a RescueMart, tu fuente confiable para productos de primeros auxilios de alta calidad. Estamos comprometidos en proporcionar los mejores productos y servicios para tu seguridad y bienestar." />
+         </Helmet>
         <CarouselContainer>
             <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
                 <div>
