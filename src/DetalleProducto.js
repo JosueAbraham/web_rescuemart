@@ -1,8 +1,15 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Helmet } from "react-helmet";
 import StarRanking from './StarRanking';
+
+const productos = [
+  { id: 2, titulo: 'Biolight M70C pulsioxímetro de dedo azul', precio: 1000.00, imagen: 's6.1.jpg' },
+  { id: 5, titulo: 'Cutimed® Sorbion® Sorbact® 10 cm x 10 cm', precio: 400.00, imagen: 'Prueba2.jpg' },
+  { id: 6, titulo: 'Octenilin Solución riego heridas 350 ml', precio: 650.00, imagen: 'Prueba3.jpg' },
+  { id: 8, titulo: 'tg Vendaje Tubular 5m | 1', precio: 230.00, imagen: 'Prueba5.jpg' },
+];
 
 const DetalleProductoContainer = styled.div`
   font-family: Arial, sans-serif;
@@ -69,55 +76,147 @@ const Button = styled.button`
   }
 `;
 
+const OpinionForm = styled.form`
+  margin-top: 20px;
+`;
+
+const OpinionTextarea = styled.textarea`
+  width: 100%;
+  height: 80px;
+  margin-bottom: 10px;
+`;
+
+const OpinionSubmitButton = styled.button`
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45a049;
+  }
+`;
+
+const ProductosList = styled.div`
+  display: flex;
+  justify-content: space-around; /* Ajusta según tus preferencias de espaciado */
+  flex-wrap: wrap;
+`;
+
+const Producto = styled.div`
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Ajusta el ancho según tus necesidades */
+  margin: 10px; /* Ajusta el margen entre productos según tus necesidades */
+`;
+const ImagenProducto = styled.img`
+  max-width: 100%;
+  max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
+  width: auto;
+  height: auto;
+`;
+
+const Precio = styled.p`
+  font-weight: bold;
+  color: #2D2F30;
+  margin-top: 5px; /* Agrega un pequeño margen superior */
+`;
+
+const Titulo = styled.h3`
+  color: #000;
+  margin-top: 5px; /* Agrega un pequeño margen superior */
+`;
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+`;
+
+
+
 const DetalleProducto = () => {
   const { id } = useParams();
+  const [opinion, setOpinion] = useState('');
+
+  const handleOpinionChange = (event) => {
+    setOpinion(event.target.value);
+  };
+
+  const handleOpinionSubmit = (event) => {
+    event.preventDefault();
+    console.log('Opinión enviada:', opinion);
+    setOpinion('');
+  };
 
   return (
     <div>
-    <Helmet>
-    <title>Botiquín de Primeros Auxilios DIN 13169 - RescueMart</title>
-    <meta name='description' content="Explora nuestro completo Botiquín de Primeros Auxilios según DIN 13169, con carcasa resistente, suministro esencial y materiales de alta calidad. Asegura tu preparación para situaciones de emergencia con este botiquín confiable."/>
-    <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación"/>
-    
-
-  </Helmet>
-    <DetalleProductoContainer>
-      <Header>
-        <h1>Detalles del Producto</h1>
-      </Header>
-      <Container>
-        <img src="/8.jpg" alt="Descripción de la imagen" />
-        <Product>
-          <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
-          <Price><strong>Precio habitual:</strong> $700.00 MXN</Price>
-          <Quantity>
-            <p>Cantidad: </p>
-            <QuantityInput type="number" value="1" min="1" />
-          </Quantity>
-          <Buttons>
-            <p><Button>Agregar al carrito</Button></p>
-            <Button>Comprar ahora</Button>
-          </Buttons>
-          <h2>Descripción</h2>
-          <ProductDescription>
-
-            <p>Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.</p>
-            {/* ... Otros detalles del producto ... */}
-          </ProductDescription>
-          <h2>Resumen del producto</h2>
-          <ul>
-            <li>Fabricado en plástico de alta resistencia a impactos</li>
-            <li>Con material de vendaje especial para niños</li>
-            <li>Para las lesiones más comunes en jardines de infancia</li>
-            <li>Tapa con bisagra y lengüetas de cierre</li>
-            <li>Dimensiones: 26 x 16 x 8 cm</li>
-          </ul>
-          <h2>Calificación</h2>
-          <StarRanking />
-        </Product>
-      </Container>
-    </DetalleProductoContainer></div>
+      <Helmet>
+        <title>Botiquín de Primeros Auxilios DIN 13169 - RescueMart</title>
+        <meta name='description' content="Explora nuestro completo Botiquín de Primeros Auxilios según DIN 13169, con carcasa resistente, suministro esencial y materiales de alta calidad. Asegura tu preparación para situaciones de emergencia con este botiquín confiable." />
+        <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación" />
+      </Helmet>
+      <DetalleProductoContainer>
+        <Header>
+          <h1>Detalles del Producto</h1>
+        </Header>
+        <Container>
+          <Product>
+            <img src="/8.jpg" alt="Descripción de la imagen" />
+            <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
+            <Price><strong>Precio habitual:</strong> $700.00 MXN</Price>
+            <Quantity>
+              <p>Cantidad: </p>
+              <QuantityInput type="number" value="1" min="1" />
+            </Quantity>
+            <Buttons>
+              <p><Button>Agregar al carrito</Button></p>
+              <Button>Comprar ahora</Button>
+            </Buttons>
+            <h2>Descripción</h2>
+            <ProductDescription>
+              <p>Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.</p>
+              {/* ... Otros detalles del producto ... */}
+            </ProductDescription>
+            <h2>Resumen del producto</h2>
+            <ul>
+              <li>Fabricado en plástico de alta resistencia a impactos</li>
+              <li>Con material de vendaje especial para niños</li>
+              <li>Para las lesiones más comunes en jardines de infancia</li>
+              <li>Tapa con bisagra y lengüetas de cierre</li>
+              <li>Dimensiones: 26 x 16 x 8 cm</li>
+            </ul>
+            <h2>Calificación</h2>
+            <StarRanking />
+            <OpinionForm onSubmit={handleOpinionSubmit}>
+              <h2>Deja tu opinión</h2>
+              <OpinionTextarea
+                placeholder="Escribe tu opinión..."
+                value={opinion}
+                onChange={handleOpinionChange}
+              />
+              <OpinionSubmitButton type="submit">Enviar Opinión</OpinionSubmitButton>
+            </OpinionForm>
+          </Product>
+        </Container>
+        <h2>Productos Recomendados</h2>
+      <ProductosList>
+        {productos.map((producto) => (
+          <Producto key={producto.id}>
+            <StyledLink to={`/productos/${producto.id}`}>
+              <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.titulo} />
+              <Titulo>{producto.titulo}</Titulo>
+              <Precio>Precio: ${producto.precio}</Precio>
+            </StyledLink>
+          </Producto>
+        ))}
+      </ProductosList>
+      </DetalleProductoContainer>
+    </div>
   );
-}
+};
 
 export default DetalleProducto;
