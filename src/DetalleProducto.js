@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Helmet } from "react-helmet";
+import StarRanking from './StarRanking';
 
 const DetalleProductoContainer = styled.div`
   font-family: Arial, sans-serif;
@@ -77,7 +78,7 @@ const DetalleProducto = () => {
     <title>Botiquín de Primeros Auxilios DIN 13169 - RescueMart</title>
     <meta name='description' content="Explora nuestro completo Botiquín de Primeros Auxilios según DIN 13169, con carcasa resistente, suministro esencial y materiales de alta calidad. Asegura tu preparación para situaciones de emergencia con este botiquín confiable."/>
     <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación"/>
-
+    
 
   </Helmet>
     <DetalleProductoContainer>
@@ -111,6 +112,8 @@ const DetalleProducto = () => {
             <li>Tapa con bisagra y lengüetas de cierre</li>
             <li>Dimensiones: 26 x 16 x 8 cm</li>
           </ul>
+          <h2>Calificación</h2>
+          <StarRanking />
         </Product>
       </Container>
     </DetalleProductoContainer></div>
