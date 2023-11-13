@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
-
 const productos = [
     { id: 1, titulo: 'Botiquín de primeros auxilios según DIN 13169', precio: 700.00, imagen: '8.jpg' },
     { id: 2, titulo: 'Biolight M70C pulsioxímetro de dedo azul', precio: 1000.00, imagen: 's6.1.jpg' },

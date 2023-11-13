@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Helmet } from "react-helmet";
 import StarRanking from './StarRanking';
 
+import { Carousel } from 'react-responsive-carousel';
+
 const productos = [
   { id: 2, titulo: 'Biolight M70C pulsioxímetro de dedo azul', precio: 1000.00, imagen: 's6.1.jpg' },
   { id: 5, titulo: 'Cutimed® Sorbion® Sorbact® 10 cm x 10 cm', precio: 400.00, imagen: 'Prueba2.jpg' },
@@ -33,6 +35,7 @@ const Container = styled.div`
 const Product = styled.div`
   border: 1px solid #ccc;
   padding: 20px;
+  flex: 0 0 50%;
   margin-bottom: 20px;
 `;
 
@@ -136,11 +139,29 @@ const StyledLink = styled(Link)`
     text-decoration: none;
 `;
 
+const TwoColumnContainer = styled.div`
+  display: grid;
+  grid-template-columns: 45% 50%; /* Adjust the column widths as needed */
+  column-gap: 5%; /* Adjust the gap between columns as needed */
+`;
 
+const ImageColumn = styled.div`
+  margin-bottom: 20px; /* Add margin for separation */
+  height: 100%; /* Ensure the ImageColumn takes full height */
+`;
+
+const InfoColumn = styled.div`
+  margin-bottom: 20px; /* Add margin for separation */
+`;
+
+const CarouselContainer = styled.div`
+  height: 100%; /* Ensure the carousel takes full height of ImageColumn */
+`;
 
 const DetalleProducto = () => {
   const { id } = useParams();
   const [opinion, setOpinion] = useState('');
+  const [cantidad, setCantidad] = useState(1);
 
   const handleOpinionChange = (event) => {
     setOpinion(event.target.value);
@@ -152,6 +173,7 @@ const DetalleProducto = () => {
     setOpinion('');
   };
 
+  
   return (
     <div>
       <Helmet>
@@ -163,9 +185,28 @@ const DetalleProducto = () => {
         <Header>
           <h1>Detalles del Producto</h1>
         </Header>
-        <Container>
-          <Product>
-            <img src="/8.jpg" alt="Descripción de la imagen" />
+       
+        <TwoColumnContainer>
+            <ImageColumn>
+            <CarouselContainer>
+        <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
+                <div>
+                    <img src="/8.jpg" alt="Imagen 8" />
+                </div>
+                <div>
+                    <img src="/82.jpg" alt="Imagen 2" />
+                </div>
+                <div>
+                    <img src="/81.png" alt="Imagen 3" />
+                </div>
+                <div>
+                    <img src="/83.jpg" alt="Imagen 4" />
+                </div>
+            </Carousel></CarouselContainer>
+            </ImageColumn>
+            <InfoColumn>
+          <Product> 
+            
             <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
             <Price><strong>Precio habitual:</strong> $700.00 MXN</Price>
             <Quantity>
@@ -173,7 +214,7 @@ const DetalleProducto = () => {
               <QuantityInput type="number" value="1" min="1" />
             </Quantity>
             <Buttons>
-              <p><Button>Agregar al carrito</Button></p>
+              <Button>Agregar al carrito</Button>ㅤㅤ
               <Button>Comprar ahora</Button>
             </Buttons>
             <h2>Descripción</h2>
@@ -189,7 +230,12 @@ const DetalleProducto = () => {
               <li>Tapa con bisagra y lengüetas de cierre</li>
               <li>Dimensiones: 26 x 16 x 8 cm</li>
             </ul>
-            <h2>Calificación</h2>
+           
+          </Product>
+          </InfoColumn>
+          </TwoColumnContainer>
+          <Container>
+          <h2>Calificación</h2>
             <StarRanking />
             <OpinionForm onSubmit={handleOpinionSubmit}>
               <h2>Deja tu opinión</h2>
@@ -200,9 +246,9 @@ const DetalleProducto = () => {
               />
               <OpinionSubmitButton type="submit">Enviar Opinión</OpinionSubmitButton>
             </OpinionForm>
-          </Product>
         </Container>
-        <h2>Productos Recomendados</h2>
+        
+        <h2>ㅤㅤProductos Recomendados</h2>
       <ProductosList>
         {productos.map((producto) => (
           <Producto key={producto.id}>
