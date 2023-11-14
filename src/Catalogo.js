@@ -26,6 +26,15 @@ const Catalogo = () => {
             <Helmet>
                 <title>Catálogo de Productos - RescueMart</title>
                 <meta name="description" content="Explora nuestra amplia selección de productos de primeros auxilios en el catálogo de RescueMart. Encuentra productos de alta calidad a los mejores precios." />
+                <meta name="keywords" content="Botiquín de primeros auxilios,
+Productos de seguridad,
+Equipos de emergencia,
+Preparación para situaciones críticas,
+Refacciones para automóviles,
+Refacciones para motocicletas,
+Refacciones para camionetas,
+Herramientas de primeros auxilios,
+Soluciones confiables" />
             </Helmet>
             <h1>Productos</h1>
             <ProductosList>

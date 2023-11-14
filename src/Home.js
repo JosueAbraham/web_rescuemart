@@ -7,60 +7,67 @@ import styled from 'styled-components';
 
 
 const Home = () => {
-    return (
+  return (
+    <div>
+      <Helmet>
+        <title>RescueMart - Tu Tienda de Productos de Primeros Auxilios</title>
+        <meta name="description" content="Bienvenido a RescueMart, tu fuente confiable para productos de primeros auxilios de alta calidad. Estamos comprometidos en proporcionar los mejores productos y servicios para tu seguridad y bienestar." />
+        <meta name="keywords" content="Rescuemart,
+Productos de primeros auxilios,
+Seguridad y bienestar,
+Misión y visión,
+Preparación en situaciones de emergencia,
+Excelencia, innovación, compromiso con la seguridad" />
+
+      </Helmet>
+      <CustomCarousel autoPlay infiniteLoop showArrows={false} interval={2000} dynamicHeight={false}>
         <div>
-            <Helmet>
-                <title>RescueMart - Tu Tienda de Productos de Primeros Auxilios</title>
-                <meta name="description" content="Bienvenido a RescueMart, tu fuente confiable para productos de primeros auxilios de alta calidad. Estamos comprometidos en proporcionar los mejores productos y servicios para tu seguridad y bienestar." />
-            </Helmet>
-            <CustomCarousel autoPlay infiniteLoop showArrows={false} interval={2000} dynamicHeight={false}>
-                <div>
-                    <img src="im2.jpg" alt="Imagen 2" />
-                </div>
-                <div>
-                    <img src="im3.jpg" alt="Imagen 3" />
-                </div>
-                <div>
-                    <img src="im4.jpg" alt="Imagen 4" />
-                </div>
-            </CustomCarousel>
-            <h2>ㅤㅤProductos destacados</h2>
-        <ProductosList>
-          {productos.map((producto) => (
-            <Producto key={producto.id}>
-              <StyledLink to={`/productos/${producto.id}`}>
-                <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.titulo} />
-                <Titulo>{producto.titulo}</Titulo>
-                <Precio>Precio: ${producto.precio}</Precio>
-              </StyledLink>
-            </Producto>
-          ))}
-        </ProductosList>
-            <InformationContainer>
-                <h1>¿Quiénes somos?</h1>
-                <InformationText>
-                    En Rescuemart, nos dedicamos a la venta de productos de primeros auxilios de alta calidad. Nuestra pasión es tu seguridad y bienestar. Estamos comprometidos en proporcionar productos y servicios que te ayudarán a estar preparado para cualquier situación de emergencia. Tu seguridad es nuestra prioridad número uno.
-                </InformationText>
-                <h1>¿Qué nos motiva?</h1>
-                <InformationText>
-                    Lo que motiva a nuestra empresa, Rescuemart, es nuestra pasión por la seguridad y el bienestar de las personas. Estamos impulsados por un profundo compromiso con la idea de que todos merecen estar preparados para cualquier situación de emergencia. Nuestra principal motivación es la seguridad de nuestros clientes, y trabajamos incansablemente para proporcionar productos y servicios de primeros auxilios de la más alta calidad.
-                </InformationText>
-                <h1>Misión</h1>
-                <InformationText>
-                    Nuestra misión en Rescuemart es proporcionar a nuestros clientes los productos de primeros auxilios de la más alta calidad, brindando las herramientas y el conocimiento necesarios para estar preparados en situaciones de emergencia. Nos comprometemos a garantizar la seguridad y el bienestar de nuestros clientes, ofreciendo soluciones confiables y efectivas para situaciones críticas.
-                </InformationText>
-                <h1>Visión</h1>
-                <InformationText>
-                    Nuestra visión en Rescuemart es convertirnos en un referente líder en la industria de productos de primeros auxilios y seguridad. Buscamos expandir nuestra presencia y alcance a nivel nacional e internacional, brindando a las personas y organizaciones las mejores opciones para la preparación en situaciones de emergencia. Nos esforzamos por ser reconocidos por la excelencia, la innovación y el compromiso con la seguridad, contribuyendo a un mundo más seguro y preparado para afrontar cualquier desafío.
-                </InformationText>
-            </InformationContainer>
+          <img src="im2.jpg" alt="Imagen 2" />
         </div>
-    );
+        <div>
+          <img src="im3.jpg" alt="Imagen 3" />
+        </div>
+        <div>
+          <img src="im4.jpg" alt="Imagen 4" />
+        </div>
+      </CustomCarousel>
+      <h2>ㅤㅤProductos destacados</h2>
+      <ProductosList>
+        {productos.map((producto) => (
+          <Producto key={producto.id}>
+            <StyledLink to={`/productos/${producto.id}`}>
+              <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.titulo} />
+              <Titulo>{producto.titulo}</Titulo>
+              <Precio>Precio: ${producto.precio}</Precio>
+            </StyledLink>
+          </Producto>
+        ))}
+      </ProductosList>
+      <InformationContainer>
+        <h1>¿Quiénes somos?</h1>
+        <InformationText>
+          En Rescuemart, nos dedicamos a la venta de productos de primeros auxilios de alta calidad. Nuestra pasión es tu seguridad y bienestar. Estamos comprometidos en proporcionar productos y servicios que te ayudarán a estar preparado para cualquier situación de emergencia. Tu seguridad es nuestra prioridad número uno.
+        </InformationText>
+        <h1>¿Qué nos motiva?</h1>
+        <InformationText>
+          Lo que motiva a nuestra empresa, Rescuemart, es nuestra pasión por la seguridad y el bienestar de las personas. Estamos impulsados por un profundo compromiso con la idea de que todos merecen estar preparados para cualquier situación de emergencia. Nuestra principal motivación es la seguridad de nuestros clientes, y trabajamos incansablemente para proporcionar productos y servicios de primeros auxilios de la más alta calidad.
+        </InformationText>
+        <h1>Misión</h1>
+        <InformationText>
+          Nuestra misión en Rescuemart es proporcionar a nuestros clientes los productos de primeros auxilios de la más alta calidad, brindando las herramientas y el conocimiento necesarios para estar preparados en situaciones de emergencia. Nos comprometemos a garantizar la seguridad y el bienestar de nuestros clientes, ofreciendo soluciones confiables y efectivas para situaciones críticas.
+        </InformationText>
+        <h1>Visión</h1>
+        <InformationText>
+          Nuestra visión en Rescuemart es convertirnos en un referente líder en la industria de productos de primeros auxilios y seguridad. Buscamos expandir nuestra presencia y alcance a nivel nacional e internacional, brindando a las personas y organizaciones las mejores opciones para la preparación en situaciones de emergencia. Nos esforzamos por ser reconocidos por la excelencia, la innovación y el compromiso con la seguridad, contribuyendo a un mundo más seguro y preparado para afrontar cualquier desafío.
+        </InformationText>
+      </InformationContainer>
+    </div>
+  );
 }
 
 const productos = [
-    { id: 1, titulo: 'Botiquín de primeros auxilios según DIN 13169', precio: 700.00, imagen: '8.jpg' },
-  ];
+  { id: 1, titulo: 'Botiquín de primeros auxilios según DIN 13169', precio: 700.00, imagen: '8.jpg' },
+];
 
 const CustomCarousel = styled(Carousel)`
   width: 100%;
