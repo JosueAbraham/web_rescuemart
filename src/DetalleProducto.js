@@ -173,7 +173,7 @@ const DetalleProducto = () => {
     setOpinion('');
   };
 
-  
+
   return (
     <div>
       <Helmet>
@@ -185,81 +185,81 @@ const DetalleProducto = () => {
         <Header>
           <h1>Detalles del Producto</h1>
         </Header>
-       
+
         <TwoColumnContainer>
-            <ImageColumn>
+          <ImageColumn>
             <CarouselContainer>
-        <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
+              <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
                 <div>
-                    <img src="/8.jpg" alt="Imagen 8" />
+                  <img src="/8.jpg" alt="Imagen 8" />
                 </div>
                 <div>
-                    <img src="/82.jpg" alt="Imagen 2" />
+                  <img src="/82.jpg" alt="Imagen 2" />
                 </div>
                 <div>
-                    <img src="/81.png" alt="Imagen 3" />
+                  <img src="/81.png" alt="Imagen 3" />
                 </div>
                 <div>
-                    <img src="/83.jpg" alt="Imagen 4" />
+                  <img src="/83.jpg" alt="Imagen 4" />
                 </div>
-            </Carousel></CarouselContainer>
-            </ImageColumn>
-            <InfoColumn>
-          <Product> 
-            
-            <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
-            <Price><strong>Precio habitual:</strong> $700.00 MXN</Price>
-            <Quantity>
-              <p>Cantidad: </p>
-              <QuantityInput type="number" value="1" min="1" />
-            </Quantity>
-            <Buttons>
-              <Button>Agregar al carrito</Button>ㅤㅤ
-              <Button>Comprar ahora</Button>
-            </Buttons>
-            <h2>Descripción</h2>
-            <ProductDescription>
-              <p>Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.</p>
-              {/* ... Otros detalles del producto ... */}
-            </ProductDescription>
-            <h2>Resumen del producto</h2>
-            <ul>
-              <li>Fabricado en plástico de alta resistencia a impactos</li>
-              <li>Con material de vendaje especial para niños</li>
-              <li>Para las lesiones más comunes en jardines de infancia</li>
-              <li>Tapa con bisagra y lengüetas de cierre</li>
-              <li>Dimensiones: 26 x 16 x 8 cm</li>
-            </ul>
-           
-          </Product>
+              </Carousel></CarouselContainer>
+          </ImageColumn>
+          <InfoColumn>
+            <Product>
+
+              <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
+              <Price><strong>Precio habitual:</strong> $700.00 MXN</Price>
+              <Quantity>
+                <p>Cantidad: </p>
+                <QuantityInput type="number" value="1" min="1" />
+              </Quantity>
+              <Buttons>
+                <Button>Agregar al carrito</Button>ㅤㅤ
+                <Button>Comprar ahora</Button>
+              </Buttons>
+              <h2>Descripción</h2>
+              <ProductDescription>
+                <p>Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.</p>
+                {/* ... Otros detalles del producto ... */}
+              </ProductDescription>
+              <h2>Resumen del producto</h2>
+              <ul>
+                <li>Fabricado en plástico de alta resistencia a impactos</li>
+                <li>Con material de vendaje especial para niños</li>
+                <li>Para las lesiones más comunes en jardines de infancia</li>
+                <li>Tapa con bisagra y lengüetas de cierre</li>
+                <li>Dimensiones: 26 x 16 x 8 cm</li>
+              </ul>
+
+            </Product>
           </InfoColumn>
-          </TwoColumnContainer>
-          <Container>
+        </TwoColumnContainer>
+        <Container>
           <h2>Calificación</h2>
-            <StarRanking />
-            <OpinionForm onSubmit={handleOpinionSubmit}>
-              <h2>Deja tu opinión</h2>
-              <OpinionTextarea
-                placeholder="Escribe tu opinión..."
-                value={opinion}
-                onChange={handleOpinionChange}
-              />
-              <OpinionSubmitButton type="submit">Enviar Opinión</OpinionSubmitButton>
-            </OpinionForm>
+          <StarRanking />
+          <OpinionForm onSubmit={handleOpinionSubmit}>
+            <h2>Deja tu opinión</h2>
+            <OpinionTextarea
+              placeholder="Escribe tu opinión..."
+              value={opinion}
+              onChange={handleOpinionChange}
+            />
+            <OpinionSubmitButton type="submit">Enviar Opinión</OpinionSubmitButton>
+          </OpinionForm>
         </Container>
-        
+
         <h2>ㅤㅤProductos Recomendados</h2>
-      <ProductosList>
-        {productos.map((producto) => (
-          <Producto key={producto.id}>
-            <StyledLink to={`/productos/${producto.id}`}>
-              <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.titulo} />
-              <Titulo>{producto.titulo}</Titulo>
-              <Precio>Precio: ${producto.precio}</Precio>
-            </StyledLink>
-          </Producto>
-        ))}
-      </ProductosList>
+        <ProductosList>
+          {productos.map((producto) => (
+            <Producto key={producto.id}>
+              <StyledLink to={`/productos/${producto.id}`}>
+                <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.titulo} />
+                <Titulo>{producto.titulo}</Titulo>
+                <Precio>Precio: ${producto.precio}</Precio>
+              </StyledLink>
+            </Producto>
+          ))}
+        </ProductosList>
       </DetalleProductoContainer>
     </div>
   );
