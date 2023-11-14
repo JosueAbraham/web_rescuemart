@@ -27,19 +27,19 @@ const Home = () => {
                 </div>
             </CustomCarousel>
             <InformationContainer>
-                <InformationTitle>¿Quiénes somos?</InformationTitle>
+                <h1>¿Quiénes somos?</h1>
                 <InformationText>
                     En Rescuemart, nos dedicamos a la venta de productos de primeros auxilios de alta calidad. Nuestra pasión es tu seguridad y bienestar. Estamos comprometidos en proporcionar productos y servicios que te ayudarán a estar preparado para cualquier situación de emergencia. Tu seguridad es nuestra prioridad número uno.
                 </InformationText>
-                <InformationTitle>¿Qué nos motiva?</InformationTitle>
+                <h1>¿Qué nos motiva?</h1>
                 <InformationText>
                     Lo que motiva a nuestra empresa, Rescuemart, es nuestra pasión por la seguridad y el bienestar de las personas. Estamos impulsados por un profundo compromiso con la idea de que todos merecen estar preparados para cualquier situación de emergencia. Nuestra principal motivación es la seguridad de nuestros clientes, y trabajamos incansablemente para proporcionar productos y servicios de primeros auxilios de la más alta calidad.
                 </InformationText>
-                <InformationTitle>Misión</InformationTitle>
+                <h1>Misión</h1>
                 <InformationText>
                     Nuestra misión en Rescuemart es proporcionar a nuestros clientes los productos de primeros auxilios de la más alta calidad, brindando las herramientas y el conocimiento necesarios para estar preparados en situaciones de emergencia. Nos comprometemos a garantizar la seguridad y el bienestar de nuestros clientes, ofreciendo soluciones confiables y efectivas para situaciones críticas.
                 </InformationText>
-                <InformationTitle>Visión</InformationTitle>
+                <h1>Visión</h1>
                 <InformationText>
                     Nuestra visión en Rescuemart es convertirnos en un referente líder en la industria de productos de primeros auxilios y seguridad. Buscamos expandir nuestra presencia y alcance a nivel nacional e internacional, brindando a las personas y organizaciones las mejores opciones para la preparación en situaciones de emergencia. Nos esforzamos por ser reconocidos por la excelencia, la innovación y el compromiso con la seguridad, contribuyendo a un mundo más seguro y preparado para afrontar cualquier desafío.
                 </InformationText>
