@@ -29,17 +29,20 @@ const Overlay = styled.div`
   z-index: 1000;
 `;
 
+
 const StyledCookieConsent = styled.div`
-  background-color: #333;
-  color: #fff;
+  background-color: #fff;
+  color: #333;
   padding: 20px;
   font-size: 16px;
   text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1001;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+
+  & p {
+    margin-bottom: 20px;
+  }
 
   & button {
     background-color: #4caf50;
@@ -48,7 +51,7 @@ const StyledCookieConsent = styled.div`
     padding: 10px 20px;
     cursor: pointer;
     font-size: 14px;
-    margin-top: 10px;
+    border-radius: 4px;
     transition: background-color 0.3s ease;
 
     &:hover {
@@ -56,7 +59,6 @@ const StyledCookieConsent = styled.div`
     }
   }
 `;
-
 const App = () => {
   const [showOverlay, setShowOverlay] = useState(true);
 
