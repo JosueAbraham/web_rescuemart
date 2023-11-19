@@ -3,8 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Helmet } from "react-helmet";
 import StarRanking from './StarRanking';
-
+import PaypalButton from './Paypal_Button';
 import { Carousel } from 'react-responsive-carousel';
+import { useEffect } from 'react';
 
 const productos = [
   { id: 2, titulo: 'Biolight M70C pulsioxímetro de dedo azul', precio: 1000.00, imagen: 's6.1.jpg' },
@@ -172,7 +173,22 @@ const DetalleProducto = () => {
     console.log('Opinión enviada:', opinion);
     setOpinion('');
   };
+  const [productData, setProductData] = useState(null);
 
+  useEffect(() => {
+    // Fetch product data from the JSON file
+    const fetchProductData = async () => {
+      try {
+        const response = await fetch('/product.json'); // Adjust the path based on your project structure
+        const data = await response.json();
+        setProductData(data);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    };
+
+    fetchProductData();
+  }, []);
 
   return (
     <div>
@@ -216,6 +232,11 @@ const DetalleProducto = () => {
               <Buttons>
                 <Button>Agregar al carrito</Button>ㅤㅤ
                 <Button>Comprar ahora</Button>
+                {productData ? (
+        <PaypalButton productData={productData} />
+      ) : (
+        <p>Loading product data...</p>
+      )}
               </Buttons>
               <h2>Descripción</h2>
               <ProductDescription>
