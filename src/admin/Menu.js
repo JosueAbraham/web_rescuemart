@@ -38,7 +38,7 @@ const Menu = () => {
       <MenuList>
     
         <MenuItem>
-        
+        <MenuLink to="/">Ir a la tienda</MenuLink>ㅤㅤ
           <MenuLink to="/admin/products">Productos</MenuLink>ㅤㅤ
           <MenuLink to="/admin/users">Usuarios</MenuLink>
 

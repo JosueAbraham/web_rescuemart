@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+const UserManagementContainer = styled.div`
+  background-color: #f2f2f2; /* Adjust the background color as needed */
+  padding: 20px;
+`;
+
 const UserFormContainer = styled.form`
-  max-width: 400px;
+width: 100%;
   margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -35,11 +40,40 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const ButtonEdit = styled.button`
+  background-color: #EBCC1E;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const ButtonDelete = styled.button`
+  background-color: #FF2323;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+
 const UserTable = styled.table`
   width: 100%;
+  max-width: 100%; /* Ensure the table doesn't exceed the container width */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 10px;
   border-collapse: collapse;
 `;
 
+const TableCell = styled.td`
+  border: 1px solid #ddd;
+  padding: 10px;
+
+  overflow: hidden;
+  text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
+`;
 const TableHeader = styled.th`
   border: 1px solid #ddd;
   padding: 10px;
@@ -52,10 +86,24 @@ const TableRow = styled.tr`
   }
 `;
 
-const TableCell = styled.td`
-  border: 1px solid #ddd;
-  padding: 10px;
+
+const TwoColumnContainer = styled.div`
+  display: grid;
+  grid-template-columns: 20% 70%; /* Adjust the column widths as needed */
+  column-gap: 5%; /* Adjust the gap between columns as needed */
 `;
+
+const FormColumn = styled.div`
+  margin-bottom: 20px; /* Add margin for separation */
+  height: 50%; /* Ensure the ImageColumn takes full height */
+`;
+
+const ListColumn = styled.div`
+  margin-bottom: 20px; /* Add margin for separation */
+  max-height: 500px; /* Set a maximum height for the table container */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+`;
+
 
 const UserItem = ({ user, onDelete, onEdit }) => {
   return (
@@ -70,8 +118,8 @@ const UserItem = ({ user, onDelete, onEdit }) => {
       <TableCell>{user.telefono}</TableCell>
       <TableCell>{user.pass}</TableCell>
       <TableCell>
-        <Button onClick={() => onDelete(user.id)}>Eliminar</Button>
-        <Button onClick={() => onEdit(user)}>Editar</Button>
+        <ButtonDelete onClick={() => onDelete(user.id)}>Eliminar</ButtonDelete><br/><br/>
+        <ButtonEdit onClick={() => onEdit(user)}>Editar</ButtonEdit>
       </TableCell>
     </TableRow>
   );
@@ -170,7 +218,9 @@ const UserManagement = () => {
   };
 
   return (
-    <div>
+    <UserManagementContainer>
+        <TwoColumnContainer>
+            <FormColumn>
       <UserFormContainer
         onSubmit={(e) => {
           e.preventDefault();
@@ -293,8 +343,13 @@ const UserManagement = () => {
           {editingUser !== null ? 'Guardar Cambios' : 'Agregar Usuario'}
         </Button>
       </UserFormContainer>
+      </FormColumn>
+<ListColumn>
       <UserList users={users} onDelete={handleDeleteUser} onEdit={handleEditUser} />
-    </div>
+      
+      </ListColumn>
+      </TwoColumnContainer>
+    </UserManagementContainer>
   );
 };
 

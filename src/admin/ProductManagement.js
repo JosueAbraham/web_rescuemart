@@ -44,6 +44,42 @@ const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
 `;
+const ButtonEdit = styled.button`
+  background-color: #EBCC1E;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const ButtonDelete = styled.button`
+  background-color: #FF2323;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+const TwoColumnContainer = styled.div`
+  display: grid;
+  grid-template-columns: 20% 70%; /* Adjust the column widths as needed */
+  column-gap: 5%; /* Adjust the gap between columns as needed */
+  background-color: #f2f2f2; /* Adjust the background color as needed */
+  padding: 20px;
+`;
+
+const FormColumn = styled.div`
+  margin-bottom: 20px; /* Add margin for separation */
+  height: 50%; /* Ensure the ImageColumn takes full height */
+`;
+
+const ListColumn = styled.div`
+  margin-bottom: 20px; /* Add margin for separation */
+  max-height: 500px; /* Set a maximum height for the table container */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+`;
+
 const ProductForm = ({ onSubmit, editingProduct, setEditingProduct }) => {
   const [product, setProduct] = useState({
     id: editingProduct ? editingProduct.id : null,
@@ -139,13 +175,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct }) => {
 
 const ProductListContainer = styled.div`
   max-width: %100;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
+  
 `;
 
 const ProductTable = styled.table`
@@ -179,8 +209,8 @@ const ProductItem = ({ product, onDelete, onEdit }) => {
       <TableCell>{product.categoria}</TableCell>
       <TableCell>{product.descripcion.substring(0, 50)}...</TableCell>
       <TableCell>
-        <Button onClick={() => onDelete(product.id)}>Eliminar</Button>ㅤ
-        <Button onClick={() => onEdit(product)}>Editar</Button>
+        <ButtonDelete onClick={() => onDelete(product.id)}>Eliminar</ButtonDelete>ㅤ
+        <ButtonEdit onClick={() => onEdit(product)}>Editar</ButtonEdit>
       </TableCell>
     </TableRow>
   );
@@ -270,16 +300,22 @@ const ProductManagement = () => {
 
   return (
     <div>
+      <TwoColumnContainer>
+        <FormColumn>
       <ProductForm
         onSubmit={handleAddProduct}
         editingProduct={editingProduct}
         setEditingProduct={setEditingProduct}
       />
+      </FormColumn>
+      <ListColumn>
       <ProductList
         products={products}
         onDelete={handleDeleteProduct}
         onEdit={handleEditProduct}
       />
+      </ListColumn>
+      </TwoColumnContainer>
     </div>
   );
 };
