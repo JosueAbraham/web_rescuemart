@@ -1,0 +1,27 @@
+
+[
+    {
+      "id": 1,
+      "nombre": "John",
+      "apellido": "Doe",
+      "edad": 30,
+      "sexo": "Masculino",
+      "email": "john.doe@example.com",
+      "direccion": "123 Main St",
+      "telefono": "555-1234",
+      "pass": ".e-33mdn"
+    },
+    {
+      "id": 2,
+      "nombre": "Jane",
+      "apellido": "Doe",
+      "edad": 28,
+      "sexo": "Femenino",
+      "email": "jane.doe@example.com",
+      "direccion": "456 Oak St",
+      "telefono": "555-5678",
+      "pass": ".e-33mdn"
+    }
+ 
+  ]
+  

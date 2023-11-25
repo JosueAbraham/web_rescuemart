@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
@@ -7,7 +8,10 @@ import Catalogo from './Catalogo';
 import DetalleProducto from './DetalleProducto';
 import Footer from './Footer';
 import GoogleAnalytics from './GoogleAnalytics';
-
+import ProductManagement from './admin/ProductManagement';
+import LoginForm from './admin/LoginForm';
+import Menu from './admin/Menu';
+import UserManagement from './admin/UserManagement';
 const AppContainer = styled.div`
   font-family: Arial, sans-serif;
   display: flex;
@@ -28,7 +32,6 @@ const Overlay = styled.div`
   justify-content: center;
   z-index: 1000;
 `;
-
 
 const StyledCookieConsent = styled.div`
   background-color: #fff;
@@ -59,6 +62,7 @@ const StyledCookieConsent = styled.div`
     }
   }
 `;
+
 const App = () => {
   const [showOverlay, setShowOverlay] = useState(true);
 
@@ -84,19 +88,40 @@ Al aceptar estos términos, reconoces y aceptas las prácticas descritas en nues
               <button onClick={handleAccept}>Aceptar cookies</button>
             </StyledCookieConsent>
           </Overlay>
-          <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Catalogo" element={<Catalogo />} />
-            <Route path="/productos/1" element={<DetalleProducto />} />
-            <Route path="/productos/:id" element={<Catalogo />} />
+            <Route path="/*" element={<TiendaRoutes />} />
+            <Route path="/admin/*" element={<AdminRoutes />} />
+            <Route path="/admin" element={<LoginForm />} />
           </Routes>
-          <Footer />
         </AppContainer>
       </Router>
     </>
   );
 };
+
+const TiendaRoutes = () => (
+  <>
+    <Header />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/Catalogo" element={<Catalogo />} />
+      <Route path="/productos/1" element={<DetalleProducto />} />
+      <Route path="/productos/:id" element={<Catalogo />} />
+    </Routes>
+    <Footer />
+  </>
+);
+const AdminRoutes = () => (
+  <>
+    <Menu />
+    <Routes>
+      <Route path="/products" element={<ProductManagement />} />
+      
+      <Route path="/users" element={<UserManagement />} />
+      {/* Agrega más rutas de administrador según sea necesario */}
+    </Routes>
+  </>
+);
 
 export default App;
 
