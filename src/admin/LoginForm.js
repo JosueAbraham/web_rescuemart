@@ -20,7 +20,7 @@ const LoginForm = styled.div`
 `;
 
 const LoginHeader = styled.h2`
-  color: #ff0000; /* Red color */
+  color: #d4281c; /* Red color */
 `;
 
 const InputLabel = styled.label`
@@ -35,7 +35,7 @@ const InputField = styled.input`
 `;
 
 const SubmitButton = styled.button`
-  background-color: #ff0000; /* Red color */
+  background-color: #d4281c; /* Red color */
   color: #fff;
   border: none;
   padding: 10px;
@@ -45,7 +45,7 @@ const SubmitButton = styled.button`
 `;
 
 const ErrorMessage = styled.p`
-  color: #ff0000; /* Red color */
+  color: #FFDC16; /* Red color */
   margin-top: 10px;
 `;
 
@@ -61,7 +61,7 @@ const Login = ({ users, onLogin }) => {
       onLogin(user);
       setError('');
     } else {
-      setError('Credenciales inválidas. Por favor, inténtalo de nuevo.');
+      setError('\u26A0 Credenciales inválidas. Por favor, inténtalo de nuevo.');
     }
   };
 
