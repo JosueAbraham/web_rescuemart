@@ -16,6 +16,7 @@ class PaypalButton extends React.Component {
                 purchase_units: [
                   {
                     amount: {
+                
                       value: '700' // Ajusta este valor según tus requisitos
                     }
                   }
