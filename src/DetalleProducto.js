@@ -322,11 +322,13 @@ const DetalleProducto = () => {
         {showPaypalOverlay && (
         <Overlay showOverlay={showPaypalOverlay}>
           <StyledCookieConsent>
-            <h2>Detalles del Producto</h2>
+            <h2>Comprar ahora</h2>
             <p>
               Nombre: {selectedProduct.nombre}
               <br />
               Precio: ${selectedProduct.precio}
+              <br />
+              Cantidad: 1
             </p>
             <img
               src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
