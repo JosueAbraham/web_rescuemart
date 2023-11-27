@@ -19,6 +19,7 @@ const DetalleProductoContainer = styled.div`
   margin: 0;
   padding: 0;
 `;
+const precioProducto = 700; 
 
 const Header = styled.header`
   background-color: #333;
@@ -233,7 +234,7 @@ const DetalleProducto = () => {
                 <Button>Agregar al carrito</Button>ㅤㅤ
                 <Button>Comprar ahora</Button>
                 {productData ? (
-        <PaypalButton productData={productData} />
+        <PaypalButton precio={'700'} />
       ) : (
         <p>Loading product data...</p>
       )}
