@@ -1,10 +1,11 @@
 [
     {
       "id": 1,
-      "nombre": "Producto 1",
-      "descripcion": "Descripción del producto 1",
-      "precio": 10.99,
-      "categoria": "Categoría 1"
+      "nombre": "Botiquín de primeros auxilios según DIN 13169",
+      "descripcion": "Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.",
+      "precio": 700.00,
+      "categoria": "Botiquines",
+      "imagen": "8.jpg"
     },
     {
       "id": 2,

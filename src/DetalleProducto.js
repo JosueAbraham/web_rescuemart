@@ -1,11 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import StarRanking from './StarRanking';
 import PaypalButton from './Paypal_Button';
 import { Carousel } from 'react-responsive-carousel';
-import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+const Overlay = styled.div`
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: ${({ showOverlay }) => (showOverlay ? 'flex' : 'none')};
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+
+const StyledCookieConsent = styled.div`
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+
+  & p {
+    margin-bottom: 20px;
+  }
+
+  & button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+`;
 
 const productos = [
   { id: 2, titulo: 'Biolight M70C pulsioxímetro de dedo azul', precio: 1000.00, imagen: 's6.1.jpg' },
@@ -164,23 +210,15 @@ const DetalleProducto = () => {
   const { id } = useParams();
   const [opinion, setOpinion] = useState('');
   const [cantidad, setCantidad] = useState(1);
-
-  const handleOpinionChange = (event) => {
-    setOpinion(event.target.value);
-  };
-
-  const handleOpinionSubmit = (event) => {
-    event.preventDefault();
-    console.log('Opinión enviada:', opinion);
-    setOpinion('');
-  };
+  const [showPaypalOverlay, setShowPaypalOverlay] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {
     // Fetch product data from the JSON file
     const fetchProductData = async () => {
       try {
-        const response = await fetch('/product.json'); // Adjust the path based on your project structure
+        const response = await fetch('/products.json'); 
         const data = await response.json();
         setProductData(data);
       } catch (error) {
@@ -191,12 +229,28 @@ const DetalleProducto = () => {
     fetchProductData();
   }, []);
 
+  const handleComprarAhora = (product) => {
+    setSelectedProduct(product);
+    setShowPaypalOverlay(true);
+  };
+
+  const handleOpinionChange = (event) => {
+    setOpinion(event.target.value);
+  };
+
+  const handleOpinionSubmit = (event) => {
+    event.preventDefault();
+    console.log('Opinión enviada:', opinion);
+    setOpinion('');
+  };
+
   return (
     <div>
       <Helmet>
         <title>Botiquín de Primeros Auxilios DIN 13169 - RescueMart</title>
         <meta name='description' content="Explora nuestro completo Botiquín de Primeros Auxilios según DIN 13169, con carcasa resistente, suministro esencial y materiales de alta calidad. Asegura tu preparación para situaciones de emergencia con este botiquín confiable." />
         <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación" />
+   
       </Helmet>
       <DetalleProductoContainer>
         <Header>
@@ -205,9 +259,8 @@ const DetalleProducto = () => {
 
         <TwoColumnContainer>
           <ImageColumn>
-            <CarouselContainer>
-              <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
-                <div>
+            <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
+               <div>
                   <img src="/8.jpg" alt="Imagen 8" />
                 </div>
                 <div>
@@ -219,43 +272,39 @@ const DetalleProducto = () => {
                 <div>
                   <img src="/83.jpg" alt="Imagen 4" />
                 </div>
-              </Carousel></CarouselContainer>
+            </Carousel>
           </ImageColumn>
           <InfoColumn>
             <Product>
-
               <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
-              <Price><strong>Precio habitual:</strong> $700.00 MXN</Price>
+              <Price><strong>Precio habitual:</strong> $700.00 USD</Price>
               <Quantity>
                 <p>Cantidad: </p>
-                <QuantityInput type="number" value="1" min="1" />
+                <QuantityInput type="number" value={cantidad} min="1" />
               </Quantity>
               <Buttons>
-                <Button>Agregar al carrito</Button>ㅤㅤ
-                <Button>Comprar ahora</Button>
-                {productData ? (
-        <PaypalButton precio={'700'} />
-      ) : (
-        <p>Loading product data...</p>
-      )}
+                <Button onClick={() => handleComprarAhora(productData[0])}>Agregar al carrito</Button>ㅤㅤ
+                <Button onClick={() => handleComprarAhora(productData[0])}>Comprar ahora</Button>
               </Buttons>
               <h2>Descripción</h2>
               <ProductDescription>
-                <p>Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.</p>
-                {/* ... Otros detalles del producto ... */}
+ <p>Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.</p>
+           
+                {/* ... (existing product description code) */}
               </ProductDescription>
               <h2>Resumen del producto</h2>
               <ul>
-                <li>Fabricado en plástico de alta resistencia a impactos</li>
+                  <li>Fabricado en plástico de alta resistencia a impactos</li>
                 <li>Con material de vendaje especial para niños</li>
                 <li>Para las lesiones más comunes en jardines de infancia</li>
                 <li>Tapa con bisagra y lengüetas de cierre</li>
                 <li>Dimensiones: 26 x 16 x 8 cm</li>
+           
               </ul>
-
             </Product>
           </InfoColumn>
         </TwoColumnContainer>
+
         <Container>
           <h2>Calificación</h2>
           <StarRanking />
@@ -270,6 +319,25 @@ const DetalleProducto = () => {
           </OpinionForm>
         </Container>
 
+        {showPaypalOverlay && (
+        <Overlay showOverlay={showPaypalOverlay}>
+          <StyledCookieConsent>
+            <h2>Detalles del Producto</h2>
+            <p>
+              Nombre: {selectedProduct.nombre}
+              <br />
+              Precio: ${selectedProduct.precio}
+            </p>
+            <img
+              src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
+              alt={selectedProduct.nombre}
+              style={{ maxWidth: '100%', maxHeight: '200px' }} // Adjust the styles as needed
+            />
+            <PaypalButton precio={selectedProduct.precio.toString()} />
+            <button onClick={() => setShowPaypalOverlay(false)}>Cerrar</button>
+          </StyledCookieConsent>
+        </Overlay>
+      )}
         <h2>ㅤㅤProductos Recomendados</h2>
         <ProductosList>
           {productos.map((producto) => (
