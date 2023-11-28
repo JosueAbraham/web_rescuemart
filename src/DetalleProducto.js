@@ -65,7 +65,6 @@ const DetalleProductoContainer = styled.div`
   margin: 0;
   padding: 0;
 `;
-const precioProducto = 700; 
 
 const Header = styled.header`
   background-color: #333;
@@ -228,10 +227,10 @@ const DetalleProducto = () => {
       } catch (error) {
         console.error('Error fetching product data:', error);
       }
-    };
+    }
 
     fetchProductData();
-  }, [id]);
+  }, [id], [showPaypalOverlay]);
   
   const handleComprarAhora = (product) => {
     setSelectedProduct(product);
