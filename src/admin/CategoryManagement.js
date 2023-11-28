@@ -175,7 +175,7 @@ const CategoryItem = ({ category, onDelete, onEdit }) => {
       <TableCell>{category.nombre}</TableCell>
       <TableCell>{category.descripcion}</TableCell>
       <TableCell>
-        <ButtonDelete onClick={() => onDelete(category.id)}>Eliminar</ButtonDelete>ㅤ
+        <ButtonDelete onClick={() => onDelete(category.id)}>Eliminar</ButtonDelete><br/><br/>
         <ButtonEdit onClick={() => onEdit(category)}>Editar</ButtonEdit>
       </TableCell>
     </TableRow>
