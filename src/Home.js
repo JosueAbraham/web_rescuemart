@@ -44,7 +44,7 @@ const Home = () => {
             </p>
           </InformationText>
           <ImageWrapper>
-            <img src="inicio1.jpg" alt="Imagen 1.2" />
+            <img src="inicio1.jpg" alt="Imagen" />
           </ImageWrapper>
         </ContentWrapper>
 
