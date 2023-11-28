@@ -319,28 +319,23 @@ const DetalleProducto = () => {
         </OpinionForm>
       </Container>
     
-      {showPaypalOverlay && (
+      {showPaypalOverlay && selectedProduct && (
         <Overlay showOverlay={showPaypalOverlay}>
           <StyledCookieConsent>
             <h2>Comprar ahora</h2>
             <p>
-              Nombre: {selectedProduct?.nombre}
+              Nombre: {selectedProduct.nombre}
               <br />
-              Precio: ${selectedProduct?.precio}
+              Precio: ${selectedProduct.precio}
               <br />
               Cantidad: 1
             </p>
             <img
-              src={process.env.PUBLIC_URL + '/' + selectedProduct?.imagen}
-              alt={selectedProduct?.nombre}
-              style={{ maxWidth: '100%', maxHeight: '200px' }} 
+              src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
+              alt={selectedProduct.nombre}
+              style={{ maxWidth: '100%', maxHeight: '200px' }}
             />
-           {selectedProduct ? (
-  <PaypalButton precio={selectedProduct.precio.toString()} />
-) : (
-  <p>Loading...</p>
-)}
-
+            <PaypalButton precio={selectedProduct.precio.toString()} />
             <button onClick={() => setShowPaypalOverlay(false)}>Cerrar</button>
           </StyledCookieConsent>
         </Overlay>
