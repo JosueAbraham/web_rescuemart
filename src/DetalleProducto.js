@@ -288,7 +288,7 @@ const DetalleProducto = () => {
                     <QuantityInput type="number" value={cantidad} min="1" />
                   </Quantity>
                   <Buttons>
-                    <Button onClick={() => handleComprarAhora(selectedProduct)}>Agregar al carrito</Button>ㅤㅤ
+                    <Button>Agregar al carrito</Button>ㅤㅤ
                     <Button onClick={() => handleComprarAhora(selectedProduct)}>Comprar ahora</Button>
                   </Buttons>
                   <h2>Descripción</h2>

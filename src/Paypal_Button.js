@@ -17,7 +17,7 @@ const Overlay = styled.div`
   z-index: 1000;
 `;
 
-const StyledCookieConsent = styled.div`
+const StyledPayPalConsent = styled.div`
   background-color: #fff;
   color: #333;
   padding: 20px;
@@ -99,13 +99,13 @@ const PaypalButton = (props) => {
 
         {pagoRealizado && (
           <Overlay showOverlay={showOverlay}>
-            <StyledCookieConsent>
+            <StyledPayPalConsent>
               <h2>Pago realizado </h2>
               <p>
                 Gracias por tu compra. El pago se ha realizado exitosamente.
               </p>
               <button onClick={handleAccept}>Continuar comprando</button>
-            </StyledCookieConsent>
+            </StyledPayPalConsent>
           </Overlay>
         )}
       </div>
