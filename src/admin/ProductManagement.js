@@ -122,6 +122,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
         descripcion: '',
         precio: 0,
         categoria: '',
+        imagen: '',
       });
     }
   };
@@ -232,7 +233,7 @@ const ProductItem = ({ product, onDelete, onEdit }) => {
       <TableCell>{product.categoria}</TableCell>
       <TableCell>{product.descripcion.substring(0, 50)}...</TableCell>
       <TableCell>
-        <ButtonDelete onClick={() => onDelete(product.id)}>Eliminar</ButtonDelete>ㅤ
+        <ButtonDelete onClick={() => onDelete(product.id)} style="margin-bottom: 20px;">Eliminar</ButtonDelete>
         <ButtonEdit onClick={() => onEdit(product)}>Editar</ButtonEdit>
       </TableCell>
     </TableRow>
