@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-
 import styled from 'styled-components';
+import { usePaypal } from './usePaypal'; 
+
 
 const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.5);
@@ -45,33 +46,18 @@ const StyledPayPalConsent = styled.div`
     }
   }
 `;
-
 const PaypalButton = (props) => {
-  const [pagoRealizado, setPagoRealizado] = useState(false);
   const { precio } = props;
-
-  const handlePaymentSuccess = () => {
-    // Update state to indicate that the payment has been made
-    setPagoRealizado(true);
-  };
-
-  const handlePaymentError = (error) => {
-    // Handle error here
-    console.log(error);
-    // Show error message
-    
-  };
-
-  const [showOverlay, setShowOverlay] = useState(true);
-
-  const handleAccept = () => {
-    // Reset the payment status when continuing shopping
-    setPagoRealizado(false);
-    setShowOverlay(false);
-  };
+  const {
+    pagoRealizado,
+    showOverlay,
+    handlePaymentSuccess,
+    handlePaymentError,
+    handleAccept,
+  } = usePaypal();
 
   return (
-    <PayPalScriptProvider options={{ 'client-id': 'YOUR_CLIENT_ID' }}>
+    <PayPalScriptProvider options={{ 'client-id': 'TU_CLIENT_ID_DE_PAYPAL' }}>
       <div>
         <PayPalButtons
           createOrder={(data, actions) => {
@@ -79,7 +65,7 @@ const PaypalButton = (props) => {
               purchase_units: [
                 {
                   amount: {
-                    value: precio.toString(), // Adjust this value according to your requirements
+                    value: precio.toString(),
                   },
                 },
               ],
@@ -97,10 +83,8 @@ const PaypalButton = (props) => {
         {pagoRealizado && (
           <Overlay showOverlay={showOverlay}>
             <StyledPayPalConsent>
-              <h2>Pago realizado </h2>
-              <p>
-                Gracias por tu compra. El pago se ha realizado exitosamente.
-              </p>
+              <h2>Pago realizado</h2>
+              <p>Gracias por tu compra. El pago se ha realizado exitosamente.</p>
               <button onClick={handleAccept}>Continuar comprando</button>
             </StyledPayPalConsent>
           </Overlay>
