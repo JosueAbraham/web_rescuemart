@@ -105,8 +105,7 @@ const TiendaRoutes = () => (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Catalogo" element={<Catalogo />} />
-      <Route path="/productos/1" element={<DetalleProducto />} />
-      <Route path="/productos/:id" element={<Catalogo />} />
+      <Route path="/productos/:id" element={<DetalleProducto />} />
     </Routes>
     <Footer />
   </>

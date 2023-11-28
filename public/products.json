@@ -10,9 +10,29 @@
     },
     {
       "id": 2,
-      "nombre": "Producto 2",
-      "descripcion": "Descripción del producto 2",
-      "precio": 19.99,
-      "categoria": "Categoría 2"
+      "nombre": "Biolight M70C pulsioxímetro de dedo azul",
+      "descripcion": "El Biolight M70 permite mediciones rápidas y sencillas de la saturación de oxígeno (SpO2) y frecuencia del pulso en adultos. El pulsioxímetro de dedo tiene indicador de pletismogramo SpO2 y con su tamaño compacto y poco peso es ideal para su uso portátil y para situaciones de urgencias médicas. Resumen del producto mediciones del pulso y SpO2 en adultos funciona con 2 pilas alcalinas AAA dirección de la pantalla regulable brillo de la pantalla ajustable incluye un práctico maletín de transporte",
+      "precio": 1000.00,
+      "categoria": "Instrumental",
+      "resumen": "Mediciones del pulso y SpO2 en adultos. Resumen del día mediciones del pulso y SpO2 en adultos funciona con 2 pilas alcalinas AAA através de la dirección de la pantalla regulable brillo de la pantalla ajustable incluye un práctico maletín de transporte",
+      "imagen": "s6.1.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "Biolight M70C pulsioxímetro de dedo azul",
+      "descripcion": "Esta máscara para reanimación cardiopulmonar boca a boca permite una ventilación segura e higiénica. La mascarilla para rcp se suministra con un práctico estuche.",
+      "precio": 500.00,
+      "categoria": "Instrumental",
+      "resumen": "Mascarilla para reanimación boca a boca. Ajustable individualmente con cintas de fijación. Incluye un práctico estuche. Permite una reanimación higiénica y segura. Sin látex. 1 unidad",
+      "imagen": "21.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "Estetoscopio Rappaport negro",
+      "descripcion": "Este estetoscopio Rappaport está equipado con una pieza pectoral reversible, por lo que puede ser utilizado tanto para la auscultación en niños, como en adultos. El tubo de doble lumen garantiza una calidad de sonido óptima, mientras que los auriculares moldeables garantizan un alto nivel de comodidad para el usuario. El estetoscopio de doble cabezal viene con una amplia gama de accesorios como olivas, diafragmas y campanas. Estetoscopio Rappaport de doble cabezal Con pieza torácica reversible Para uso pediátrico y en adultos Apto también para uso veterinario Optimal auscultación gracias al diseño de doble tubo Diámetro de los diafragmas: 25 mm y 37 mm Auriculares moldeables Longitud: 74 cm Disponible en diferentes colores",
+      "precio": 1100.00,
+      "categoria": "Instrumental",
+      "resumen": "Pieza pectoral de doble cabezal intercambiable 2 diafragmas: (25 y 37 mm ∅) con doble tubo de doble lumen. auriculares moldeables con diseño de doble tubo. longitud total: 74 cm.",
+      "imagen": "Prueba1.jpg"
     }
   ]

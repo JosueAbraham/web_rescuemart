@@ -38,7 +38,7 @@ const StyledCookieConsent = styled.div`
   }
 
   & button {
-    background-color: #4caf50;
+    background-color: #ff3055;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -48,7 +48,7 @@ const StyledCookieConsent = styled.div`
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #45a049;
+      background-color: #ff4b30;
     }
   }
 `;
@@ -215,20 +215,28 @@ const DetalleProducto = () => {
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {
-    // Fetch product data from the JSON file
     const fetchProductData = async () => {
       try {
-        const response = await fetch('/products.json'); 
+        const response = await fetch('/products.json');
         const data = await response.json();
-        setProductData(data);
+        console.log('Fetched product data:', data);
+  
+        const selectedProduct = data.find((product) => product.id === parseInt(id));
+        console.log('Selected product:', selectedProduct);
+  
+        if (selectedProduct) {
+          setSelectedProduct(selectedProduct);
+        } else {
+          console.error(`Product with id ${id} not found.`);
+        }
       } catch (error) {
         console.error('Error fetching product data:', error);
       }
     };
-
+  
     fetchProductData();
-  }, []);
-
+  }, [id]);
+  
   const handleComprarAhora = (product) => {
     setSelectedProduct(product);
     setShowPaypalOverlay(true);
@@ -246,115 +254,99 @@ const DetalleProducto = () => {
 
   return (
     <div>
-      <Helmet>
-        <title>Botiquín de Primeros Auxilios DIN 13169 - RescueMart</title>
-        <meta name='description' content="Explora nuestro completo Botiquín de Primeros Auxilios según DIN 13169, con carcasa resistente, suministro esencial y materiales de alta calidad. Asegura tu preparación para situaciones de emergencia con este botiquín confiable." />
-        <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación" />
-   
-      </Helmet>
-      <DetalleProductoContainer>
-        <Header>
-          <h1>Detalles del Producto</h1>
-        </Header>
-
-        <TwoColumnContainer>
-          <ImageColumn>
-            <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
-               <div>
-                  <img src="/8.jpg" alt="Imagen 8" />
-                </div>
-                <div>
-                  <img src="/82.jpg" alt="Imagen 2" />
-                </div>
-                <div>
-                  <img src="/81.png" alt="Imagen 3" />
-                </div>
-                <div>
-                  <img src="/83.jpg" alt="Imagen 4" />
-                </div>
-            </Carousel>
-          </ImageColumn>
-          <InfoColumn>
-            <Product>
-              <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
-              <Price><strong>Precio habitual:</strong> $700.00 USD</Price>
-              <Quantity>
-                <p>Cantidad: </p>
-                <QuantityInput type="number" value={cantidad} min="1" />
-              </Quantity>
-              <Buttons>
-                <Button onClick={() => handleComprarAhora(productData[0])}>Agregar al carrito</Button>ㅤㅤ
-                <Button onClick={() => handleComprarAhora(productData[0])}>Comprar ahora</Button>
-              </Buttons>
-              <h2>Descripción</h2>
-              <ProductDescription>
- <p>Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.</p>
-           
-                {/* ... (existing product description code) */}
-              </ProductDescription>
-              <h2>Resumen del producto</h2>
-              <ul>
-                  <li>Fabricado en plástico de alta resistencia a impactos</li>
-                <li>Con material de vendaje especial para niños</li>
-                <li>Para las lesiones más comunes en jardines de infancia</li>
-                <li>Tapa con bisagra y lengüetas de cierre</li>
-                <li>Dimensiones: 26 x 16 x 8 cm</li>
-           
-              </ul>
-            </Product>
-          </InfoColumn>
-        </TwoColumnContainer>
-
-        <Container>
-          <h2>Calificación</h2>
-          <StarRanking />
-          <OpinionForm onSubmit={handleOpinionSubmit}>
-            <h2>Deja tu opinión</h2>
-            <OpinionTextarea
-              placeholder="Escribe tu opinión..."
-              value={opinion}
-              onChange={handleOpinionChange}
-            />
-            <OpinionSubmitButton type="submit">Enviar Opinión</OpinionSubmitButton>
-          </OpinionForm>
-        </Container>
-
-        {showPaypalOverlay && (
+      {selectedProduct ? (
+        <>
+          <Helmet>
+            <title>{selectedProduct.nombre}</title>
+            <meta name='description' content={selectedProduct.descripcion} />
+            <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación" />
+          </Helmet>
+          <DetalleProductoContainer>
+            <Header>
+              <h1>Detalles del Producto</h1>
+            </Header>
+    
+            <TwoColumnContainer>
+              <ImageColumn>
+                <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
+                  <div>
+                    <img
+                      src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
+                      alt={selectedProduct.nombre}
+                      style={{ maxHeight: '100%', maxWidth: '100%' }} 
+                    />
+                  </div>
+                </Carousel>
+              </ImageColumn>
+              <InfoColumn>
+                <Product>
+                  <ProductTitle>{selectedProduct.nombre}</ProductTitle>
+                  <p>Categoría: {selectedProduct.categoria}</p>
+                  <Price><strong>Precio habitual:</strong> ${selectedProduct.precio.toFixed(2)} USD</Price>
+                  <Quantity>
+                    <p>Cantidad: </p>
+                    <QuantityInput type="number" value={cantidad} min="1" />
+                  </Quantity>
+                  <Buttons>
+                    <Button onClick={() => handleComprarAhora(selectedProduct)}>Agregar al carrito</Button>ㅤㅤ
+                    <Button onClick={() => handleComprarAhora(selectedProduct)}>Comprar ahora</Button>
+                  </Buttons>
+                  <h2>Descripción</h2>
+                  <ProductDescription>
+                    <p>{selectedProduct.descripcion}</p>
+                  </ProductDescription>
+                  <h2>Resumen del producto</h2>
+                  <p>{selectedProduct.resumen}</p>
+                </Product>
+              </InfoColumn>
+            </TwoColumnContainer>
+          </DetalleProductoContainer>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
+      <Container>
+        <h2>Calificación</h2>
+        <StarRanking />
+        <OpinionForm onSubmit={handleOpinionSubmit}>
+          <h2>Deja tu opinión</h2>
+          <OpinionTextarea
+            placeholder="Escribe tu opinión..."
+            value={opinion}
+            onChange={handleOpinionChange}
+          />
+          <OpinionSubmitButton type="submit">Enviar Opinión</OpinionSubmitButton>
+        </OpinionForm>
+      </Container>
+    
+      {showPaypalOverlay && (
         <Overlay showOverlay={showPaypalOverlay}>
           <StyledCookieConsent>
             <h2>Comprar ahora</h2>
             <p>
-              Nombre: {selectedProduct.nombre}
+              Nombre: {selectedProduct?.nombre}
               <br />
-              Precio: ${selectedProduct.precio}
+              Precio: ${selectedProduct?.precio}
               <br />
               Cantidad: 1
             </p>
             <img
-              src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
-              alt={selectedProduct.nombre}
-              style={{ maxWidth: '100%', maxHeight: '200px' }} // Adjust the styles as needed
+              src={process.env.PUBLIC_URL + '/' + selectedProduct?.imagen}
+              alt={selectedProduct?.nombre}
+              style={{ maxWidth: '100%', maxHeight: '200px' }} 
             />
-            <PaypalButton precio={selectedProduct.precio.toString()} />
+            <PaypalButton precio={selectedProduct?.precio.toString()} />
             <button onClick={() => setShowPaypalOverlay(false)}>Cerrar</button>
           </StyledCookieConsent>
         </Overlay>
       )}
-        <h2>ㅤㅤProductos Recomendados</h2>
-        <ProductosList>
-          {productos.map((producto) => (
-            <Producto key={producto.id}>
-              <StyledLink to={`/productos/${producto.id}`}>
-                <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.titulo} />
-                <Titulo>{producto.titulo}</Titulo>
-                <Precio>Precio: ${producto.precio}</Precio>
-              </StyledLink>
-            </Producto>
-          ))}
-        </ProductosList>
-      </DetalleProductoContainer>
+      <h2>ㅤㅤProductos Recomendados</h2>
+      <ProductosList>
+        {/* Productos Recomendados */}
+      </ProductosList>
     </div>
   );
-};
+  
+}
 
 export default DetalleProducto;
