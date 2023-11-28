@@ -67,7 +67,11 @@ const StyledCookieConsent = styled.div`
 
 const App = () => {
   const [showOverlay, setShowOverlay] = useState(true);
+  const [deberiaMostrarComponente, setDeberiaMostrarComponente] = useState(false);
 
+  const ocultarComponente = () => {
+    setDeberiaMostrarComponente(false);
+  };
   const handleAccept = () => {
     setShowOverlay(false);
   };
@@ -89,6 +93,11 @@ Al aceptar estos términos, reconoces y aceptas las prácticas descritas en nues
               </p>
               <button onClick={handleAccept}>Aceptar cookies</button>
             </StyledCookieConsent>
+            <div>
+     
+
+      {deberiaMostrarComponente && <ComponenteVisible />}
+    </div>
           </Overlay>
           <Routes>
             <Route path="/*" element={<TiendaRoutes />} />
@@ -99,6 +108,10 @@ Al aceptar estos términos, reconoces y aceptas las prácticas descritas en nues
       </Router>
     </>
   );
+};
+
+const ComponenteVisible = () => {
+  return <div><PaypalButton /></div>;
 };
 
 const TiendaRoutes = () => (
