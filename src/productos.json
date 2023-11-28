@@ -1,0 +1,12 @@
+[
+    { "id": 1, "titulo": "Botiquín de primeros auxilios según DIN 13169", "precio": 700.00, "imagen": "../Botiquín1.png" },
+    { "id": 2, "titulo": "Biolight M70C pulsioxímetro de dedo azul", "precio": 1000.00, "imagen": "../pulsioxímetro2.jpg" },
+    { "id": 3, "titulo": "Mascarilla RCP con estuche", "precio": 500.00, "imagen": "../Mascarilla3.jpg" },
+    { "id": 4, "titulo": "Estetoscopio cardiología profesional 200", "precio": 1100.00, "imagen": "../Estetoscopio4.jpg" },
+    { "id": 5, "titulo": "Omnitape, 10 m 2 cm", "precio": 400.00, "imagen": "../Omnitape5.jpg" },
+    { "id": 6, "titulo": "Octenilin Solución riego heridas 350 ml", "precio": 650.00, "imagen": "../Octenilin6.3.jpg" },
+    { "id": 7, "titulo": "Bolso de emergencia «Lüttich» pequeño | nylon", "precio": 607.00, "imagen": "../Bolso7.jpg" },
+    { "id": 8, "titulo": "tg Vendaje Tubular 5m | 1", "precio": 230.00, "imagen": "../Vendaje8.jpg" },
+    { "id": 9, "titulo": "Vendaje de gasa Peha, 4 m 4cm", "precio": 150.00, "imagen": "../Vendaje9.jpg" },
+    { "id": 10, "titulo": "Jeringa desechable Omnifix Solo 5ml", "precio": 110.00, "imagen": "../Jeringa10.jpg" }
+  ]

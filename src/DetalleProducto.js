@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import StarRanking from './StarRanking';
 import PaypalButton from './Paypal_Button';
 import { Carousel } from 'react-responsive-carousel';
-import { useEffect } from 'react';
-
-const productos = [
-  { id: 2, titulo: 'Biolight M70C pulsioxímetro de dedo azul', precio: 1000.00, imagen: 's6.1.jpg' },
-  { id: 5, titulo: 'Cutimed® Sorbion® Sorbact® 10 cm x 10 cm', precio: 400.00, imagen: 'Prueba2.jpg' },
-  { id: 6, titulo: 'Octenilin Solución riego heridas 350 ml', precio: 650.00, imagen: 'Prueba3.jpg' },
-  { id: 8, titulo: 'tg Vendaje Tubular 5m | 1', precio: 230.00, imagen: 'Prueba5.jpg' },
-];
+import productosData from './productos_detalles.json'; // Ajusta la ruta según la ubicación real de tu archivo JSON
 
 const DetalleProductoContainer = styled.div`
   font-family: Arial, sans-serif;
@@ -104,7 +97,7 @@ const OpinionSubmitButton = styled.button`
 
 const ProductosList = styled.div`
   display: flex;
-  justify-content: space-around; /* Ajusta según tus preferencias de espaciado */
+  justify-content: space-around;
   flex-wrap: wrap;
 `;
 
@@ -115,12 +108,13 @@ const Producto = styled.div`
   text-align: center;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 200px; /* Ajusta el ancho según tus necesidades */
-  margin: 10px; /* Ajusta el margen entre productos según tus necesidades */
+  width: 200px;
+  margin: 10px;
 `;
+
 const ImagenProducto = styled.img`
   max-width: 100%;
-  max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
+  max-height: 150px;
   width: auto;
   height: auto;
 `;
@@ -128,12 +122,12 @@ const ImagenProducto = styled.img`
 const Precio = styled.p`
   font-weight: bold;
   color: #2D2F30;
-  margin-top: 5px; /* Agrega un pequeño margen superior */
+  margin-top: 5px;
 `;
 
 const Titulo = styled.h3`
   color: #000;
-  margin-top: 5px; /* Agrega un pequeño margen superior */
+  margin-top: 5px;
 `;
 
 const StyledLink = styled(Link)`
@@ -142,21 +136,21 @@ const StyledLink = styled(Link)`
 
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 45% 50%; /* Adjust the column widths as needed */
-  column-gap: 5%; /* Adjust the gap between columns as needed */
+  grid-template-columns: 45% 50%;
+  column-gap: 5%;
 `;
 
 const ImageColumn = styled.div`
-  margin-bottom: 20px; /* Add margin for separation */
-  height: 100%; /* Ensure the ImageColumn takes full height */
+  margin-bottom: 20px;
+  height: 100%;
 `;
 
 const InfoColumn = styled.div`
-  margin-bottom: 20px; /* Add margin for separation */
+  margin-bottom: 20px;
 `;
 
 const CarouselContainer = styled.div`
-  height: 100%; /* Ensure the carousel takes full height of ImageColumn */
+  height: 100%;
 `;
 
 const DetalleProducto = () => {
@@ -173,88 +167,64 @@ const DetalleProducto = () => {
     console.log('Opinión enviada:', opinion);
     setOpinion('');
   };
-  const [productData, setProductData] = useState(null);
 
-  useEffect(() => {
-    // Fetch product data from the JSON file
-    const fetchProductData = async () => {
-      try {
-        const response = await fetch('/product.json'); // Adjust the path based on your project structure
-        const data = await response.json();
-        setProductData(data);
-      } catch (error) {
-        console.error('Error fetching product data:', error);
-      }
-    };
+  const selectedProduct = productosData.productos.find(producto => producto.id === parseInt(id, 10));
 
-    fetchProductData();
-  }, []);
+  if (!selectedProduct) {
+    return <p>Producto no encontrado</p>;
+  }
 
   return (
     <div>
       <Helmet>
-        <title>Botiquín de Primeros Auxilios DIN 13169 - RescueMart</title>
-        <meta name='description' content="Explora nuestro completo Botiquín de Primeros Auxilios según DIN 13169, con carcasa resistente, suministro esencial y materiales de alta calidad. Asegura tu preparación para situaciones de emergencia con este botiquín confiable." />
-        <meta name="keywords" content="Botiquín de Primeros Auxilios, DIN 13169, Precio, Detalles del Producto, Materiales de alta calidad, Situaciones de Emergencia, Preparación" />
+        <title>{selectedProduct.titulo} - RescueMart</title>
+        <meta name='description' content={selectedProduct.descripcion} />
+        <meta name="keywords" content={`Product, ${selectedProduct.titulo}, Price, Details`} />
       </Helmet>
       <DetalleProductoContainer>
         <Header>
-          <h1>Detalles del Producto</h1>
+          <h1>{selectedProduct.titulo}</h1>
         </Header>
 
         <TwoColumnContainer>
           <ImageColumn>
             <CarouselContainer>
               <Carousel autoPlay infiniteLoop showArrows={false} interval={5000} dynamicHeight={false}>
-                <div>
-                  <img src="/8.jpg" alt="Imagen 8" />
-                </div>
-                <div>
-                  <img src="/82.jpg" alt="Imagen 2" />
-                </div>
-                <div>
-                  <img src="/81.png" alt="Imagen 3" />
-                </div>
-                <div>
-                  <img src="/83.jpg" alt="Imagen 4" />
-                </div>
-              </Carousel></CarouselContainer>
+                {selectedProduct.imagenes.map((imagen, index) => (
+                  <div key={index}>
+                    <img src={imagen} alt={`Imagen ${index + 1}`} />
+                  </div>
+                ))}
+              </Carousel>
+            </CarouselContainer>
           </ImageColumn>
           <InfoColumn>
             <Product>
-
-              <ProductTitle>Botiquín de primeros auxilios según DIN 13169</ProductTitle>
-              <Price><strong>Precio habitual:</strong> $700.00 MXN</Price>
+              <ProductTitle>{selectedProduct.titulo}</ProductTitle>
+              <Price><strong>Precio habitual:</strong> ${selectedProduct.precio.toFixed(2)} MXN</Price>
               <Quantity>
                 <p>Cantidad: </p>
-                <QuantityInput type="number" value="1" min="1" />
+                <QuantityInput type="number" value={cantidad} min="1" onChange={(e) => setCantidad(e.target.value)} />
               </Quantity>
               <Buttons>
-                <Button>Agregar al carrito</Button>ㅤㅤ
+                <Button>Agregar al carrito</Button>
                 <Button>Comprar ahora</Button>
-                {productData ? (
-        <PaypalButton productData={productData} />
-      ) : (
-        <p>Loading product data...</p>
-      )}
+                <PaypalButton productData={selectedProduct} />
               </Buttons>
               <h2>Descripción</h2>
               <ProductDescription>
-                <p>Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.</p>
-                {/* ... Otros detalles del producto ... */}
+                <p>{selectedProduct.descripcion}</p>
               </ProductDescription>
-              <h2>Resumen del producto</h2>
+              <h2>Características</h2>
               <ul>
-                <li>Fabricado en plástico de alta resistencia a impactos</li>
-                <li>Con material de vendaje especial para niños</li>
-                <li>Para las lesiones más comunes en jardines de infancia</li>
-                <li>Tapa con bisagra y lengüetas de cierre</li>
-                <li>Dimensiones: 26 x 16 x 8 cm</li>
+                {selectedProduct.caracteristicas.map((caracteristica, index) => (
+                  <li key={index}>{caracteristica}</li>
+                ))}
               </ul>
-
             </Product>
           </InfoColumn>
         </TwoColumnContainer>
+
         <Container>
           <h2>Calificación</h2>
           <StarRanking />
@@ -269,14 +239,14 @@ const DetalleProducto = () => {
           </OpinionForm>
         </Container>
 
-        <h2>ㅤㅤProductos Recomendados</h2>
+        <h2>Productos Recomendados</h2>
         <ProductosList>
-          {productos.map((producto) => (
+          {productosData.productos.map((producto) => (
             <Producto key={producto.id}>
               <StyledLink to={`/productos/${producto.id}`}>
-                <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.titulo} />
+                <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagenes[0]} alt={producto.titulo} />
                 <Titulo>{producto.titulo}</Titulo>
-                <Precio>Precio: ${producto.precio}</Precio>
+                <Precio>Precio: ${producto.precio.toFixed(2)}</Precio>
               </StyledLink>
             </Producto>
           ))}
@@ -287,3 +257,5 @@ const DetalleProducto = () => {
 };
 
 export default DetalleProducto;
+
+
