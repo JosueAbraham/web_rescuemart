@@ -210,20 +210,16 @@ const DetalleProducto = () => {
   const { id } = useParams();
   const [opinion, setOpinion] = useState('');
   const [cantidad, setCantidad] = useState(1);
-  const [showPaypalOverlay, setShowPaypalOverlay] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [productData, setProductData] = useState(null);
+  const [showPaypalOverlay, setShowPaypalOverlay] = useState(false);
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
         const response = await fetch('/products.json');
         const data = await response.json();
-        console.log('Fetched product data:', data);
-  
         const selectedProduct = data.find((product) => product.id === parseInt(id));
-        console.log('Selected product:', selectedProduct);
-  
+
         if (selectedProduct) {
           setSelectedProduct(selectedProduct);
         } else {
@@ -233,7 +229,7 @@ const DetalleProducto = () => {
         console.error('Error fetching product data:', error);
       }
     };
-  
+
     fetchProductData();
   }, [id]);
   
