@@ -40,7 +40,8 @@ const Menu = () => {
         <MenuItem>
         <MenuLink to="/">Ir a la tienda</MenuLink>ㅤㅤ
           <MenuLink to="/admin/products">Productos</MenuLink>ㅤㅤ
-          <MenuLink to="/admin/users">Usuarios</MenuLink>
+          <MenuLink to="/admin/users">Usuarios</MenuLink>ㅤㅤ
+          <MenuLink to="/admin/categories">Categorías</MenuLink>
 
         </MenuItem>
         {/* Agrega más enlaces según sea necesario */}

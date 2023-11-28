@@ -12,6 +12,7 @@ import ProductManagement from './admin/ProductManagement';
 import LoginForm from './admin/LoginForm';
 import Menu from './admin/Menu';
 import UserManagement from './admin/UserManagement';
+import CategoryManagement from './admin/CategoryManagement';
 const AppContainer = styled.div`
   font-family: Arial, sans-serif;
   display: flex;
@@ -115,9 +116,8 @@ const AdminRoutes = () => (
     <Menu />
     <Routes>
       <Route path="/products" element={<ProductManagement />} />
-      
+      <Route path="/categories" element={<CategoryManagement />} />
       <Route path="/users" element={<UserManagement />} />
-      {/* Agrega más rutas de administrador según sea necesario */}
     </Routes>
   </>
 );

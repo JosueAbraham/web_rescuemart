@@ -156,7 +156,7 @@ const UserList = ({ users, onDelete, onEdit }) => {
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
-  const [userIdCounter, setUserIdCounter] = useState(2);
+  const [userIdCounter, setUserIdCounter] = useState(3);
 
   // Estado para el nuevo usuario en el formulario
   const initialUserData = {

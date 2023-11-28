@@ -80,13 +80,14 @@ const ListColumn = styled.div`
   overflow-y: auto; /* Enable vertical scrolling if needed */
 `;
 
-const ProductForm = ({ onSubmit, editingProduct, setEditingProduct }) => {
+const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }) => {
   const [product, setProduct] = useState({
     id: editingProduct ? editingProduct.id : null,
     nombre: editingProduct ? editingProduct.nombre : '',
     descripcion: editingProduct ? editingProduct.descripcion : '',
     precio: editingProduct ? editingProduct.precio : 0,
     categoria: editingProduct ? editingProduct.categoria : '',
+    imagen: editingProduct ? editingProduct.imagen : '',
   });
 
   useEffect(() => {
@@ -96,6 +97,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct }) => {
       descripcion: editingProduct ? editingProduct.descripcion : '',
       precio: editingProduct ? editingProduct.precio : 0,
       categoria: editingProduct ? editingProduct.categoria : '',
+      imagen: editingProduct ? editingProduct.imagen : '',
     });
   }, [editingProduct]);
 
@@ -156,13 +158,28 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct }) => {
       </Label>
       <br />
       <Label>
+        Imagen:
+        <TextArea
+          name="imagen"
+          value={product.imagen}
+          onChange={handleChange}
+        />
+      </Label>
+      <br />
+      <Label>
         Categoría:
-        <Input
-          type="text"
+        <select
           name="categoria"
           value={product.categoria}
           onChange={handleChange}
-        />
+        >
+          <option value="">Selecciona una categoría</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.nombre}>
+              {category.nombre}
+            </option>
+          ))}
+        </select>
       </Label>
       <br />
       <Button type="submit">
@@ -171,7 +188,6 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct }) => {
     </FormContainer>
   );
 };
-
 
 const ProductListContainer = styled.div`
   max-width: %100;
@@ -203,6 +219,13 @@ const TableCell = styled.td`
 const ProductItem = ({ product, onDelete, onEdit }) => {
   return (
     <TableRow>
+      <TableCell>
+        <img
+          src={process.env.PUBLIC_URL + '/' + product.imagen}
+          alt={product.nombre}
+          style={{ maxHeight: '50px', maxWidth: '50px' }}
+        />
+      </TableCell>
       <TableCell>{product.id}</TableCell>
       <TableCell>{product.nombre}</TableCell>
       <TableCell>{`$${product.precio}`}</TableCell>
@@ -222,6 +245,7 @@ const ProductList = ({ products, onDelete, onEdit }) => {
       <ProductTable>
         <thead>
           <tr>
+            <TableHeader>Imagen</TableHeader>
             <TableHeader>ID</TableHeader>
             <TableHeader>Nombre</TableHeader>
             <TableHeader>Precio</TableHeader>
@@ -248,12 +272,21 @@ const ProductList = ({ products, onDelete, onEdit }) => {
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
-  const [productIdCounter, setProductIdCounter] = useState(3);
+  const [productIdCounter, setProductIdCounter] = useState(11);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // Simulación de carga de datos desde un archivo JSON
-    // En un entorno real, podrías hacer una solicitud HTTP o utilizar otro método para obtener datos desde el servidor.
-    const fetchData = async () => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('/categories.json');
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error('Error fetching category data:', error);
+      }
+    };
+
+    const fetchProducts = async () => {
       try {
         const response = await fetch('/products.json');
         const data = await response.json();
@@ -263,14 +296,12 @@ const ProductManagement = () => {
       }
     };
 
-    fetchData();
-  }, []); // El array vacío como segundo argumento garantiza que el efecto se ejecute solo una vez al montar el componente.
+    fetchCategories();
+    fetchProducts();
+  }, []);
 
   const handleAddProduct = (newProduct, editingProduct) => {
     if (editingProduct !== null) {
-      // Si estamos editando, actualizamos el producto existente
-  
-      
       setProducts((prevProducts) => {
         const newProducts = [...prevProducts];
         const index = prevProducts.findIndex((p) => p.id === editingProduct.id);
@@ -278,14 +309,10 @@ const ProductManagement = () => {
         return newProducts;
       });
     } else {
-      // Si no estamos editando, agregamos un nuevo producto con el ID del contador
       setProducts((prevProducts) => [...prevProducts, { ...newProduct, id: productIdCounter }]);
-      // Incrementamos el contador para el próximo producto
       setProductIdCounter((prevCounter) => prevCounter + 1);
     }
   };
-
- 
 
   const handleDeleteProduct = (productId) => {
     setProducts((prevProducts) =>
@@ -294,7 +321,6 @@ const ProductManagement = () => {
   };
 
   const handleEditProduct = (product) => {
-    // Establecemos el producto que se está editando en el estado
     setEditingProduct(product);
   };
 
@@ -302,22 +328,24 @@ const ProductManagement = () => {
     <div>
       <TwoColumnContainer>
         <FormColumn>
-      <ProductForm
-        onSubmit={handleAddProduct}
-        editingProduct={editingProduct}
-        setEditingProduct={setEditingProduct}
-      />
-      </FormColumn>
-      <ListColumn>
-      <ProductList
-        products={products}
-        onDelete={handleDeleteProduct}
-        onEdit={handleEditProduct}
-      />
-      </ListColumn>
+          <ProductForm
+            onSubmit={handleAddProduct}
+            editingProduct={editingProduct}
+            setEditingProduct={setEditingProduct}
+            categories={categories}
+          />
+        </FormColumn>
+        <ListColumn>
+          <ProductList
+            products={products}
+            onDelete={handleDeleteProduct}
+            onEdit={handleEditProduct}
+          />
+        </ListColumn>
       </TwoColumnContainer>
     </div>
   );
 };
+
 
 export default ProductManagement;

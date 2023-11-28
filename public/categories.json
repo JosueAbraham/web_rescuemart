@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "nombre": "Botiquines",
+      "descripcion": "Productos que contienen artículos médicos y herramientas útiles para proporcionar primeros auxilios en diversas situaciones."
+    },
+    {
+      "id": 2,
+      "nombre": "Instrumental",
+      "descripcion": "Instrumentos médicos y herramientas esenciales utilizadas en situaciones de emergencia y para el cuidado de heridas y lesiones."
+    },
+    {
+      "id": 3,
+      "nombre": "Vendajes",
+      "descripcion": "Productos para el tratamiento y protección de heridas mediante el uso de vendajes y apósitos adecuados para diferentes tipos de lesiones."
+    }
+]
+  
