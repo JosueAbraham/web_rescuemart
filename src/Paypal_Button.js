@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import styled from 'styled-components';
 
 const Overlay = styled.div`
@@ -52,8 +51,6 @@ const PaypalButton = (props) => {
   const { precio } = props;
 
   const handlePaymentSuccess = () => {
-    // Handle successful payment here
-    toast.success('Compra hecha exitosamente', { position: toast.POSITION.TOP_CENTER });
     // Update state to indicate that the payment has been made
     setPagoRealizado(true);
   };
@@ -62,7 +59,7 @@ const PaypalButton = (props) => {
     // Handle error here
     console.log(error);
     // Show error message
-    toast.error('Error al procesar el pago', { position: toast.POSITION.BOTTOM_RIGHT });
+    
   };
 
   const [showOverlay, setShowOverlay] = useState(true);
