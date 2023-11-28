@@ -210,7 +210,8 @@ const DetalleProducto = () => {
   const [opinion, setOpinion] = useState('');
   const [cantidad, setCantidad] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [showPaypalOverlay, setShowPaypalOverlay] = useState(false);
+  const [showPaypalOverlay, setShowPaypalOverlay] = useState();
+ 
 
   useEffect(() => {
     const fetchProductData = async () => {
