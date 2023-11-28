@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styled from 'styled-components';
 
-
 const Home = () => {
+  const [productosDestacados, setProductosDestacados] = useState([]);
+
+  useEffect(() => {
+    const fetchProductosDestacados = async () => {
+      try {
+        const response = await fetch(process.env.PUBLIC_URL + '/products.json');
+        const data = await response.json();
+        const destacados = data.filter(producto => producto.destacado);
+        setProductosDestacados(destacados);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchProductosDestacados();
+  }, []);
+
   return (
     <div>
       <Helmet>
@@ -33,14 +49,15 @@ Excelencia, innovación, compromiso con la seguridad" />
       </CustomCarousel>
       <h2>ㅤㅤProductos destacados</h2>
       <ProductosList>
-        {productos.map((producto) => (
+        {productosDestacados.map((producto) => (
           <Producto key={producto.id}>
-            <StyledLink to={`/productos/${producto.id}`}>
-              <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.titulo} />
-              <Titulo>{producto.titulo}</Titulo>
-              <Precio>Precio: ${producto.precio}</Precio>
-            </StyledLink>
-          </Producto>
+          <StyledLink to={`/productos/${producto.id}`}>
+            <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.nombre} />
+            <Titulo>{producto.nombre}</Titulo>
+            <Precio>Precio: ${producto.precio}</Precio>
+          </StyledLink>
+        </Producto>
+        
         ))}
       </ProductosList>
       <InformationContainer>
