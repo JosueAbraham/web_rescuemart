@@ -44,7 +44,7 @@ const Home = () => {
             </p>
           </InformationText>
           <ImageWrapper>
-            <img src="inicio1.2.jpg" alt="Imagen 1.2" />
+            <img src="inicio1.jpg" alt="Imagen 1.2" />
           </ImageWrapper>
         </ContentWrapper>
 
@@ -56,7 +56,7 @@ const Home = () => {
             </p>
           </InformationText>
           <ImageWrapper>
-            <img src="inicio1.1.jpg" alt="Imagen 1" />
+            <img src="inicio11.jpg" alt="Imagen 1" />
           </ImageWrapper>
         </ContentWrapper>
 
@@ -68,7 +68,7 @@ const Home = () => {
             </p>
           </InformationText>
           <ImageWrapper>
-            <img src="inicio1.2.jpg" alt="Imagen 1.2" />
+            <img src="inicio12.jpg" alt="Imagen 1.2" />
           </ImageWrapper>
         </ContentWrapper>
 
@@ -80,7 +80,7 @@ const Home = () => {
             </p>
           </InformationText>
           <ImageWrapper>
-            <img src="inicio1.3.jpg" alt="Imagen 1.3" />
+            <img src="inicio13.jpg" alt="Imagen 1.3" />
           </ImageWrapper>
         </ContentWrapper>
       </InformationContainer>

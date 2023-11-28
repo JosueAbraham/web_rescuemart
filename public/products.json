@@ -49,7 +49,7 @@
     "carrito": false,
     "favorito": false,
     "stock": 10,
-      "destacado": true
+      "destacado": false
     },
     {
       "id": 3,
@@ -68,7 +68,7 @@
       "resumen": "Mascarilla para reanimación boca a boca. Ajustable individualmente con cintas de fijación. Incluye un práctico estuche. Permite una reanimación higiénica y segura. Sin látex. 1 unidad",
       "imagen": "Mascarilla3.jpg",
       "stock": 100,
-      "destacado": true,
+      "destacado": false,
       "relacionados": [
         1,
         8,
@@ -123,7 +123,7 @@
       "categoria": "Vendajes",
       "imagen": "Omnitape5.jpg",
       "stock": 100,
-      "destacado": true,
+      "destacado": false,
       "relacionados": [
         3,
         7,
@@ -177,7 +177,7 @@
       "categoria": "Botiquines",
       "imagen": "Bolso7.jpg",
       "stock": 100,
-      "destacado": true,
+      "destacado": false,
       "relacionados": [
         8,
         9,
@@ -202,7 +202,7 @@
       "categoria": "Vendajes",
       "imagen": "Vendaje8.jpg",
       "stock": 100,
-      "destacado": true,
+      "destacado": false,
       "relacionados": [
         3,
         4,
@@ -259,7 +259,7 @@
       "categoria": "Instrumental",
       "imagen": "Jeringa10.jpg",
       "stock": 100,
-      "destacado": true,
+      "destacado": false,
       "relacionados": [
         3,
         2,
