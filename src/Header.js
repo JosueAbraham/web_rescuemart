@@ -1,29 +1,26 @@
-import React from 'react'
-import { BrowserRouter as Router, NavLink, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
-
-
 
 const Header = () => {
   return (
     <HeaderContainer>
       {/* Utiliza la etiqueta <img> para mostrar la imagen de tu tienda */}
-      <img src="/logo.png.png" alt="8" style={{ width: '100px', height: 'auto' }} />
+      <Logo src="/logo.png.png" alt="Logo de la tienda" />
 
       <Nav>
-        <StyledNavLink to="/" exact>Inicio</StyledNavLink>
-        <StyledNavLink to="/Catalogo">Catálogo</StyledNavLink>
-        <input type="text" placeholder="Buscar" />
+        <StyledNavLink to="/" exact>
+          Inicio
+        </StyledNavLink>
+        <StyledNavLink to="/catalogo">Catálogo</StyledNavLink>
+        <SearchInput type="text" placeholder="Buscar" />
         <StyledNavLink to="/cart">Carrito</StyledNavLink>
         <StyledNavLink to="/login">Iniciar Sesión</StyledNavLink>
         <StyledNavLink to="/register">Registrarse</StyledNavLink>
       </Nav>
     </HeaderContainer>
   );
-}
-
-
+};
 
 const HeaderContainer = styled.header`
   background-color: #368591;
@@ -34,15 +31,37 @@ const HeaderContainer = styled.header`
   align-items: center;
 `;
 
+const Logo = styled.img`
+  width: 100px;
+  height: auto;
+`;
+
 const Nav = styled.nav`
   display: flex;
   gap: 20px;
+  align-items: center;
 `;
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: #ffff; /* Cambia el color de los enlaces a blanco */
-  /* Puedes agregar más estilos según tus preferencias, por ejemplo, hover, font-size, etc. */
+  color: #fff;
+  transition: color 0.3s ease; /* Añade una transición suave al color */
+
+  &:hover {
+    color: #ffcc00; /* Cambia el color al pasar el ratón */
+  }
+`;
+
+const SearchInput = styled.input`
+  padding: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-size: 14px;
+
+  ::placeholder {
+    color: #fff;
+  }
 `;
 
 export default Header;
