@@ -94,6 +94,7 @@ Al aceptar estos términos, reconoces y aceptas las prácticas descritas en nues
               <button onClick={handleAccept}>Aceptar cookies</button>
             </StyledCookieConsent>
             <div>
+              <PaypalButton />
      
 
       {deberiaMostrarComponente && <ComponenteVisible />}
