@@ -86,6 +86,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
     nombre: editingProduct ? editingProduct.nombre : '',
     descripcion: editingProduct ? editingProduct.descripcion : '',
     precio: editingProduct ? editingProduct.precio : 0,
+    stock: editingProduct ? editingProduct.stock : 0,
     categoria: editingProduct ? editingProduct.categoria : '',
     imagen: editingProduct ? editingProduct.imagen : '',
   });
@@ -96,6 +97,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
       nombre: editingProduct ? editingProduct.nombre : '',
       descripcion: editingProduct ? editingProduct.descripcion : '',
       precio: editingProduct ? editingProduct.precio : 0,
+      stock: editingProduct ? editingProduct.stock : 0,
       categoria: editingProduct ? editingProduct.categoria : '',
       imagen: editingProduct ? editingProduct.imagen : '',
     });
@@ -121,6 +123,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
         nombre: '',
         descripcion: '',
         precio: 0,
+        stock: 0,
         categoria: '',
         imagen: '',
       });
@@ -154,6 +157,16 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
           type="number"
           name="precio"
           value={product.precio}
+          onChange={handleChange}
+        />
+      </Label>
+      <br />
+      <Label>
+        Cantidad:
+        <Input
+          type="number"
+          name="stock"
+          value={product.stock}
           onChange={handleChange}
         />
       </Label>
@@ -231,9 +244,10 @@ const ProductItem = ({ product, onDelete, onEdit }) => {
       <TableCell>{product.nombre}</TableCell>
       <TableCell>{`$${product.precio}`}</TableCell>
       <TableCell>{product.categoria}</TableCell>
-      <TableCell>{product.descripcion.substring(0, 50)}...</TableCell>
+      <TableCell>{product.stock}</TableCell>
+      <TableCell>{product.descripcion.substring(0, 100)}...</TableCell>
       <TableCell>
-        <ButtonDelete onClick={() => onDelete(product.id)} style="margin-bottom: 20px;">Eliminar</ButtonDelete>
+        <ButtonDelete onClick={() => onDelete(product.id)}>Eliminar</ButtonDelete><br/><br/>
         <ButtonEdit onClick={() => onEdit(product)}>Editar</ButtonEdit>
       </TableCell>
     </TableRow>
@@ -251,6 +265,7 @@ const ProductList = ({ products, onDelete, onEdit }) => {
             <TableHeader>Nombre</TableHeader>
             <TableHeader>Precio</TableHeader>
             <TableHeader>Categoría</TableHeader>
+            <TableHeader>Cantidad</TableHeader>
             <TableHeader>Descripción</TableHeader>
             <TableHeader>Acciones</TableHeader>
           </tr>

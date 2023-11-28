@@ -5,34 +5,270 @@
       "descripcion": "Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.",
       "precio": 701.00,
       "categoria": "Botiquines",
-      "resumen": "Fabricado en plástico de alta resistencia a impactos.Con material de vendaje especial para niños. Para las lesiones más comunes en jardines de infancia. Tapa con bisagra y lengüetas de cierre. Dimensiones: 26 x 16 x 8 cm",
-      "imagen": "8.jpg"
+      "imagen": "Botiquín1.png",
+      "stock": 10,
+      "destacado": true,
+      "caracteristicas": [
+        "Fabricado en plástico de alta resistencia a impactos",
+        "Con material de vendaje especial para niños",
+        "Para las lesiones más comunes en jardines de infancia",
+        "Tapa con bisagra y lengüetas de cierre",
+        "Dimensiones: 26 x 16 x 8 cm"
+      ],
+      "relacionados": [
+        2,
+        3,
+        9,
+        7
+      ],
+      "carrito": false,
+      "favorito": false,
+      "imagenes": ["../Botiquín1.png", "../Botiquín1.2.jpg", "../Botiquín1.3.jpg"]
     },
     {
       "id": 2,
       "nombre": "Biolight M70C pulsioxímetro de dedo azul",
-      "descripcion": "El Biolight M70 permite mediciones rápidas y sencillas de la saturación de oxígeno (SpO2) y frecuencia del pulso en adultos. El pulsioxímetro de dedo tiene indicador de pletismogramo SpO2 y con su tamaño compacto y poco peso es ideal para su uso portátil y para situaciones de urgencias médicas. Resumen del producto mediciones del pulso y SpO2 en adultos funciona con 2 pilas alcalinas AAA dirección de la pantalla regulable brillo de la pantalla ajustable incluye un práctico maletín de transporte",
+      "imagenes": ["../pulsioxímetro2.jpg", "../pulsioxímetro2.1.jpg", "../pulsioxímetro2.2.jpg", "../pulsioxímetro2.3.jpg"],
+      "descripcion": "El Biolight M70 permite mediciones rápidas y sencillas de la saturación de oxígeno (SpO2) y frecuencia del pulso en adultos. El pulsioxímetro de dedo tiene indicador de pletismogramo SpO2 y con su tamaño compacto y poco peso es ideal para su uso portátil y para situaciones de urgencias médicas.",
+        "caracteristicas": [
+          "Mediciones del pulso y SpO2 en adultos",
+          "Funciona con 2 pilas alcalinas AAA",
+          "Dirección de la pantalla regulable",
+          "Brillo de la pantalla ajustable",
+          "Incluye un práctico maletín de transporte"
+        ],   
       "precio": 1000.00,
       "categoria": "Instrumental",
-      "resumen": "Mediciones del pulso y SpO2 en adultos. Resumen del día mediciones del pulso y SpO2 en adultos funciona con 2 pilas alcalinas AAA através de la dirección de la pantalla regulable brillo de la pantalla ajustable incluye un práctico maletín de transporte",
-      "imagen": "s6.1.jpg"
+     "imagen": "s6.1.jpg",
+     "relacionados": [
+      10,
+      7,
+      1,
+      3
+    ],
+    "carrito": false,
+    "favorito": false,
+    "stock": 10,
+      "destacado": true
     },
     {
       "id": 3,
       "nombre": "Biolight M70C pulsioxímetro de dedo azul",
-      "descripcion": "Esta máscara para reanimación cardiopulmonar boca a boca permite una ventilación segura e higiénica. La mascarilla para rcp se suministra con un práctico estuche.",
+      "imagenes": ["../Mascarilla3.jpg", "../Mascarilla3.1.jpg", "../Mascarilla3.2.jpg"],
+        "descripcion": "Esta máscara para reanimación cardiopulmonar boca a boca permite una ventilación segura e higiénica. La mascarilla para rcp se suministra con un práctico estuche.",
+        "caracteristicas": [
+          "Mascarilla de respiración higiénica",
+          "Con cintas de fijación",
+          "Sin látex",
+          "1 unidad",
+          "Dimensiones: 26 x 16 x 8 cm"
+        ],
       "precio": 500.00,
       "categoria": "Instrumental",
       "resumen": "Mascarilla para reanimación boca a boca. Ajustable individualmente con cintas de fijación. Incluye un práctico estuche. Permite una reanimación higiénica y segura. Sin látex. 1 unidad",
-      "imagen": "21.jpg"
+      "imagen": "Mascarilla3.jpg",
+      "stock": 100,
+      "destacado": true,
+      "relacionados": [
+        1,
+        8,
+        2,
+        4
+      ],
+      "carrito": false,
+      "favorito": false
+
     },
     {
       "id": 4,
       "nombre": "Estetoscopio Rappaport negro",
-      "descripcion": "Este estetoscopio Rappaport está equipado con una pieza pectoral reversible, por lo que puede ser utilizado tanto para la auscultación en niños, como en adultos. El tubo de doble lumen garantiza una calidad de sonido óptima, mientras que los auriculares moldeables garantizan un alto nivel de comodidad para el usuario. El estetoscopio de doble cabezal viene con una amplia gama de accesorios como olivas, diafragmas y campanas. Estetoscopio Rappaport de doble cabezal Con pieza torácica reversible Para uso pediátrico y en adultos Apto también para uso veterinario Optimal auscultación gracias al diseño de doble tubo Diámetro de los diafragmas: 25 mm y 37 mm Auriculares moldeables Longitud: 74 cm Disponible en diferentes colores",
+      "imagenes": ["../Estetoscopio4.jpg", "../Estetoscopio4.1.jpg", "../Estetoscopio4.2.jpg"],
+      "descripcion": "El estetoscopio cardiology profesional 200 es un fonendoscopio de alta calidad para cardiólogos equipado con una pieza torácica de doble cabeza de acero inoxidable. Un sistema de doble tubo integrado asegura una perfecta transmisión del sonido, mientras que las suaves olivas garantizan un alto nivel de comodidad de uso. Gracias al diafragma con anillo de protección contra el frío, el examen con el estetoscopio Cardiology professional 200 es especialmente cómodo para el paciente.",
+      "caracteristicas": [
+        "Para la auscultación de los adultos",
+        "Con membrana y campana",
+        "Doble tubo para una perfecta transmisión del sonido",
+        "Anillo de protección contra el frío",
+        "Se suministra con varios accesorios"
+      ],
       "precio": 1100.00,
       "categoria": "Instrumental",
-      "resumen": "Pieza pectoral de doble cabezal intercambiable 2 diafragmas: (25 y 37 mm ∅) con doble tubo de doble lumen. auriculares moldeables con diseño de doble tubo. longitud total: 74 cm.",
-      "imagen": "Prueba1.jpg"
+      "imagen": "Estetoscopio4.jpg",
+      "stock": 100,
+      "destacado": true,
+      "relacionados": [
+        3,
+        9,
+        2,
+        5
+      ],
+      "carrito": false,
+      "favorito": false
+
+    },
+
+    {
+      "id": 5,
+      "nombre": "Omnitape, 10 m 2 cm",
+      "precio": 400.00,
+      "imagenes": ["../Omnitape5.jpg", "../Omnitape5.1.jpg", "../Omnitape5.2.jpg", "../Omnitape5.3.jpg"],
+      "descripcion": "Omnitape de Hartmann es una venda fuertemente adhesiva que se usa para vendajes funcionales. La tela de base de Omnitape está hecha de 100 % viscosa y tiene una alta resistencia a la tracción y sin elasticidad. Omnitape está recubierta con un adhesivo de caucho de óxido de zinc y gracias a su borde dentado, que puede ser fácilmente desgarrada a mano.",
+      "caracteristicas": [
+        "Vendaje inelástico deportivo",
+        "Fabricado con 100 % viscosa",
+        "Resistente a la tensión",
+        "Bordes en zig-zag, fácil de cortar con las manos",
+        "Rollo de 10 m"
+      ],
+      "categoria": "Vendajes",
+      "imagen": "Omnitape5.jpg",
+      "stock": 100,
+      "destacado": true,
+      "relacionados": [
+        3,
+        7,
+        2,
+        4
+      ],
+      "carrito": false,
+      "favorito": false
+    },
+
+    {
+      "id": 6,
+      "nombre": "Octenilin Solución riego heridas 350 ml",
+      "precio": 650.00,
+      "imagenes": ["../Octenilin6.3.jpg", "../Octenilin6.jpg", "../Octenilin6.1.jpg", "../Octenilin6.2.jpg"],
+      "descripcion": "Gracias a la etilhexilglicerina ingrediente activo, la tensión superficial de esta solución de irrigación de la herida se reduce tanto que la herida se humedece de manera óptima e incluso partes de la herida de difícil alcance, se limpian a fondo. El octenidina ingrediente activo se caracteriza por su excelente rendimiento de limpieza, y no se acumula la resistencia que forma incluso cuando se utiliza con frecuencia o regularidad. Gracias a la octenidina, la solución de irrigación octenilin herida, limpia no sólo suave y completamente, sino que también elimina efectivamente las biopelículas, tales como los formados por Staphylococcus aureus. La eliminación de biopelículas con octenilin solución de irrigación se muestra para reducir el número de microorganismos contenidos en la herida y por lo tanto mejorar la cicatrización de heridas significativamente.",
+      "caracteristicas": [
+        "Solución limpiadora a base de octenidina",
+        "Aplicación indolora",
+        "Disuelve incluso el biofilm más resistente",
+        "Para todas las fases de cicatrización de heridas",
+        "Cantidad: 350 ml"
+      ],
+      "categoria": "Vendajes",
+      "imagen": "Octenilin6.3.jpg",
+      "stock": 100,
+      "destacado": true,
+      "relacionados": [
+        3,
+        1,
+        2,
+        10
+      ],
+      "carrito": false,
+      "favorito": false
+    },
+
+    {
+      "id": 7,
+      "nombre": "Bolso de emergencia «Lüttich» pequeño | nylon",
+      "precio": 607.00,
+      "imagenes": ["../Bolso7.jpg", "../Bolso7.1.jpg", "../Bolso7.2.jpg"],
+      "descripcion": "Esta robusta bolsa de emergencia está disponible en nylon repelente al agua o en material de lona impermeable. Esto hace que la bolsa de emergencia sea ideal para su uso en exteriores y en condiciones meteorológicas adversas. El equipo de emergencia puede guardarse fácilmente en los distintos compartimentos y también puede clasificarse por temas. Las asas de transporte de la bolsa de emergencia están acolchadas para que el transporte siga siendo cómodo incluso cuando está completamente cargada.",
+      "caracteristicas": [
+        "Bolsa de emergencia con tiras reflectantes",
+        "Compartimiento principal con división variable",
+        "2 bolsillos laterales",
+        "Fondo de la bolsa de material de lona impermeable",
+        "Asas y correas de hombro desmontables"
+      ],
+      "categoria": "Botiquines",
+      "imagen": "Bolso7.jpg",
+      "stock": 100,
+      "destacado": true,
+      "relacionados": [
+        8,
+        9,
+        1,
+        2
+      ],
+      "carrito": false,
+      "favorito": false
+    },
+
+    {
+      "id": 8,
+      "nombre": "tg Vendaje Tubular 5m | 1",
+      "precio": 230.00,
+      "imagenes": ["../Vendaje8.jpg", "../Vendaje8.1.jpg", "../Vendaje8.2.jpg"],
+      "descripcion": "La venda tubular tg de Lohmann-Rauscher es una venda agradable para la piel que no se arruga cuando se aplica y por lo tanto es una base excelente para drenaje y bajo escayola. Gracias a su alto nivel de estiramiento, este vendaje tubular es también muy fácil de aplicar a partes del cuerpo que son difíciles de vendar. La venda tubular tg está disponible en diferentes longitudes y en ocho tamaños para satisfacer sus necesidades.",
+      "caracteristicas": [
+        "Tejido sin costuras de hilos finos",
+        "Agradable para la piel",
+        "Extensible a lo ancho"
+      ],
+      "categoria": "Vendajes",
+      "imagen": "Vendaje8.jpg",
+      "stock": 100,
+      "destacado": true,
+      "relacionados": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "carrito": false,
+      "favorito": false
+    },
+
+    
+    {
+      "id": 9,
+      "nombre": "Vendaje de gasa Peha, 4 m 4cm",
+      "precio": 150.00,
+      "imagenes": ["../Vendaje9.jpg", "../Vendaje9.1.jpg"],
+      "descripcion": "Las vendas de gasa Peha de Hartmann son de 20 hilos y tienen bordes tejidos. Las vendas de gasa son vendas de fijación de uso universal hechas de una tela de mezcla de algodón no elástica. Las vendas de gasa Hartmann pueden ser usadas para fijar los apósitos de las heridas y el material de relleno. También son adecuados para vendajes de emergencia y pueden utilizarse como material de soporte para los vendajes de pasta de zinc. Las vendas de gasa se ​​pueden utilizar para la fijación de apósitos para heridas o como material de relleno. También son adecuados para uso como vendajes de emergencia y como material portador para las botas de Unna.",
+      "caracteristicas": [
+        "Vendas de gasa con bordes tejidos",
+        "No estéril",
+        "Longitud: 4 metros",
+        "Longitud: 4 metros",
+        "1 caja plegable de 20 unidades"
+      ],
+      "categoria": "Vendajes",
+      "imagen": "Vendaje9.jpg",
+      "stock": 100,
+      "destacado": true,
+      "relacionados": [
+        4,
+        5,
+        10,
+        1
+
+      ],
+      "carrito": false,
+      "favorito": false
+    },
+
+    
+    {
+      "id": 10,
+      "nombre": "Jeringa desechable Omnifix Solo 5ml",
+      "precio": 110.00,
+      "imagenes": ["../Jeringa10.jpg", "../Jeringa10.1.jpg"],
+      "descripcion": "Las jeringas Omnifix Solo con pieza Luer Lock, garantizan la segura utilización de la jeringa sin riesgo a la pérdida de la aguja. Su cilindro transparente de alta calidad y su imborrable escala permiten realizar la infusión de liquido de una manera cómoda y con fácil lectura. Las jeringas desechables de Omnifix Solo no contienen látex ni PVC y tienen un bajo volumen residual.",
+      "caracteristicas": [
+        "Jeringas desechables Luer lock de 3 piezas",
+        "Cilindro transparente",
+        "Escala resistente a manchas",
+        "Sin PVC ni látex, volumen residual mínimo",
+        "Disponible en diferentes tamaños"
+      ],
+      "categoria": "Instrumental",
+      "imagen": "Jeringa10.jpg",
+      "stock": 100,
+      "destacado": true,
+      "relacionados": [
+        3,
+        2,
+        9,
+        6
+      ],
+      "carrito": false,
+      "favorito": false
     }
+
+
   ]

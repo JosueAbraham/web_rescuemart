@@ -57,7 +57,7 @@ const PaypalButton = (props) => {
   } = usePaypal();
 
   return (
-    <PayPalScriptProvider options={{ 'client-id': 'TU_CLIENT_ID_DE_PAYPAL' }}>
+    <PayPalScriptProvider options={{ 'client-id': 'ATX6u_QjOUUmWdB4km6wTxwEGvMlCZXU-i1GwgwChfCxPOQAP2l2Lp406Lx44hvpfooXP2fkTbMPWfc9' }}>
       <div>
         <PayPalButtons
           createOrder={(data, actions) => {

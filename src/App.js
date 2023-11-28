@@ -94,10 +94,7 @@ Al aceptar estos términos, reconoces y aceptas las prácticas descritas en nues
               <button onClick={handleAccept}>Aceptar cookies</button>
             </StyledCookieConsent>
             <div>
-              <PaypalButton />
      
-
-      {deberiaMostrarComponente && <ComponenteVisible />}
     </div>
           </Overlay>
           <Routes>
@@ -111,9 +108,7 @@ Al aceptar estos términos, reconoces y aceptas las prácticas descritas en nues
   );
 };
 
-const ComponenteVisible = () => {
-  return <div><PaypalButton /></div>;
-};
+
 
 const TiendaRoutes = () => (
   <>
