@@ -335,7 +335,7 @@ const DetalleProducto = () => {
               alt={selectedProduct?.nombre}
               style={{ maxWidth: '100%', maxHeight: '200px' }} 
             />
-            {PaypalButton ? (<PaypalButton precio={selectedProduct?.precio.toString()} />): (
+            {<PaypalButton precio={selectedProduct?.precio.toString()} /> ? (<PaypalButton precio={selectedProduct?.precio.toString()} />): (
         <p>Loading...</p>
       )}
             <button onClick={() => setShowPaypalOverlay(false)}>Cerrar</button>
