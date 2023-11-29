@@ -13,7 +13,8 @@ import LoginForm from './admin/LoginForm';
 import Menu from './admin/Menu';
 import UserManagement from './admin/UserManagement';
 import CategoryManagement from './admin/CategoryManagement';
-import PaypalButton from './Paypal_Button';
+
+import CarritoComponent from './CarritoComponent';
 const AppContainer = styled.div`
   font-family: Arial, sans-serif;
   display: flex;
@@ -67,11 +68,7 @@ const StyledCookieConsent = styled.div`
 
 const App = () => {
   const [showOverlay, setShowOverlay] = useState(true);
-  const [deberiaMostrarComponente, setDeberiaMostrarComponente] = useState(false);
-
-  const ocultarComponente = () => {
-    setDeberiaMostrarComponente(false);
-  };
+ 
   const handleAccept = () => {
     setShowOverlay(false);
   };
@@ -117,7 +114,7 @@ const TiendaRoutes = () => (
       <Route path="/" element={<Home />} />
       <Route path="/Catalogo" element={<Catalogo />} />
       <Route path="/productos/:id" element={<DetalleProducto />} />
-      <Route path="/paypal" element={<PaypalButton />} />
+      <Route path="/cart" element={<CarritoComponent />} />
     </Routes>
     <Footer />
   </>

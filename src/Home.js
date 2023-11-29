@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styled from 'styled-components';
@@ -53,6 +53,7 @@ Excelencia, innovación, compromiso con la seguridad" />
           <Producto key={producto.id}>
           <StyledLink to={`/productos/${producto.id}`}>
             <ImagenProducto src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.nombre} />
+            <Precio>{producto.categoria}</Precio>
             <Titulo>{producto.nombre}</Titulo>
             <Precio>Precio: ${producto.precio}</Precio>
           </StyledLink>
@@ -82,9 +83,6 @@ Excelencia, innovación, compromiso con la seguridad" />
   );
 }
 
-const productos = [
-  { id: 1, titulo: 'Botiquín de primeros auxilios según DIN 13169', precio: 700.00, imagen: '8.jpg' },
-];
 
 const CustomCarousel = styled(Carousel)`
   width: 100%;
@@ -94,12 +92,6 @@ const CustomCarousel = styled(Carousel)`
 
 const InformationContainer = styled.div`
     margin-top: 20px;
-    text-align: center;
-`;
-
-const InformationTitle = styled.h2`
-    font-size: 24px;
-    font-weight: bold;
     text-align: center;
 `;
 

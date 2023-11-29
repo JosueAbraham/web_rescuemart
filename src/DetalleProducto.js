@@ -92,12 +92,27 @@ const Price = styled.div`
 const Quantity = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 10px;
+`;
+
+const QuantityLabel = styled.p`
+  font-size: 16px;
+  margin-right: 10px;
 `;
 
 const QuantityInput = styled.input`
-  width: 40px;
+  width: 60px;
+  padding: 8px;
   text-align: center;
+  font-size: 16px;
   border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+
+  &:focus {
+    border-color: #e44d26;
+    box-shadow: 0 0 5px rgba(228, 77, 38, 0.7);
+  }
 `;
 
 const Buttons = styled.div`
@@ -202,6 +217,8 @@ const CarouselContainer = styled.div`
   height: 100%;
 `;
 
+
+
 const DetalleProducto = () => {
   const { id } = useParams();
   const [opinion, setOpinion] = useState('');
@@ -209,6 +226,19 @@ const DetalleProducto = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showPaypalOverlay, setShowPaypalOverlay] = useState(false);
   const [data, setData] = useState([]); // Cambio aquí: usamos un estado para almacenar los datos de productos
+  const [carrito, setCarrito] = useState([]);
+  const [mensajeAgregado, setMensajeAgregado] = useState(false);
+
+  // Efecto de inicialización para obtener el carrito desde localStorage
+  useEffect(() => {
+    // Intentar obtener el carrito desde localStorage
+    const storedCart = localStorage.getItem('carrito');
+
+    // Si hay un carrito almacenado, actualizar el estado
+    if (storedCart) {
+      setCarrito(JSON.parse(storedCart));
+    }
+  }, []);
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -236,6 +266,11 @@ const DetalleProducto = () => {
     setShowPaypalOverlay(true);
   };
 
+  const handleCantidadChange = (event) => {
+    const newCantidad = parseInt(event.target.value);
+    setCantidad(newCantidad >= 1 ? newCantidad : 1);
+  };
+
   const handleOpinionChange = (event) => {
     setOpinion(event.target.value);
   };
@@ -245,6 +280,29 @@ const DetalleProducto = () => {
     console.log('Opinión enviada:', opinion);
     setOpinion('');
   };
+
+  const handleAgregarAlCarrito = () => {
+    // Lógica para agregar al carrito
+  
+    // Actualizar el estado del carrito
+    const nuevoCarrito = [...carrito, { ...selectedProduct, cantidad }];
+    setCarrito(nuevoCarrito);
+  
+    // Actualizar localStorage con el carrito actualizado
+    localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
+  
+    // Mostrar el mensaje de éxito
+    setMensajeAgregado(true);
+  
+    // Puedes reiniciar la cantidad a 1 después de agregar al carrito si lo deseas
+    setCantidad(1);
+  
+    // Ocultar el mensaje después de unos segundos
+    setTimeout(() => {
+      setMensajeAgregado(false);
+    }, 3000); // 3000 milisegundos (3 segundos)
+  };
+  
 
   return (
     <div>
@@ -278,13 +336,19 @@ const DetalleProducto = () => {
                   <p>Categoría: {selectedProduct.categoria}</p>
                   <Price><strong>Precio habitual:</strong> ${selectedProduct.precio.toFixed(2)} USD</Price>
                   <Quantity>
-                    <p>Cantidad: </p>
-                    <QuantityInput type="number" value={cantidad} min="1" />
-                  </Quantity>
+  <QuantityLabel>Cantidad: </QuantityLabel>
+  <QuantityInput
+    type="number"
+    value={cantidad}
+    min="1"
+    onChange={handleCantidadChange}
+  />
+</Quantity>
                   <Buttons>
-                    <Button>Agregar al carrito</Button>ㅤㅤ
+                  <Button onClick={handleAgregarAlCarrito}>Agregar al carrito</Button>ㅤㅤ
                     <Button onClick={() => handleComprarAhora(selectedProduct)}>Comprar ahora</Button>
                   </Buttons>
+                  {mensajeAgregado && <p>Agregado al carrito exitosamente</p>}
                   <h2>Descripción</h2>
                   <ProductDescription>
                     <p>{selectedProduct.descripcion}</p>
@@ -320,24 +384,29 @@ const DetalleProducto = () => {
     
       {showPaypalOverlay && selectedProduct.relacionados && (
         <Overlay showOverlay={showPaypalOverlay}>
-          <StyledCookieConsent>
-            <h2>Comprar ahora</h2>
-            <p>
-              Nombre: {selectedProduct.nombre}
-              <br />
-              Precio: ${selectedProduct.precio}
-              <br />
-              Cantidad: 1
-            </p>
-            <img
-              src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
-              alt={selectedProduct.nombre}
-              style={{ maxWidth: '100%', maxHeight: '200px' }}
-            />
-            <PaypalButton precio={selectedProduct.precio.toString()} />
-            <button onClick={() => setShowPaypalOverlay(false)}>Cerrar</button>
-          </StyledCookieConsent>
-        </Overlay>
+        <StyledCookieConsent>
+          <h2>Comprar ahora</h2>
+          <p>
+            Nombre: {selectedProduct.nombre}
+            <br />
+            Precio unitario: ${selectedProduct.precio.toFixed(2)} USD
+            <br />
+            Cantidad: {cantidad}
+            <br />
+            Total: ${(selectedProduct.precio * cantidad).toFixed(2)} USD
+          </p>
+          <img
+            src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
+            alt={selectedProduct.nombre}
+            style={{ maxWidth: '100%', maxHeight: '200px' }}
+          />
+          <PaypalButton
+            precio={(selectedProduct.precio * cantidad).toFixed(2)}
+            // Agrega otras propiedades necesarias para el componente PaypalButton
+          />
+          <button onClick={() => setShowPaypalOverlay(false)}>Cerrar</button>
+        </StyledCookieConsent>
+      </Overlay>
       )}
 
 {selectedProduct && (
