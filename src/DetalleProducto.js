@@ -371,7 +371,7 @@ const DetalleProducto = () => {
                   </Buttons>
                   {mensajeAgregado && (
               <AgregadoExitosamente show={mensajeAgregado}>
-                Producto agregado al carrito exitosamente
+                <FontAwesomeIcon icon={faShoppingCart} /> Producto agregado al carrito exitosamente
               </AgregadoExitosamente>
             )}
                   <h2>Descripción</h2>
@@ -410,7 +410,7 @@ const DetalleProducto = () => {
       {showPaypalOverlay && selectedProduct.relacionados && (
         <Overlay showOverlay={showPaypalOverlay}>
         <StyledCookieConsent>
-          <h2>Comprar ahora</h2>
+          <h2><FontAwesomeIcon icon={faDollarSign} /> Comprar ahora</h2>
           <p>
             Nombre: {selectedProduct.nombre}
             <br />
