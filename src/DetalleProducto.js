@@ -8,7 +8,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faDollarSign } from '@fortawesome/free-solid-svg-icons';
-
+import AgregarCarrito from './AgregarCarrito';
 const AgregadoExitosamente = styled.div`
   position: fixed;
   top: 0;
@@ -298,28 +298,6 @@ const DetalleProducto = () => {
     setOpinion('');
   };
 
-  const handleAgregarAlCarrito = () => {
-    // Lógica para agregar al carrito
-  
-    // Actualizar el estado del carrito
-    const nuevoCarrito = [...carrito, { ...selectedProduct, cantidad }];
-    setCarrito(nuevoCarrito);
-  
-    // Actualizar localStorage con el carrito actualizado
-    localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
-  
-    // Mostrar el mensaje de éxito
-    setMensajeAgregado(true);
-  
-    // Puedes reiniciar la cantidad a 1 después de agregar al carrito si lo deseas
-    setCantidad(1);
-  
-    // Ocultar el mensaje después de unos segundos
-    setTimeout(() => {
-      setMensajeAgregado(false);
-    }, 3000); // 3000 milisegundos (3 segundos)
-  };
-  
 
   return (
     <div>
@@ -362,9 +340,7 @@ const DetalleProducto = () => {
   />
 </Quantity>
                   <Buttons>
-                  <Button onClick={handleAgregarAlCarrito}>
-          <FontAwesomeIcon icon={faShoppingCart} /> Agregar al carrito
-        </Button>
+                  <AgregarCarrito selectedProduct={selectedProduct} cantidad={cantidad} />
         <Button onClick={() => handleComprarAhora(selectedProduct)}>
           <FontAwesomeIcon icon={faDollarSign} /> Comprar ahora
         </Button>
