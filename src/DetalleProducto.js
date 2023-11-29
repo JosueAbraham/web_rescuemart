@@ -7,6 +7,21 @@ import PaypalButton from './Paypal_Button';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
+const AgregadoExitosamente = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #4caf50;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  z-index: 1000;
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  transform: translateY(${({ show }) => (show ? '0' : '-100%')});
+  transition: opacity 0.3s ease, transform 0.3s ease;
+`;
 const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -348,7 +363,11 @@ const DetalleProducto = () => {
                   <Button onClick={handleAgregarAlCarrito}>Agregar al carrito</Button>ㅤㅤ
                     <Button onClick={() => handleComprarAhora(selectedProduct)}>Comprar ahora</Button>
                   </Buttons>
-                  {mensajeAgregado && <p>Agregado al carrito exitosamente</p>}
+                  {mensajeAgregado && (
+              <AgregadoExitosamente show={mensajeAgregado}>
+                Producto agregado al carrito exitosamente
+              </AgregadoExitosamente>
+            )}
                   <h2>Descripción</h2>
                   <ProductDescription>
                     <p>{selectedProduct.descripcion}</p>

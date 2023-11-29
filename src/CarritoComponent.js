@@ -5,9 +5,10 @@ import PaypalButton from './Paypal_Button';
 import styled from 'styled-components';
 
 const CarritoContainer = styled.div`
-  max-width: 600px;
-  margin: auto;
+  max-width: 1000px;
+  margin: 20px 20% 20px 20%; // Cambiado a 'auto' en ambos ejes
   padding: 20px;
+  align-items: center;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,15 +28,13 @@ const CarritoItem = styled.li`
 const ItemInfo = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between; // Alinea los elementos al final (derecha) del contenedor
 `;
+
 
 const ItemImage = styled.img`
-  max-width: 50px;
+  max-width: 150px;
   margin-right: 10px;
-`;
-
-const ItemDetails = styled.div`
-  flex: 1;
 `;
 
 const CarritoTotal = styled.div`
@@ -43,19 +42,40 @@ const CarritoTotal = styled.div`
   text-align: right;
 `;
 
-const StyledButton = styled.button`
+const ItemDetails = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column; // Alinea los elementos en columna
+  font-size: 16px;
+`;
+const StyledButtonDeleteAll = styled.button`
+margin: 10px auto; // Margen superior e inferior de 10px, y margen automático en los lados para centrar
+background-color: #dd2a62;
+color: white;
+padding: 12px 20px; // Aumenta el tamaño del botón
+border: none;
+border-radius: 6px;
+font-size: 18px; // Aumenta el tamaño del texto
+cursor: pointer;
+
+&:hover {
+  background-color: #ff6630;
+}
+`;
+const StyledButtonDelete = styled.button`
+  margin: 10px auto; // Margen superior e inferior de 10px, y margen automático en los lados para centrar
   background-color: #dd2a62;
   color: white;
-  padding: 8px 12px;
+  padding: 12px 20px; // Aumenta el tamaño del botón
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 18px; // Aumenta el tamaño del texto
   cursor: pointer;
 
   &:hover {
     background-color: #ff6630;
   }
 `;
-
 
 const Quantity = styled.div`
   display: flex;
@@ -81,6 +101,22 @@ const QuantityInput = styled.input`
     border-color: #e44d26;
     box-shadow: 0 0 5px rgba(228, 77, 38, 0.7);
   }
+`;
+const Header = styled.header`
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+`;
+const Price = styled.div`
+  font-size: 20px;
+  color: #e44d26;
+`;
+
+const EmptyCartMessage = styled.p`
+  font-size: 18px;
+  text-align: center;
+  color: #555;
 `;
 const CarritoComponent = () => {
 
@@ -120,7 +156,9 @@ const CarritoComponent = () => {
 
   return (
     <CarritoContainer>
-      <h2>Carrito de Compras</h2>
+      <Header>
+              <h1>Carrito de compras</h1>
+            </Header>
       {carrito.length > 0 ? (
         <CarritoList>
           {carrito.map((item, index) => (
@@ -134,7 +172,7 @@ const CarritoComponent = () => {
                   <strong>{item.nombre}</strong>
                   <p>
                   <Quantity>
-  <QuantityLabel>Cantidad: </QuantityLabel>
+  <QuantityLabel><strong>Cantidad: </strong></QuantityLabel>
                     <QuantityInput
                       type="number"
                       value={item.cantidad}
@@ -147,23 +185,24 @@ const CarritoComponent = () => {
                     />
   </Quantity>
                   </p>
-                  <p>Precio: ${item.precio.toFixed(2)}</p>
-                  <StyledButton onClick={() => handleEliminarProducto(index)}>
+                  <p><strong>Precio: </strong>${item.precio.toFixed(2)}</p></ItemDetails>
+                  <StyledButtonDelete onClick={() => handleEliminarProducto(index)}>
                     Eliminar
-                  </StyledButton>
-                </ItemDetails>
+                  </StyledButtonDelete>
+                
               </ItemInfo>
             </CarritoItem>
           ))}
         </CarritoList>
       ) : (
-        <p>El carrito está vacío</p>
+        <EmptyCartMessage>¡Ups! Parece que tu carrito está vacío. ¿Por qué no agregas algunos productos?</EmptyCartMessage>
+     
       )}
       {carrito.length > 0 && (
         <CarritoTotal>
-          <p>Total: ${calcularPrecioTotal(carrito).toFixed(2)}</p>
+          <Price><strong>Total: </strong>${calcularPrecioTotal(carrito).toFixed(2)}</Price><br></br>
           <PaypalButton key={calcularPrecioTotal(carrito)} precio={calcularPrecioTotal(carrito).toFixed(2)} />
-          <StyledButton onClick={handleVaciarCarrito}>Vaciar Carrito</StyledButton>
+          <StyledButtonDeleteAll onClick={handleVaciarCarrito}>Vaciar Carrito</StyledButtonDeleteAll>
         </CarritoTotal>
       )}
     </CarritoContainer>
