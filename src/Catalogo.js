@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import AgregarCarrito from './AgregarCarrito';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBox } from '@fortawesome/free-solid-svg-icons';
 const Catalogo = () => {
     const [productos, setProductos] = useState([]);
 
@@ -26,7 +29,7 @@ const Catalogo = () => {
                 <meta name="description" content="Explora nuestra amplia selección de productos de primeros auxilios en el catálogo de RescueMart. Encuentra productos de alta calidad a los mejores precios." />
                 <meta name="keywords" content="Botiquín de primeros auxilios,Productos de seguridad,Equipos de emergencia,Preparación para situaciones críticas,Refacciones para automóviles,Refacciones para motocicletas,Refacciones para camionetas,Herramientas de primeros auxilios,Soluciones confiables" />
             </Helmet>
-            <h1>Productos</h1>
+            <h1><FontAwesomeIcon icon={faBox} /> Productos</h1>
             <ProductosList>
                 {productos.map((producto) => (
                     <Producto key={producto.id}>
