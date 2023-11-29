@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import PaypalButton from './Paypal_Button';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 
 const CarritoContainer = styled.div`
   max-width: 1000px;
@@ -155,6 +156,19 @@ const CarritoComponent = () => {
   };
 
   return (
+    <>
+    <Helmet>
+        <title>Carrito de compras - RescueMart</title>
+        <meta name="description" content="Bienvenido al carrito de compras de RescueMart, tu fuente confiable para productos de primeros auxilios de alta calidad. Estamos comprometidos en proporcionar los mejores productos y servicios para tu seguridad y bienestar." />
+        <meta name="keywords" content="Rescuemart,
+Productos de primeros auxilios,
+Seguridad y bienestar,
+Misión y visión,
+Preparación en situaciones de emergencia,
+Excelencia, innovación, compromiso con la seguridad,
+Carrito de compras" />
+
+      </Helmet>
     <CarritoContainer>
       <Header>
               <h1>Carrito de compras</h1>
@@ -205,7 +219,7 @@ const CarritoComponent = () => {
           <StyledButtonDeleteAll onClick={handleVaciarCarrito}>Vaciar Carrito</StyledButtonDeleteAll>
         </CarritoTotal>
       )}
-    </CarritoContainer>
+    </CarritoContainer></>
   );
 };
 
