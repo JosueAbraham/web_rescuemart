@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStore, faBox, faUsers, faListAlt } from '@fortawesome/free-solid-svg-icons';
 
 const MenuContainer = styled.nav`
   background-color: #333;
@@ -24,6 +26,8 @@ const MenuLink = styled(Link)`
   color: #fff;
   font-weight: bold;
   font-size: 16px;
+  display: flex;
+  align-items: center;
   transition: color 0.3s ease;
 
   &:hover {
@@ -31,18 +35,34 @@ const MenuLink = styled(Link)`
   }
 `;
 
+const Icon = styled(FontAwesomeIcon)`
+  margin-right: 5px;
+`;
+
 const Menu = () => {
   return (
     <MenuContainer>
-        <img src="/logo.png.png" alt="8" style={{ width: '100px', height: 'auto' }} />
+      <img src="/logo.png.png" alt="8" style={{ width: '100px', height: 'auto' }} />
       <MenuList>
-    
         <MenuItem>
-        <MenuLink to="/">Ir a la tienda</MenuLink>ㅤㅤ
-          <MenuLink to="/admin/products">Productos</MenuLink>ㅤㅤ
-          <MenuLink to="/admin/users">Usuarios</MenuLink>ㅤㅤ
-          <MenuLink to="/admin/categories">Categorías</MenuLink>
-
+          <MenuLink to="/">
+            <Icon icon={faStore} /> Ir a la tienda
+          </MenuLink>
+        </MenuItem>
+        <MenuItem>
+          <MenuLink to="/admin/products">
+            <Icon icon={faBox} /> Productos
+          </MenuLink>
+        </MenuItem>
+        <MenuItem>
+          <MenuLink to="/admin/users">
+            <Icon icon={faUsers} /> Usuarios
+          </MenuLink>
+        </MenuItem>
+        <MenuItem>
+          <MenuLink to="/admin/categories">
+            <Icon icon={faListAlt} /> Categorías
+          </MenuLink>
         </MenuItem>
         {/* Agrega más enlaces según sea necesario */}
       </MenuList>

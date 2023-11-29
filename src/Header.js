@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faList, faShoppingCart, faSignInAlt, faUserPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
@@ -10,13 +12,21 @@ const Header = () => {
 
       <Nav>
         <StyledNavLink to="/" exact>
-          Inicio
+          <FontAwesomeIcon icon={faHome} /> Inicio
         </StyledNavLink>
-        <StyledNavLink to="/catalogo">Catálogo</StyledNavLink>
+        <StyledNavLink to="/catalogo">
+          <FontAwesomeIcon icon={faList} /> Catálogo
+        </StyledNavLink>
         <SearchInput type="text" placeholder="Buscar" />
-        <StyledNavLink to="/cart">Carrito</StyledNavLink>
-        <StyledNavLink to="/login">Iniciar Sesión</StyledNavLink>
-        <StyledNavLink to="/register">Registrarse</StyledNavLink>
+        <StyledNavLink to="/cart">
+          <FontAwesomeIcon icon={faShoppingCart} /> Carrito
+        </StyledNavLink>
+        <StyledNavLink to="/login">
+          <FontAwesomeIcon icon={faSignInAlt} /> Iniciar Sesión
+        </StyledNavLink>
+        <StyledNavLink to="/register">
+          <FontAwesomeIcon icon={faUserPlus} /> Registrarse
+        </StyledNavLink>
       </Nav>
     </HeaderContainer>
   );

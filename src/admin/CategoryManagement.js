@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const TwoColumnContainer = styled.div`
   display: grid;
@@ -175,8 +178,8 @@ const CategoryItem = ({ category, onDelete, onEdit }) => {
       <TableCell>{category.nombre}</TableCell>
       <TableCell>{category.descripcion}</TableCell>
       <TableCell>
-        <ButtonDelete onClick={() => onDelete(category.id)}>Eliminar</ButtonDelete><br/><br/>
-        <ButtonEdit onClick={() => onEdit(category)}>Editar</ButtonEdit>
+        <ButtonDelete onClick={() => onDelete(category.id)}><FontAwesomeIcon icon={faTrash} /></ButtonDelete><br/><br/>
+        <ButtonEdit onClick={() => onEdit(category)}><FontAwesomeIcon icon={faEdit} /></ButtonEdit>
       </TableCell>
     </TableRow>
   );

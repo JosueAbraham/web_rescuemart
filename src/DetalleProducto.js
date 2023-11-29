@@ -6,6 +6,8 @@ import StarRanking from './StarRanking';
 import PaypalButton from './Paypal_Button';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 const AgregadoExitosamente = styled.div`
   position: fixed;
@@ -360,8 +362,12 @@ const DetalleProducto = () => {
   />
 </Quantity>
                   <Buttons>
-                  <Button onClick={handleAgregarAlCarrito}>Agregar al carrito</Button>ㅤㅤ
-                    <Button onClick={() => handleComprarAhora(selectedProduct)}>Comprar ahora</Button>
+                  <Button onClick={handleAgregarAlCarrito}>
+          <FontAwesomeIcon icon={faShoppingCart} /> Agregar al carrito
+        </Button>
+        <Button onClick={() => handleComprarAhora(selectedProduct)}>
+          <FontAwesomeIcon icon={faDollarSign} /> Comprar ahora
+        </Button>
                   </Buttons>
                   {mensajeAgregado && (
               <AgregadoExitosamente show={mensajeAgregado}>

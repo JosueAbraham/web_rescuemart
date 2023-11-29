@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
+
 const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,6 +35,10 @@ const InputField = styled.input`
   width: 90%;
   padding: 8px;
   margin-top: 5px;
+`;
+
+const Icon = styled.span`
+  margin-right: 8px;
 `;
 
 const SubmitButton = styled.button`
@@ -68,14 +75,24 @@ const Login = ({ users, onLogin }) => {
   return (
     <LoginContainer>
       <LoginForm>
-      <img src="/logo.png.png" alt="8" style={{ width: '200px', height: 'auto' }} />
-      <LoginHeader>Iniciar Sesión - Administrador</LoginHeader>
-      <InputLabel>Email:</InputLabel>
-      <InputField type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <InputLabel>Contraseña:</InputLabel>
-      <InputField type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <SubmitButton onClick={handleLogin}>Iniciar Sesión</SubmitButton>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+        <img src="/logo.png.png" alt="8" style={{ width: '200px', height: 'auto' }} />
+        <LoginHeader>Iniciar Sesión - Administrador</LoginHeader>
+        <InputLabel>
+          <Icon>
+            <FontAwesomeIcon icon={faEnvelope} />
+          </Icon>
+          Email:
+        </InputLabel>
+        <InputField type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <InputLabel>
+          <Icon>
+            <FontAwesomeIcon icon={faKey} />
+          </Icon>
+          Contraseña:
+        </InputLabel>
+        <InputField type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <SubmitButton onClick={handleLogin}>Iniciar Sesión</SubmitButton>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
       </LoginForm>
     </LoginContainer>
   );

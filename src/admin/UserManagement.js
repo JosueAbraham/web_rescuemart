@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const UserManagementContainer = styled.div`
   background-color: #f2f2f2; /* Adjust the background color as needed */
@@ -118,8 +121,8 @@ const UserItem = ({ user, onDelete, onEdit }) => {
       <TableCell>{user.telefono}</TableCell>
       <TableCell>{user.pass}</TableCell>
       <TableCell>
-        <ButtonDelete onClick={() => onDelete(user.id)}>Eliminar</ButtonDelete><br/><br/>
-        <ButtonEdit onClick={() => onEdit(user)}>Editar</ButtonEdit>
+        <ButtonDelete onClick={() => onDelete(user.id)}><FontAwesomeIcon icon={faTrash} /></ButtonDelete><br/><br/>
+        <ButtonEdit onClick={() => onEdit(user)}><FontAwesomeIcon icon={faEdit} /></ButtonEdit>
       </TableCell>
     </TableRow>
   );

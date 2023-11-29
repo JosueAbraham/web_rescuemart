@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import PaypalButton from './Paypal_Button';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart,faTrash} from '@fortawesome/free-solid-svg-icons';
 
 const CarritoContainer = styled.div`
   max-width: 1000px;
@@ -171,7 +173,7 @@ Carrito de compras" />
       </Helmet>
     <CarritoContainer>
       <Header>
-              <h1>Carrito de compras</h1>
+              <h1><FontAwesomeIcon icon={faShoppingCart} /> Carrito de compras</h1>
             </Header>
       {carrito.length > 0 ? (
         <CarritoList>
@@ -201,7 +203,7 @@ Carrito de compras" />
                   </p>
                   <p><strong>Precio: </strong>${item.precio.toFixed(2)}</p></ItemDetails>
                   <StyledButtonDelete onClick={() => handleEliminarProducto(index)}>
-                    Eliminar
+                  <FontAwesomeIcon icon={faTrash} /> 
                   </StyledButtonDelete>
                 
               </ItemInfo>
@@ -216,7 +218,7 @@ Carrito de compras" />
         <CarritoTotal>
           <Price><strong>Total: </strong>${calcularPrecioTotal(carrito).toFixed(2)}</Price><br></br>
           <PaypalButton key={calcularPrecioTotal(carrito)} precio={calcularPrecioTotal(carrito).toFixed(2)} />
-          <StyledButtonDeleteAll onClick={handleVaciarCarrito}>Vaciar Carrito</StyledButtonDeleteAll>
+          <StyledButtonDeleteAll onClick={handleVaciarCarrito}><FontAwesomeIcon icon={faTrash} /> Vaciar Carrito</StyledButtonDeleteAll>
         </CarritoTotal>
       )}
     </CarritoContainer></>

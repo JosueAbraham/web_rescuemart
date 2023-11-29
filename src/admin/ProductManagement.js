@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const FormContainer = styled.form`
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 10px auto;
   padding: 20px;
   background-color: #ffffff;
   border: 1px solid #ddd;
@@ -13,10 +15,6 @@ const FormContainer = styled.form`
   box-sizing: border-box;
 `;
 
-const Label = styled.label`
-  display: block;
-  margin-bottom: 8px;
-`;
 
 const Input = styled.input`
   width: 100%;
@@ -63,21 +61,47 @@ const ButtonDelete = styled.button`
 `;
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 20% 70%; /* Adjust the column widths as needed */
+  grid-template-columns: 30% 60%; /* Adjust the column widths as needed */
   column-gap: 5%; /* Adjust the gap between columns as needed */
   background-color: #f2f2f2; /* Adjust the background color as needed */
   padding: 20px;
 `;
 
 const FormColumn = styled.div`
-  margin-bottom: 20px; /* Add margin for separation */
-  height: 50%; /* Ensure the ImageColumn takes full height */
+display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const ListColumn = styled.div`
-  margin-bottom: 20px; /* Add margin for separation */
-  max-height: 500px; /* Set a maximum height for the table container */
+  margin-bottom: 10px; /* Add margin for separation */
+  max-height: 700px; /* Set a maximum height for the table container */
   overflow-y: auto; /* Enable vertical scrolling if needed */
+`;
+const Label = styled.label`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  span {
+    margin-bottom: 5px;
+  }
+
+  select,
+  input,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
 `;
 
 const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }) => {
@@ -133,7 +157,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
   return (
     <FormContainer onSubmit={handleSubmit}>
       <Label>
-        Nombre:
+        Nombre:<br/>
         <Input
           type="text"
           name="nombre"
@@ -143,7 +167,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
       </Label>
       <br />
       <Label>
-        Descripción:
+        Descripción:<br/>
         <TextArea
           name="descripcion"
           value={product.descripcion}
@@ -152,7 +176,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
       </Label>
       <br />
       <Label>
-        Precio:
+        Precio:<br/>
         <Input
           type="number"
           name="precio"
@@ -162,7 +186,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
       </Label>
       <br />
       <Label>
-        Cantidad:
+        Cantidad:<br/>
         <Input
           type="number"
           name="stock"
@@ -172,7 +196,7 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
       </Label>
       <br />
       <Label>
-        Imagen:
+        Imagen:<br/>
         <TextArea
           name="imagen"
           value={product.imagen}
@@ -181,20 +205,20 @@ const ProductForm = ({ onSubmit, editingProduct, setEditingProduct, categories }
       </Label>
       <br />
       <Label>
-        Categoría:
-        <select
-          name="categoria"
-          value={product.categoria}
-          onChange={handleChange}
-        >
-          <option value="">Selecciona una categoría</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.nombre}>
-              {category.nombre}
-            </option>
-          ))}
-        </select>
-      </Label>
+      <span>Categoría:</span><br/>
+      <select
+        name="categoria"
+        value={product.categoria}
+        onChange={handleChange}
+      >
+        <option value="">Selecciona una categoría</option>
+        {categories.map((category) => (
+          <option key={category.id} value={category.nombre}>
+            {category.nombre}
+          </option>
+        ))}
+      </select>
+    </Label>
       <br />
       <Button type="submit">
         {editingProduct !== null ? 'Guardar Cambios' : 'Agregar Producto'}
@@ -247,8 +271,8 @@ const ProductItem = ({ product, onDelete, onEdit }) => {
       <TableCell>{product.stock}</TableCell>
       <TableCell>{product.descripcion.substring(0, 100)}...</TableCell>
       <TableCell>
-        <ButtonDelete onClick={() => onDelete(product.id)}>Eliminar</ButtonDelete><br/><br/>
-        <ButtonEdit onClick={() => onEdit(product)}>Editar</ButtonEdit>
+        <ButtonDelete onClick={() => onDelete(product.id)}><FontAwesomeIcon icon={faTrash} /></ButtonDelete><br/><br/>
+        <ButtonEdit onClick={() => onEdit(product)}><FontAwesomeIcon icon={faEdit} /></ButtonEdit>
       </TableCell>
     </TableRow>
   );
