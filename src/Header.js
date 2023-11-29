@@ -8,16 +8,21 @@ const Header = () => {
   return (
     <HeaderContainer>
       {/* Utiliza la etiqueta <img> para mostrar la imagen de tu tienda */}
+      <StyledNavLink to="/" exact>
       <Logo src="/logo.png.png" alt="Logo de la tienda" />
-
+</StyledNavLink>
       <Nav>
+      <FontAwesomeIcon icon={faSearch} />
+      <SearchInput type="text" placeholder="Buscar" />
+      
+
         <StyledNavLink to="/" exact>
           <FontAwesomeIcon icon={faHome} /> Inicio
         </StyledNavLink>
         <StyledNavLink to="/catalogo">
           <FontAwesomeIcon icon={faList} /> Catálogo
         </StyledNavLink>
-        <SearchInput type="text" placeholder="Buscar" />
+        
         <StyledNavLink to="/cart">
           <FontAwesomeIcon icon={faShoppingCart} /> Carrito
         </StyledNavLink>
