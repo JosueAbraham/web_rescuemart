@@ -55,6 +55,33 @@ const StyledButton = styled.button`
     background-color: #ff6630;
   }
 `;
+
+
+const Quantity = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+const QuantityLabel = styled.p`
+  font-size: 16px;
+  margin-right: 10px;
+`;
+
+const QuantityInput = styled.input`
+  width: 60px;
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+
+  &:focus {
+    border-color: #e44d26;
+    box-shadow: 0 0 5px rgba(228, 77, 38, 0.7);
+  }
+`;
 const CarritoComponent = () => {
 
   const [carrito, setCarrito] = useState([]);
@@ -106,8 +133,9 @@ const CarritoComponent = () => {
                 <ItemDetails>
                   <strong>{item.nombre}</strong>
                   <p>
-                    Cantidad:{' '}
-                    <input
+                  <Quantity>
+  <QuantityLabel>Cantidad: </QuantityLabel>
+                    <QuantityInput
                       type="number"
                       value={item.cantidad}
                       onChange={(e) =>
@@ -117,6 +145,7 @@ const CarritoComponent = () => {
                         )
                       }
                     />
+  </Quantity>
                   </p>
                   <p>Precio: ${item.precio.toFixed(2)}</p>
                   <StyledButton onClick={() => handleEliminarProducto(index)}>
@@ -133,7 +162,7 @@ const CarritoComponent = () => {
       {carrito.length > 0 && (
         <CarritoTotal>
           <p>Total: ${calcularPrecioTotal(carrito).toFixed(2)}</p>
-          <PaypalButton precio={calcularPrecioTotal(carrito).toFixed(2)} />
+          <PaypalButton key={calcularPrecioTotal(carrito)} precio={calcularPrecioTotal(carrito).toFixed(2)} />
           <StyledButton onClick={handleVaciarCarrito}>Vaciar Carrito</StyledButton>
         </CarritoTotal>
       )}
