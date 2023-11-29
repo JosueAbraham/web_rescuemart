@@ -3,16 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
-const Button = styled.button`
-  background-color: #e44d26;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+const ButtonCarrito = styled.button`
+margin: 10px auto; // Margen superior e inferior de 10px, y margen automático en los lados para centrar
+background-color: #333333;
+color: white;
+padding: 12px 20px; // Aumenta el tamaño del botón
+border: none;
+border-radius: 6px;
+font-size: 18px; // Aumenta el tamaño del texto
+cursor: pointer;
 
-  &:hover {
-    background-color: #ff6a3b;
-  }
+&:hover {
+  background-color: #0C6DA7;
+}
 `;
 
 const AgregadoExitosamente = styled.div`
@@ -20,7 +23,7 @@ const AgregadoExitosamente = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background-color: #4caf50;
+  background-color: #333333;
   color: #fff;
   text-align: center;
   padding: 15px;
@@ -56,9 +59,9 @@ const AgregarCarrito = ({ selectedProduct, cantidad }) => {
   return (
     <>
      
-      <Button onClick={handleAgregarAlCarrito}>
+      <ButtonCarrito onClick={handleAgregarAlCarrito}>
         <FontAwesomeIcon icon={faShoppingCart} /> Agregar al carrito
-      </Button>
+      </ButtonCarrito>
       {mensajeAgregado && (
         <AgregadoExitosamente show={mensajeAgregado}>
           <FontAwesomeIcon icon={faShoppingCart} /> Producto agregado al carrito exitosamente

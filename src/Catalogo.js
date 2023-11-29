@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import AgregarCarrito from './AgregarCarrito';
 const Catalogo = () => {
     const [productos, setProductos] = useState([]);
 
@@ -35,6 +36,7 @@ const Catalogo = () => {
                             <Titulo>{producto.nombre}</Titulo>
                             <Precio>Precio: ${producto.precio}</Precio>
                         </StyledLink>
+                        <AgregarCarrito selectedProduct={producto} cantidad={1} />
                     </Producto>
                 ))}
             </ProductosList>

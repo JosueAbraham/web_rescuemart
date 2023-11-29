@@ -7,23 +7,9 @@ import PaypalButton from './Paypal_Button';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import AgregarCarrito from './AgregarCarrito';
-const AgregadoExitosamente = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #4caf50;
-  color: #fff;
-  text-align: center;
-  padding: 15px;
-  font-size: 18px;
-  z-index: 1000;
-  opacity: ${({ show }) => (show ? 1 : 0)};
-  transform: translateY(${({ show }) => (show ? '0' : '-100%')});
-  transition: opacity 0.3s ease, transform 0.3s ease;
-`;
+
 const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -51,7 +37,7 @@ const StyledCookieConsent = styled.div`
     margin-bottom: 20px;
   }
 
-  & button {
+  & buttonr {
     background-color: #ff3055;
     color: #fff;
     border: none;
@@ -137,15 +123,18 @@ const Buttons = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #e44d26;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+margin: 10px 10px; // Margen superior e inferior de 10px, y margen automático en los lados para centrar
+background-color: #07C05B;
+color: white;
+padding: 12px 20px; // Aumenta el tamaño del botón
+border: none;
+border-radius: 6px;
+font-size: 18px; // Aumenta el tamaño del texto
+cursor: pointer;
 
-  &:hover {
-    background-color: #ff6a3b;
-  }
+&:hover {
+  background-color: #6d91ff;
+}
 `;
 
 const OpinionForm = styled.form`
@@ -243,19 +232,10 @@ const DetalleProducto = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showPaypalOverlay, setShowPaypalOverlay] = useState(false);
   const [data, setData] = useState([]); // Cambio aquí: usamos un estado para almacenar los datos de productos
-  const [carrito, setCarrito] = useState([]);
-  const [mensajeAgregado, setMensajeAgregado] = useState(false);
+
 
   // Efecto de inicialización para obtener el carrito desde localStorage
-  useEffect(() => {
-    // Intentar obtener el carrito desde localStorage
-    const storedCart = localStorage.getItem('carrito');
-
-    // Si hay un carrito almacenado, actualizar el estado
-    if (storedCart) {
-      setCarrito(JSON.parse(storedCart));
-    }
-  }, []);
+ 
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -345,11 +325,7 @@ const DetalleProducto = () => {
           <FontAwesomeIcon icon={faDollarSign} /> Comprar ahora
         </Button>
                   </Buttons>
-                  {mensajeAgregado && (
-              <AgregadoExitosamente show={mensajeAgregado}>
-                <FontAwesomeIcon icon={faShoppingCart} /> Producto agregado al carrito exitosamente
-              </AgregadoExitosamente>
-            )}
+                  
                   <h2>Descripción</h2>
                   <ProductDescription>
                     <p>{selectedProduct.descripcion}</p>
@@ -386,7 +362,9 @@ const DetalleProducto = () => {
       {showPaypalOverlay && selectedProduct.relacionados && (
         <Overlay showOverlay={showPaypalOverlay}>
         <StyledCookieConsent>
+        <Header>
           <h2><FontAwesomeIcon icon={faDollarSign} /> Comprar ahora</h2>
+          </Header>
           <p>
             Nombre: {selectedProduct.nombre}
             <br />
@@ -405,7 +383,7 @@ const DetalleProducto = () => {
             precio={(selectedProduct.precio * cantidad).toFixed(2)}
             // Agrega otras propiedades necesarias para el componente PaypalButton
           />
-          <button onClick={() => setShowPaypalOverlay(false)}>Cerrar</button>
+          <buttonr onClick={() => setShowPaypalOverlay(false)}>Cerrar</buttonr>
         </StyledCookieConsent>
       </Overlay>
       )}
@@ -425,7 +403,9 @@ const DetalleProducto = () => {
                       <Precio>{relatedProduct.categoria}</Precio>
                       <Titulo>{relatedProduct.nombre}</Titulo>
                       <Precio>Precio: ${relatedProduct.precio}</Precio>
+                      
                     </StyledLink>
+                    <AgregarCarrito selectedProduct={relatedProduct} cantidad={1} />
                   </Producto>
                 );
               }

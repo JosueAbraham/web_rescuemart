@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styled from 'styled-components';
+import AgregarCarrito from './AgregarCarrito';
 
 const Home = () => {
   const [productosDestacados, setProductosDestacados] = useState([]);
@@ -57,6 +58,7 @@ Excelencia, innovación, compromiso con la seguridad" />
             <Titulo>{producto.nombre}</Titulo>
             <Precio>Precio: ${producto.precio}</Precio>
           </StyledLink>
+          <AgregarCarrito selectedProduct={producto} cantidad={1} />
         </Producto>
         
         ))}
