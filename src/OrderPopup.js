@@ -5,46 +5,46 @@ import ordersData from './ordersData.json';
 
 const OrderPopup = ({ order, onClose }) => {
 
-    // Cambiar el estado de los datos del usuario
-    const [userDataState, setUserData] = useState(userData);
+  // Cambiar el estado de los datos del usuario
+  const [userDataState, setUserData] = useState(userData);
 
-    // Estado para las órdenes de compra
-    const [orders, setOrders] = useState(ordersData);
+  // Estado para las órdenes de compra
+  const [orders, setOrders] = useState(ordersData);
 
-    return (
-        <PopupOverlay>
-            <PopupContainer>
-                <h2>Detalles de la Orden #{order.id}</h2>
-                <OrderStatus>
-                    <p><strong>Estado del Pago:</strong> {order.paymentStatus}</p>
-                    <p><strong>Estado del Pedido:</strong> {order.orderStatus}</p>
-                </OrderStatus>
-                <UserInfo>
-                    <p><strong>Nombre:</strong> {userData.name}</p>
-                    <p><strong>Correo:</strong> {userData.email}</p>
-                    <p><strong>Dirección de Envío:</strong> {userData.address}</p>
-                </UserInfo>
-                <OrderTable>
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
+  return (
+    <PopupOverlay>
+      <PopupContainer>
+        <h2>Detalles de la Orden #{order.id}</h2>
+        <OrderStatus>
+          <p><strong>Estado del Pago:</strong> {order.paymentStatus}</p>
+          <p><strong>Estado del Pedido:</strong> {order.orderStatus}</p>
+        </OrderStatus>
+        <UserInfo>
+          <p><strong>Nombre:</strong> {userData.name}</p>
+          <p><strong>Correo:</strong> {userData.email}</p>
+          <p><strong>Dirección de Envío:</strong> {userData.address}</p>
+        </UserInfo>
+        <OrderTable>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+            </tr>
+          </thead>
 
-                </OrderTable>
-                <OrderSummary>
-                    <p><strong>Subtotal:</strong> ${order.subtotal}</p>
-                    <p><strong>Costo de Envío:</strong> ${order.shippingCost}</p>
-                    <p><strong>Impuesto (16%):</strong> ${order.tax}</p>
-                    <p><strong>Total:</strong> ${order.totalPagar}</p>
-                </OrderSummary>
-                <button onClick={onClose}>Cerrar</button>
-            </PopupContainer>
-        </PopupOverlay>
-    );
+        </OrderTable>
+        <OrderSummary>
+          <p><strong>Subtotal:</strong> ${order.subtotal}</p>
+          <p><strong>Costo de Envío:</strong> ${order.shippingCost}</p>
+          <p><strong>Impuesto (16%):</strong> ${order.tax}</p>
+          <p><strong>Total:</strong> ${order.totalPagar}</p>
+        </OrderSummary>
+        <button onClick={onClose}>Cerrar</button>
+      </PopupContainer>
+    </PopupOverlay>
+  );
 };
 
 const PopupContainer = styled.div`
