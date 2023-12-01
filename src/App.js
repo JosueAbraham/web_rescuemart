@@ -13,6 +13,7 @@ import LoginForm from './admin/LoginForm';
 import Menu from './admin/Menu';
 import UserManagement from './admin/UserManagement';
 import CategoryManagement from './admin/CategoryManagement';
+import UserProfile from './UserProfile';
 
 import CarritoComponent from './CarritoComponent';
 const AppContainer = styled.div`
@@ -115,6 +116,7 @@ const TiendaRoutes = () => (
       <Route path="/Catalogo" element={<Catalogo />} />
       <Route path="/productos/:id" element={<DetalleProducto />} />
       <Route path="/cart" element={<CarritoComponent />} />
+      <Route path="/perfil" element={<UserProfile />} />
     </Routes>
     <Footer />
   </>
