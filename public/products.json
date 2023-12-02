@@ -1,7 +1,7 @@
 [
     {
       "id": 1,
-      "nombre": "Botiquín de primeros auxilios",
+      "nombre": "Botiquín de primeros auxilios DIN 13169",
       "descripcion": "Botiquín de Söhngen con repuesto de acuerdo con la normativa DIN 13169. La carcasa robusta de plástico ABS de color naranja es resistente a los golpes, la temperatura, no necesita mantenimiento y está cubierta de placas transparentes. Los separadores interiores amovibles pueden ser divididos de acuerdo a las necesidades del usuario. El suministro del botiquín incluye un soporte de pared con bloqueo de 90 °.",
       "precio": 701.00,
       "categoria": "Botiquines",
@@ -53,7 +53,7 @@
     },
     {
       "id": 3,
-      "nombre": "Biolight M70C pulsioxímetro de dedo azul",
+      "nombre": "Mascarilla RCP con estuche",
       "imagenes": ["../Mascarilla3.jpg", "../Mascarilla3.1.jpg", "../Mascarilla3.2.jpg"],
         "descripcion": "Esta máscara para reanimación cardiopulmonar boca a boca permite una ventilación segura e higiénica. La mascarilla para rcp se suministra con un práctico estuche.",
         "caracteristicas": [
