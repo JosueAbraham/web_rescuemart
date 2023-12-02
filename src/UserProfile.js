@@ -82,7 +82,7 @@ const UserProfile = () => {
         <h2>Cambiar Contraseña</h2>
         <button onClick={handleChangePassword}>Cambiar Contraseña</button>
       </ChangePasswordContainer>
-      
+
       {isPopupOpen && selectedOrder && (
         <OrderPopup order={{ ...selectedOrder, userData }} onClose={closePopup} />
       )}
@@ -91,13 +91,25 @@ const UserProfile = () => {
 };
 
 const UserProfileContainer = styled.div`
-  display: flex;
+display: flex;
+flex-direction: column; /* Cambiar a columna en pantallas más pequeñas */
+align-items: center; /* Centrar en pantallas más pequeñas */
+margin: 20px;
+
+@media screen and (min-width: 768px) {
+  flex-direction: row; /* Volver a la dirección de fila en pantallas más grandes */
   justify-content: space-around;
-  margin: 20px;
+}
 `;
 
 const UserInfo = styled.div`
-  text-align: left;
+text-align: left;
+margin-bottom: 20px;
+
+@media screen and (min-width: 768px) {
+  margin-bottom: 0;
+  margin-right: 20px;
+}
 `;
 
 const OrdersContainer = styled.div`
@@ -105,23 +117,23 @@ const OrdersContainer = styled.div`
 `;
 
 const OrderTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #f2f2f2;
-  }
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
 `;
 
 const OrderLink = styled.a`
-  text-decoration: none;
-  color: #007bff;
-  cursor: pointer;
+text-decoration: none;
+color: #007bff;
+cursor: pointer;
 `;
 
 const ChangePasswordContainer = styled.div`

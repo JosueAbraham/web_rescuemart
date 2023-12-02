@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import userData from './userData.json';
 import ordersData from './ordersData.json';
@@ -10,6 +10,22 @@ const OrderPopup = ({ order, onClose }) => {
 
   // Estado para las órdenes de compra
   const [orders, setOrders] = useState(ordersData);
+
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        const response = await fetch(process.env.PUBLIC_URL + '/products.json');
+        const data = await response.json();
+        setProductos(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchProductos();
+  }, []);
 
   return (
     <PopupOverlay>
@@ -33,45 +49,59 @@ const OrderPopup = ({ order, onClose }) => {
               <th>Total</th>
             </tr>
           </thead>
-
+          <tbody>
+            {order.idProduct && (
+              <tr key={order.idProduct}>
+                <td>{productos.find(producto => producto.id === order.idProduct)?.nombre}</td>
+                <td>${productos.find(producto => producto.id === order.idProduct)?.precio}</td>
+                <td>{order.cant}</td>
+                <td>${(productos.find(producto => producto.id === order.idProduct)?.precio * order.cant)}</td>
+              </tr>
+            )}
+          </tbody>
         </OrderTable>
         <OrderSummary>
-          <p><strong>Subtotal:</strong> ${order.subtotal}</p>
-          <p><strong>Costo de Envío:</strong> ${order.shippingCost}</p>
-          <p><strong>Impuesto (16%):</strong> ${order.tax}</p>
-          <p><strong>Total:</strong> ${order.totalPagar}</p>
+          {order.idProduct && (
+            <tr key={order.idProduct}>
+              <p><strong>Subtotal:</strong> ${(productos.find(producto => producto.id === order.idProduct)?.precio * order.cant)}</p>
+              <p><strong>Costo de Envío:</strong> ${order.shippingCost}</p>
+              <p><strong>Impuesto (16%):</strong> ${(productos.find(producto => producto.id === order.idProduct)?.precio * order.cant * 0.16)}</p>
+              <p><strong>Total:</strong> ${(productos.find(producto => producto.id === order.idProduct)?.precio * order.cant + order.shippingCost + productos.find(producto => producto.id === order.idProduct)?.precio * order.cant * 0.16)}</p>
+            </tr>
+          )}
         </OrderSummary>
-        <button onClick={onClose}>Cerrar</button>
+        <CloseButton onClick={onClose}>Cerrar</CloseButton>
       </PopupContainer>
     </PopupOverlay>
   );
 };
 
 const PopupContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px; /* Ancho fijo de la ventana emergente */
-  height: 500px; /* Alto fijo de la ventana emergente */
-  background-color: white;
-  padding: 20px;
-  border: 1px solid #ddd;
-  z-index: 999;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%; /* Hacer que el ancho sea del 100% para pantallas pequeñas */
+max-width: 700px; /* Ancho máximo para pantallas grandes */
+background-color: white;
+padding: 20px;
+border: 1px solid #ddd;
+z-index: 999;
 `;
 
 const PopupOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
-  z-index: 998; /* Asegúrate de que tenga un índice z inferior al contenedor de la ventana emergente */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 998;
 `;
 
 const UserInfo = styled.div`
-  text-align: left;
+text-align: left;
+margin-bottom: 20px;
 `;
 
 const OrderStatus = styled.div`
@@ -79,21 +109,27 @@ const OrderStatus = styled.div`
 `;
 
 const OrderTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #f2f2f2;
-  }
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
 `;
 
 const OrderSummary = styled.div`
-  text-align: right;
+text-align: right;
+margin-top: 20px;
+`;
+
+const CloseButton = styled.button`
+  width: 100%;
+  max-width: 100px; /* Ancho máximo para pantallas grandes */
   margin-top: 20px;
 `;
 
