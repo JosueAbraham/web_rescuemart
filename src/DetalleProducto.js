@@ -232,7 +232,7 @@ const DetalleProducto = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showPaypalOverlay, setShowPaypalOverlay] = useState(false);
   const [data, setData] = useState([]); // Cambio aquí: usamos un estado para almacenar los datos de productos
-  const [opiniones, setOpiniones] = useState([]);
+  const [opiniones, setOpiniones] = useState({});
   const [opinionesPreexistentes, setOpinionesPreexistentes] = useState([]);
   const [nombre, setNombre] = useState('');
 
@@ -263,17 +263,23 @@ const DetalleProducto = () => {
   useEffect(() => {
     const fetchOpinionesPreexistentes = async () => {
       try {
-        // Cargar las opiniones existentes desde el archivo JSON
         const response = await fetch('/opiniones_preexistentes.json');
         const jsonOpiniones = await response.json();
-        setOpinionesPreexistentes(jsonOpiniones);
+        
+        jsonOpiniones.forEach((opinionesData) => {
+          setOpiniones((prevOpiniones) => ({
+            ...prevOpiniones,
+            [opinionesData.id]: opinionesData.opiniones,
+          }));
+        });
       } catch (error) {
         console.error('Error fetching preexisting opinions:', error);
       }
     };
-
+  
     fetchOpinionesPreexistentes();
   }, []);
+  
 
   const handleComprarAhora = (product) => {
     setSelectedProduct(product);
@@ -292,12 +298,20 @@ const DetalleProducto = () => {
   const handleOpinionSubmit = (event) => {
     event.preventDefault();
     const nuevaOpinion = {
-      nombre: nombre || "Anónimo", // Si no se proporciona un nombre, usa "Anónimo"
+      nombre: nombre || "Anónimo",
       comentario: opinion,
     };
-    setOpiniones([...opiniones, nuevaOpinion]);
+
+    // Asegúrate de que hay opiniones para ese producto en el estado
+    const productOpiniones = opiniones[selectedProduct.id] || [];
+
+    setOpiniones({
+      ...opiniones,
+      [selectedProduct.id]: [...productOpiniones, nuevaOpinion],
+    });
+
     setOpinion('');
-    setNombre(''); // Limpiar el campo de nombre después de enviar la opinión
+    setNombre('');
   };
 
 
@@ -368,59 +382,64 @@ const DetalleProducto = () => {
       ) : (
         <p>Loading...</p>
       )}
-      <Container>
-        <h2>Calificación</h2>
-        <StarRanking />
-        <OpinionForm onSubmit={handleOpinionSubmit}>
-          <h2>Deja tu opinión</h2>
-          <div>
-            <input
-              type="text"
-              id="nombre"
-              placeholder="Escribe tu nombre..."
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
-            />
-            <p> </p>
-          </div>
-          <OpinionTextarea
-            placeholder="Escribe tu opinión..."
-            value={opinion}
-            onChange={handleOpinionChange}
-          />
-          <OpinionSubmitButton type="submit">Publicar Opinión</OpinionSubmitButton>
-        </OpinionForm>
-        <h2>Opiniones</h2>
-        {opiniones.length > 0 ? (
-          <ul>
-            {opiniones.map((opinion, index) => (
-              <li key={index}>
-                <div>
-                  <strong>{opinion.nombre}</strong>
-                  <p>{opinion.comentario}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p></p>
-        )}
+      {selectedProduct && (
+        <>
+          <Container>
+            <h2>Calificación</h2>
+            <StarRanking />
+            <OpinionForm onSubmit={handleOpinionSubmit}>
+              <h2>Deja tu opinión</h2>
+              <div>
+                <input
+                  type="text"
+                  id="nombre"
+                  placeholder="Escribe tu nombre..."
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                />
+                <p> </p>
+              </div>
+              <OpinionTextarea
+                placeholder="Escribe tu opinión..."
+                value={opinion}
+                onChange={handleOpinionChange}
+              />
+              <OpinionSubmitButton type="submit">Publicar Opinión</OpinionSubmitButton>
+            </OpinionForm>
+            <h2>Opiniones</h2>
+            {opiniones[selectedProduct.id] && opiniones[selectedProduct.id].length > 0 ? (
+              <ul>
+                {opiniones[selectedProduct.id].map((opinion, index) => (
+                  <li key={index}>
+                    <div>
+                      <strong>{opinion.nombre}</strong>
+                      <p>{opinion.comentario}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>Aún no tiene opiniones este producto.</p>
+            )}            
 
-        {opinionesPreexistentes.length > 0 && (
-          <>
-            <ul>
-              {opinionesPreexistentes.map((opinion, index) => (
-                <li key={index}>
-                  <div>
-                    <strong>{opinion.nombre}</strong>
-                    <p>{opinion.comentario}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-      </Container>
+
+            {opinionesPreexistentes.length > 0 && (
+              <>
+                <ul>
+                  {opinionesPreexistentes.map((opinion, index) => (
+                    <li key={index}>
+                      <div>
+                        <strong>{opinion.nombre}</strong>
+                        <p>{opinion.comentario}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </Container>
+        </>
+      )}
 
       {showPaypalOverlay && selectedProduct.relacionados && (
         <Overlay showOverlay={showPaypalOverlay}>

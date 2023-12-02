@@ -1,7 +1,112 @@
 [
-    {
-      "nombre": "Robert",
-      "comentario": "Excelente producto, 100% recomendado..."
-    }
-    
+  {
+    "id": 1,
+    "opiniones": [
+      {
+        "nombre": "Robert",
+        "comentario": "Excelente botiquín de primeros auxilios."
+      },
+      {
+        "nombre": "Martha",
+        "comentario": "Excelente botiquín, 100% recomendado y es muy resistente."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "opiniones": [
+      {
+        "nombre": "Lois",
+        "comentario": "Este pulsioxímetro es el que buscaba."
+      },
+      {
+        "nombre": "Anónimo",
+        "comentario": "Es un buen medidor del pulso."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "opiniones": [
+      {
+        "nombre": "Anónimo",
+        "comentario": "Buena Mascarilla RCP, recomendado."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "opiniones": [
+      {
+        "nombre": "Oliver",
+        "comentario": "Tiene una perfecta transmisión del sonido."
+      },
+      {
+        "nombre": "Jimmy",
+        "comentario": "Soy cardiólogo y lo recomiendo mucho."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "opiniones": [
+      {
+        "nombre": "Davis",
+        "comentario": "100% recomendado, es una venda muy adhesiva."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "opiniones": [
+      {
+        "nombre": "Anónimo",
+        "comentario": "Excelente producto para las heridas, me encantó."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "opiniones": [
+      {
+        "nombre": "Chloe",
+        "comentario": "Excelente bolsa de emergencia, recomendada."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "opiniones": [
+      {
+        "nombre": "Jonathan",
+        "comentario": "Es una venda agradable y no se arruga."
+      },
+      {
+        "nombre": "Lionel",
+        "comentario": "Me gustó este producto, lo volvería a comprar."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "opiniones": [
+      {
+        "nombre": "Anónimo",
+        "comentario": "Es lo que se espera de vendajes de emergencia."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "opiniones": [
+      {
+        "nombre": "Alicia",
+        "comentario": "Estas jeringas sí son de calidad."
+      },
+      {
+        "nombre": "Javier",
+        "comentario": "Excelente, viene de diferentes tamaños."
+      }
+    ]
+  }
 ]
