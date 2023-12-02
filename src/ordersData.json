@@ -4,21 +4,19 @@
         "date": "2023-11-30",
         "paymentStatus": "Pagado",
         "orderStatus": "En Proceso",
-        "total": 700.00,
-        "subtotal": 700.00,
+        "idProduct": 4,
+        "cant": 1,
         "shippingCost": 0.00,
-        "tax": 112.00,
-        "totalPagar": 812.00
+        "total": "1,100.00"
     },
     {
         "id": 321,
         "date": "2023-10-28",
         "paymentStatus": "Pagado",
         "orderStatus": "Entregado",
-        "total": 1000.00,
-        "subtotal": 1000.00,
+        "idProduct": 3,
+        "cant": 2,
         "shippingCost": 36.00,
-        "tax": 160.00,
-        "totalPagar": 1196.00
+        "total": "500.00"
     }
 ]
