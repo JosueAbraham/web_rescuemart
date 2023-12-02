@@ -7,12 +7,10 @@ import { faHome, faList, faShoppingCart, faSignInAlt, faUserPlus, faSearch } fro
 const Header = () => {
   return (
     <HeaderContainer>
-      {/* Utiliza la etiqueta <img> para mostrar la imagen de tu tienda */}
-      <StyledNavLink to="/" exact>
+      <LogoNavLink to="/" exact>
         <Logo src="/logo.png.png" alt="Logo de la tienda" />
-      </StyledNavLink>
+      </LogoNavLink>
       <Nav>
-        <FontAwesomeIcon icon={faSearch} />
         <SearchInput type="text" placeholder="Buscar" />
 
 
@@ -42,8 +40,18 @@ const HeaderContainer = styled.header`
   color: #fff;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const LogoNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: #fff;
 `;
 
 const Logo = styled.img`
@@ -53,17 +61,24 @@ const Logo = styled.img`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 20px;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 0;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: #fff;
-  transition: color 0.3s ease; /* Añade una transición suave al color */
+  transition: color 0.3s ease;
 
   &:hover {
-    color: #ffcc00; /* Cambia el color al pasar el ratón */
+    color: #ffcc00;
   }
 `;
 
@@ -71,11 +86,15 @@ const SearchInput = styled.input`
   padding: 8px;
   border: 1px solid #fff;
   border-radius: 4px;
-  margin-right: 10px;
   font-size: 14px;
+  margin-bottom: 10px;
 
   ::placeholder {
     color: #fff;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
   }
 `;
 

@@ -119,7 +119,7 @@ const Registro = () => {
 
 const FormContainer = styled.div`
   max-width: 500px;
-  margin: 30px auto;
+  margin: 50px auto; /* Aumentado para separar del borde superior */
   padding: 20px;
   position: relative;
   background-color: #f9f9f9;
@@ -130,6 +130,7 @@ const FormContainer = styled.div`
 const FormTitle = styled.h2`
   text-align: center;
   color: #368591;
+  margin-bottom: 20px; /* Aumentado para separar del formulario */
 `;
 
 const Form = styled.form`
@@ -144,18 +145,18 @@ const InputLabel = styled.label`
 `;
 
 const Input = styled.input`
-  padding: 10px;
+  padding: 15px; /* Aumentado el espacio alrededor del texto en el input */
   font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  border-radius: 8px; /* Aumentado el radio de borde para un aspecto más suave */
 `;
 
 const SubmitButton = styled.button`
   background-color: #368591;
   color: #fff;
-  padding: 12px;
+  padding: 15px; /* Aumentado el espacio alrededor del texto en el botón */
   border: none;
-  border-radius: 6px;
+  border-radius: 8px; /* Aumentado el radio de borde para un aspecto más suave */
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -172,7 +173,7 @@ const SuccessPopup = styled.div`
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 70%; /* Ajustado para separar del borde inferior */
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
