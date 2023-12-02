@@ -9,12 +9,12 @@ const Header = () => {
     <HeaderContainer>
       {/* Utiliza la etiqueta <img> para mostrar la imagen de tu tienda */}
       <StyledNavLink to="/" exact>
-      <Logo src="/logo.png.png" alt="Logo de la tienda" />
-</StyledNavLink>
+        <Logo src="/logo.png.png" alt="Logo de la tienda" />
+      </StyledNavLink>
       <Nav>
-      <FontAwesomeIcon icon={faSearch} />
-      <SearchInput type="text" placeholder="Buscar" />
-      
+        <FontAwesomeIcon icon={faSearch} />
+        <SearchInput type="text" placeholder="Buscar" />
+
 
         <StyledNavLink to="/" exact>
           <FontAwesomeIcon icon={faHome} /> Inicio
@@ -22,7 +22,7 @@ const Header = () => {
         <StyledNavLink to="/catalogo">
           <FontAwesomeIcon icon={faList} /> Catálogo
         </StyledNavLink>
-        
+
         <StyledNavLink to="/cart">
           <FontAwesomeIcon icon={faShoppingCart} /> Carrito
         </StyledNavLink>

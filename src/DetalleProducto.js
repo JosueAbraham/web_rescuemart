@@ -235,7 +235,7 @@ const DetalleProducto = () => {
 
 
   // Efecto de inicialización para obtener el carrito desde localStorage
- 
+
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -292,7 +292,7 @@ const DetalleProducto = () => {
             <Header>
               <h1>{selectedProduct.nombre}</h1>
             </Header>
-    
+
             <TwoColumnContainer>
               <ImageColumn>
                 <CarouselContainer>
@@ -311,21 +311,21 @@ const DetalleProducto = () => {
                   <p>Categoría: {selectedProduct.categoria}</p>
                   <Price><strong>Precio habitual:</strong> ${selectedProduct.precio.toFixed(2)} USD</Price>
                   <Quantity>
-  <QuantityLabel>Cantidad: </QuantityLabel>
-  <QuantityInput
-    type="number"
-    value={cantidad}
-    min="1"
-    onChange={handleCantidadChange}
-  />
-</Quantity>
+                    <QuantityLabel>Cantidad: </QuantityLabel>
+                    <QuantityInput
+                      type="number"
+                      value={cantidad}
+                      min="1"
+                      onChange={handleCantidadChange}
+                    />
+                  </Quantity>
                   <Buttons>
-                  <AgregarCarrito selectedProduct={selectedProduct} cantidad={cantidad} />
-        <Button onClick={() => handleComprarAhora(selectedProduct)}>
-          <FontAwesomeIcon icon={faDollarSign} /> Comprar ahora
-        </Button>
+                    <AgregarCarrito selectedProduct={selectedProduct} cantidad={cantidad} />
+                    <Button onClick={() => handleComprarAhora(selectedProduct)}>
+                      <FontAwesomeIcon icon={faDollarSign} /> Comprar ahora
+                    </Button>
                   </Buttons>
-                  
+
                   <h2>Descripción</h2>
                   <ProductDescription>
                     <p>{selectedProduct.descripcion}</p>
@@ -358,37 +358,37 @@ const DetalleProducto = () => {
           <OpinionSubmitButton type="submit">Enviar Opinión</OpinionSubmitButton>
         </OpinionForm>
       </Container>
-    
+
       {showPaypalOverlay && selectedProduct.relacionados && (
         <Overlay showOverlay={showPaypalOverlay}>
-        <StyledCookieConsent>
-        <Header>
-          <h2><FontAwesomeIcon icon={faDollarSign} /> Comprar ahora</h2>
-          </Header>
-          <p>
-            Nombre: {selectedProduct.nombre}
-            <br />
-            Precio unitario: ${selectedProduct.precio.toFixed(2)} USD
-            <br />
-            Cantidad: {cantidad}
-            <br />
-            Total: ${(selectedProduct.precio * cantidad).toFixed(2)} USD
-          </p>
-          <img
-            src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
-            alt={selectedProduct.nombre}
-            style={{ maxWidth: '100%', maxHeight: '200px' }}
-          />
-          <PaypalButton
-            precio={(selectedProduct.precio * cantidad).toFixed(2)}
+          <StyledCookieConsent>
+            <Header>
+              <h2><FontAwesomeIcon icon={faDollarSign} /> Comprar ahora</h2>
+            </Header>
+            <p>
+              Nombre: {selectedProduct.nombre}
+              <br />
+              Precio unitario: ${selectedProduct.precio.toFixed(2)} USD
+              <br />
+              Cantidad: {cantidad}
+              <br />
+              Total: ${(selectedProduct.precio * cantidad).toFixed(2)} USD
+            </p>
+            <img
+              src={process.env.PUBLIC_URL + '/' + selectedProduct.imagen}
+              alt={selectedProduct.nombre}
+              style={{ maxWidth: '100%', maxHeight: '200px' }}
+            />
+            <PaypalButton
+              precio={(selectedProduct.precio * cantidad).toFixed(2)}
             // Agrega otras propiedades necesarias para el componente PaypalButton
-          />
-          <buttonr onClick={() => setShowPaypalOverlay(false)}>Cerrar</buttonr>
-        </StyledCookieConsent>
-      </Overlay>
+            />
+            <buttonr onClick={() => setShowPaypalOverlay(false)}>Cerrar</buttonr>
+          </StyledCookieConsent>
+        </Overlay>
       )}
 
-{selectedProduct && (
+      {selectedProduct && (
         <>
           <h2>Productos Relacionados</h2>
           <ProductosList>
@@ -403,7 +403,7 @@ const DetalleProducto = () => {
                       <Precio>{relatedProduct.categoria}</Precio>
                       <Titulo>{relatedProduct.nombre}</Titulo>
                       <Precio>Precio: ${relatedProduct.precio}</Precio>
-                      
+
                     </StyledLink>
                     <AgregarCarrito selectedProduct={relatedProduct} cantidad={1} />
                   </Producto>

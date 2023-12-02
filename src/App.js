@@ -14,8 +14,12 @@ import Menu from './admin/Menu';
 import UserManagement from './admin/UserManagement';
 import CategoryManagement from './admin/CategoryManagement';
 import UserProfile from './UserProfile';
-
 import CarritoComponent from './CarritoComponent';
+import Registro from './Registro';
+import Login from './Login';
+
+
+
 const AppContainer = styled.div`
   font-family: Arial, sans-serif;
   display: flex;
@@ -69,7 +73,7 @@ const StyledCookieConsent = styled.div`
 
 const App = () => {
   const [showOverlay, setShowOverlay] = useState(true);
- 
+
   const handleAccept = () => {
     setShowOverlay(false);
   };
@@ -85,20 +89,22 @@ const App = () => {
               <p>
                 Nosotros, en RescueMart, nos comprometemos a proteger tu privacidad. Para obtener detalles específicos sobre cómo recopilamos, utilizamos y protegemos tu información personal, te invitamos a revisar nuestra política de privacidad.
 
-En RescueMart, valoramos la confianza que depositas en nosotros al utilizar nuestros servicios. Estamos aquí para proporcionarte productos y servicios de alta calidad que contribuyan a tu seguridad y bienestar en situaciones de emergencia.
+                En RescueMart, valoramos la confianza que depositas en nosotros al utilizar nuestros servicios. Estamos aquí para proporcionarte productos y servicios de alta calidad que contribuyan a tu seguridad y bienestar en situaciones de emergencia.
 
-Al aceptar estos términos, reconoces y aceptas las prácticas descritas en nuestros términos y condiciones, así como en nuestra política de privacidad. Si no estás de acuerdo con alguno de estos términos, te recomendamos que no utilices nuestros servicios.
+                Al aceptar estos términos, reconoces y aceptas las prácticas descritas en nuestros términos y condiciones, así como en nuestra política de privacidad. Si no estás de acuerdo con alguno de estos términos, te recomendamos que no utilices nuestros servicios.
               </p>
               <button onClick={handleAccept}>Aceptar cookies</button>
             </StyledCookieConsent>
             <div>
-     
-    </div>
+
+            </div>
           </Overlay>
           <Routes>
             <Route path="/*" element={<TiendaRoutes />} />
             <Route path="/admin/*" element={<AdminRoutes />} />
             <Route path="/admin" element={<LoginForm />} />
+
+
           </Routes>
         </AppContainer>
       </Router>
@@ -117,6 +123,9 @@ const TiendaRoutes = () => (
       <Route path="/productos/:id" element={<DetalleProducto />} />
       <Route path="/cart" element={<CarritoComponent />} />
       <Route path="/perfil" element={<UserProfile />} />
+      <Route path="/register" element={<Registro />} />
+      <Route path="/login" element={<Login />} />
+
     </Routes>
     <Footer />
   </>
