@@ -232,7 +232,9 @@ const DetalleProducto = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showPaypalOverlay, setShowPaypalOverlay] = useState(false);
   const [data, setData] = useState([]); // Cambio aquí: usamos un estado para almacenar los datos de productos
-
+  const [opiniones, setOpiniones] = useState([]);
+  const [opinionesPreexistentes, setOpinionesPreexistentes] = useState([]);
+  const [nombre, setNombre] = useState('');
 
   // Efecto de inicialización para obtener el carrito desde localStorage
 
@@ -258,6 +260,21 @@ const DetalleProducto = () => {
     fetchProductData();
   }, [id, showPaypalOverlay]);
 
+  useEffect(() => {
+    const fetchOpinionesPreexistentes = async () => {
+      try {
+        // Cargar las opiniones existentes desde el archivo JSON
+        const response = await fetch('/opiniones_preexistentes.json');
+        const jsonOpiniones = await response.json();
+        setOpinionesPreexistentes(jsonOpiniones);
+      } catch (error) {
+        console.error('Error fetching preexisting opinions:', error);
+      }
+    };
+
+    fetchOpinionesPreexistentes();
+  }, []);
+
   const handleComprarAhora = (product) => {
     setSelectedProduct(product);
     setShowPaypalOverlay(true);
@@ -274,9 +291,15 @@ const DetalleProducto = () => {
 
   const handleOpinionSubmit = (event) => {
     event.preventDefault();
-    console.log('Opinión enviada:', opinion);
+    const nuevaOpinion = {
+      nombre: nombre || "Anónimo", // Si no se proporciona un nombre, usa "Anónimo"
+      comentario: opinion,
+    };
+    setOpiniones([...opiniones, nuevaOpinion]);
     setOpinion('');
+    setNombre(''); // Limpiar el campo de nombre después de enviar la opinión
   };
+
 
 
   return (
@@ -350,13 +373,53 @@ const DetalleProducto = () => {
         <StarRanking />
         <OpinionForm onSubmit={handleOpinionSubmit}>
           <h2>Deja tu opinión</h2>
+          <div>
+            <input
+              type="text"
+              id="nombre"
+              placeholder="Escribe tu nombre..."
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
+            <p> </p>
+          </div>
           <OpinionTextarea
             placeholder="Escribe tu opinión..."
             value={opinion}
             onChange={handleOpinionChange}
           />
-          <OpinionSubmitButton type="submit">Enviar Opinión</OpinionSubmitButton>
+          <OpinionSubmitButton type="submit">Publicar Opinión</OpinionSubmitButton>
         </OpinionForm>
+        <h2>Opiniones</h2>
+        {opiniones.length > 0 ? (
+          <ul>
+            {opiniones.map((opinion, index) => (
+              <li key={index}>
+                <div>
+                  <strong>{opinion.nombre}</strong>
+                  <p>{opinion.comentario}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p></p>
+        )}
+
+        {opinionesPreexistentes.length > 0 && (
+          <>
+            <ul>
+              {opinionesPreexistentes.map((opinion, index) => (
+                <li key={index}>
+                  <div>
+                    <strong>{opinion.nombre}</strong>
+                    <p>{opinion.comentario}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </Container>
 
       {showPaypalOverlay && selectedProduct.relacionados && (
