@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faHome, faList, faShoppingCart, faSignInAlt, faUserPlus, faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faHome, faList, faShoppingCart, faSignInAlt, faUserPlus, faSearch, faBars, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from './AuthContext'; // Importa tu contexto de autenticación
 
 const Header = () => {
@@ -57,8 +57,11 @@ const Header = () => {
           </NavLinkItem>
           {isLoggedIn ? (
             <>
+              <NavLinkItem to="/WishList" onClick={toggleMenu}>
+                <FontAwesomeIcon icon={faHeart} /> Lista de deseos
+              </NavLinkItem>
               <NavLinkItem to="/perfil" onClick={toggleMenu}>
-              <FontAwesomeIcon icon={faUser} /> Perfil
+                <FontAwesomeIcon icon={faUser} /> Perfil
               </NavLinkItem>
               <LogoutButton onClick={logout}>Cerrar Sesión</LogoutButton>
             </>
