@@ -18,6 +18,8 @@ import CarritoComponent from './CarritoComponent';
 import Registro from './Registro';
 import Login from './Login';
 import SearchResults from './SearchResults';
+import ListaDeseosComponent from './ListaDeseosComponent';
+
 
 
 const AppContainer = styled.div`
@@ -130,6 +132,7 @@ const TiendaRoutes = () => (
       <Route path="/register" element={<Registro />} />
       <Route path="/login" element={<Login />} />
       <Route path="/search/:query" element={<SearchResults />} />
+      <Route path="/wishlist" element={<ListaDeseosComponent />} />
     </Routes>
     <Footer />
   </>
