@@ -44,7 +44,7 @@ const UserProfile = () => {
   return (
     <UserProfileContainer>
       <UserInfo>
-        <h2>Perfil de Usuario</h2>
+        <h1>Perfil de Usuario</h1>
         <p><strong>Nombre:</strong> {userData.name}</p>
         <p><strong>Edad:</strong> {userData.edad}</p>
         <p><strong>Teléfono:</strong> {userData.tel}</p>
@@ -52,7 +52,7 @@ const UserProfile = () => {
         <p><strong>Dirección de Envío:</strong> {userData.address}</p>
       </UserInfo>
       <OrdersContainer>
-        <h2>Órdenes de Compra</h2>
+        <h1>Órdenes de Compra</h1>
         <OrderTable>
           <thead>
             <tr>
@@ -81,8 +81,8 @@ const UserProfile = () => {
         </OrderTable>
       </OrdersContainer>
       <ChangePasswordContainer>
-        <h2>Cambiar Contraseña</h2>
-        <button onClick={handleChangePassword}>Cambiar Contraseña</button>
+        <h1>Cambiar Contraseña</h1>
+        <ChangePasswordButton onClick={handleChangePassword}>Cambiar Contraseña</ChangePasswordButton>
       </ChangePasswordContainer>
 
       {isPopupOpen && selectedOrder && (
@@ -93,53 +93,82 @@ const UserProfile = () => {
 };
 
 const UserProfileContainer = styled.div`
-display: flex;
-flex-direction: column; /* Cambiar a columna en pantallas más pequeñas */
-align-items: center; /* Centrar en pantallas más pequeñas */
-margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 
-@media screen and (min-width: 768px) {
-  flex-direction: row; /* Volver a la dirección de fila en pantallas más grandes */
-  justify-content: space-around;
-}
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 `;
 
 const UserInfo = styled.div`
-text-align: left;
-margin-bottom: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+  align-self: flex-start;
 
-@media screen and (min-width: 768px) {
-  margin-bottom: 0;
-  margin-right: 20px;
-}
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  h1 {
+    color: #007bff;
+  }
 `;
 
 const OrdersContainer = styled.div`
   text-align: left;
+  align-self: flex-start;
+
+  h1 {
+    color: #007bff;
+  }
 `;
 
 const OrderTable = styled.table`
-width: 100%;
-border-collapse: collapse;
-margin-top: 10px;
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-th {
-  background-color: #f2f2f2;
-}
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+  th, td {
+    border: 1px solid #007bff;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
 `;
 
 const OrderLink = styled.a`
-text-decoration: none;
-color: #007bff;
-cursor: pointer;
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
 `;
 
 const ChangePasswordContainer = styled.div`
   text-align: left;
+  align-self: flex-start;
+  
+  h1 {
+    color: #007bff;
+  }
+`;
+
+const ChangePasswordButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3; /* Tonos más oscuros de azul al pasar el ratón */
+  }
 `;
 
 export default UserProfile;

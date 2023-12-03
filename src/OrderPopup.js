@@ -30,14 +30,13 @@ const OrderPopup = ({ order, onClose }) => {
   return (
     <PopupOverlay>
       <PopupContainer>
-        <h2>Detalles de la Orden #{order.id}</h2>
+        <h1>Detalles de la Orden #{order.id}</h1>
         <OrderStatus>
           <p><strong>Estado del Pago:</strong> {order.paymentStatus}</p>
           <p><strong>Estado del Pedido:</strong> {order.orderStatus}</p>
         </OrderStatus>
         <UserInfo>
           <p><strong>Nombre:</strong> {userData.name}</p>
-          <p><strong>Edad:</strong> {userData.edad}</p>
           <p><strong>Teléfono:</strong> {userData.tel}</p>
           <p><strong>Correo:</strong> {userData.email}</p>
           <p><strong>Dirección de Envío:</strong> {userData.address}</p>
@@ -79,16 +78,22 @@ const OrderPopup = ({ order, onClose }) => {
 };
 
 const PopupContainer = styled.div`
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 100%; /* Hacer que el ancho sea del 100% para pantallas pequeñas */
-max-width: 700px; /* Ancho máximo para pantallas grandes */
-background-color: white;
-padding: 20px;
-border: 1px solid #ddd;
-z-index: 999;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* 100% para pantallas pequeñas */
+  max-width: 700px; /* Ancho máximo para pantallas grandes */
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #007bff; /* Azul */
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Efecto de sombra difuminada azul */
+  border-radius: 10px; /* Esquinas redondas */
+  z-index: 999;
+
+  h1 {
+    color: #007bff;
+  }
 `;
 
 const PopupOverlay = styled.div`
@@ -114,11 +119,13 @@ const OrderTable = styled.table`
 width: 100%;
 border-collapse: collapse;
 margin-top: 10px;
+
 th, td {
-  border: 1px solid #ddd;
+  border: 1px solid #007bff;
   padding: 8px;
   text-align: left;
 }
+
 th {
   background-color: #f2f2f2;
 }
@@ -130,9 +137,19 @@ margin-top: 20px;
 `;
 
 const CloseButton = styled.button`
-  width: 100%;
+background-color: #007bff;
+color: white;
+padding: 10px;
+border: none;
+cursor: pointer;
+
+ width: 100%;
   max-width: 100px; /* Ancho máximo para pantallas grandes */
   margin-top: 20px;
+
+  &:hover {
+    background-color: #0056b3; /* Tonos más oscuros de azul al pasar el ratón */
+  }
 `;
 
 export default OrderPopup;

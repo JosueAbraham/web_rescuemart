@@ -139,23 +139,109 @@ cursor: pointer;
 
 const OpinionForm = styled.form`
   margin-top: 20px;
+  background-color: #007bff; /* Azul */
+  padding: 20px;
+  border-radius: 8px;
+
+  input {
+    background-color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 10px;
+    color: #000;
+  }
+
+  textarea {
+    width: 98%;
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    padding: 8px;
+    color: #000;
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #0056b3; /* Tonos más oscuros de azul al pasar el ratón */
+    }
+  }
 `;
 
 const OpinionTextarea = styled.textarea`
   width: 100%;
   height: 80px;
   margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  padding: 8px;
+  color: #000;
+  font-size: 16px;
 `;
 
 const OpinionSubmitButton = styled.button`
-  background-color: #4caf50;
+  background-color: #007bff;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px; /* Ajusta según sea necesario */
 
   &:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
+  }
+`;
+
+const OpinionesList = styled.ul`
+  list-style: none;
+  padding: 0;
+
+  li {
+    background-color: #f5f5f5; /* Fondo gris claro */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  strong {
+    color: #007bff; /* Azul */
+  }
+
+  p {
+    margin-top: 5px;
+  }
+`;
+
+const OpinionesPreexistentesList = styled.ul`
+  list-style: none;
+  padding: 0;
+
+  li {
+    background-color: #f5f5f5; /* Fondo gris claro */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  strong {
+    color: #007bff; /* Azul */
+  }
+
+  p {
+    margin-top: 5px;
   }
 `;
 
@@ -408,7 +494,7 @@ const DetalleProducto = () => {
             </OpinionForm>
             <h2>Opiniones</h2>
             {opiniones[selectedProduct.id] && opiniones[selectedProduct.id].length > 0 ? (
-              <ul>
+              <OpinionesList>
                 {opiniones[selectedProduct.id].map((opinion, index) => (
                   <li key={index}>
                     <div>
@@ -417,15 +503,14 @@ const DetalleProducto = () => {
                     </div>
                   </li>
                 ))}
-              </ul>
+              </OpinionesList>
             ) : (
               <p>Aún no tiene opiniones este producto.</p>
             )}            
-
-
+            
             {opinionesPreexistentes.length > 0 && (
               <>
-                <ul>
+                <OpinionesPreexistentesList>
                   {opinionesPreexistentes.map((opinion, index) => (
                     <li key={index}>
                       <div>
@@ -434,7 +519,7 @@ const DetalleProducto = () => {
                       </div>
                     </li>
                   ))}
-                </ul>
+                </OpinionesPreexistentesList>
               </>
             )}
           </Container>
