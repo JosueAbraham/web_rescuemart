@@ -34,18 +34,20 @@ const ListaDeseosItem = styled.li`
   margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const ItemInfo = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   
 `;
 
 const ItemImage = styled.img`
   max-width: 150px;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-bottom: 40px;
 
 `;
@@ -63,11 +65,13 @@ const StyledButtonDelete = styled.button`
   margin: 10px 0; /* Ajustamos la separación */
   background-color: #dd2a62;
   color: white;
-  padding: 12px 10px;
+  padding: 12px 20px; /* Ajustado el padding para más separación horizontal */
   border: none;
   border-radius: 6px;
   font-size: 18px;
   cursor: pointer;
+  margin-right: 10px; /* Nuevo margen derecho para más separación entre el botón y la imagen */
+
   
 
   &:hover {
@@ -142,30 +146,36 @@ const ListaDeseosComponent = () => {
 
     return (
         <ListaDeseosContainer>
-            <TituloListaDeseos><FontAwesomeIcon icon={faHeart} /> Lista de Deseos</TituloListaDeseos>
+            <TituloListaDeseos>
+                <FontAwesomeIcon icon={faHeart} /> Lista de Deseos
+            </TituloListaDeseos>
             {listaDeseos.length > 0 ? (
                 <ListaDeseosList>
                     {listaDeseos.map((item, index) => (
                         <ListaDeseosItem key={index}>
                             <ItemInfo>
+                                <StyledButtonDelete onClick={() => handleEliminarProducto(index)}>
+                                    <FontAwesomeIcon icon={faTrash} />
+                                </StyledButtonDelete>
                                 <ItemImage
                                     src={process.env.PUBLIC_URL + '/' + item.imagen}
                                     alt={item.nombre}
                                 />
                                 <ItemDetails>
                                     <strong>{item.nombre}</strong>
-                                    <p><strong>Precio: </strong>${item.precio.toFixed(2)}</p>
+                                    <p>
+                                        <strong>Precio: </strong>${item.precio.toFixed(2)}
+                                    </p>
                                 </ItemDetails>
-                                <StyledButtonDelete onClick={() => handleEliminarProducto(index)}>
-                                    <FontAwesomeIcon icon={faTrash} />
-                                </StyledButtonDelete>
-                                <AgregarCarrito selectedProduct={item} cantidad={1} />
                             </ItemInfo>
+                            <AgregarCarrito selectedProduct={item} cantidad={1} />
                         </ListaDeseosItem>
                     ))}
                 </ListaDeseosList>
             ) : (
-                <EmptyListaDeseosMessage>¡Ups! Parece que tu lista de deseos está vacía. ¿Por qué no agregas algunos productos?</EmptyListaDeseosMessage>
+                <EmptyListaDeseosMessage>
+                    ¡Ups! Parece que tu lista de deseos está vacía. ¿Por qué no agregas algunos productos?
+                </EmptyListaDeseosMessage>
             )}
             {listaDeseos.length > 0 && (
                 <div>
