@@ -33,6 +33,10 @@ const Registro = () => {
     setShowSuccessPopup(true);
   };
 
+  const handlePopupClose = () => {
+    setShowSuccessPopup(false);
+  };
+
   return (
     <FormContainer>
       <FormTitle>Crear Cuenta</FormTitle>
@@ -105,8 +109,12 @@ const Registro = () => {
 
       {showSuccessPopup && (
         <SuccessPopup>
-          <p>Felicidades, tus datos se guardaron correctamente.</p>
-          <Link to="/Login">Ir a Iniciar Sesión</Link>
+          <SuccessContent>
+            <p>Felicidades, tus datos se guardaron correctamente.</p>
+            <Link to="/Login" onClick={handlePopupClose}>
+              Iniciar Sesión
+            </Link>
+          </SuccessContent>
         </SuccessPopup>
       )}
 
@@ -118,9 +126,9 @@ const Registro = () => {
 };
 
 const FormContainer = styled.div`
-  max-width: 500px;
-  margin: 50px auto; /* Aumentado para separar del borde superior */
-  padding: 20px;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
   position: relative;
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -129,73 +137,73 @@ const FormContainer = styled.div`
 
 const FormTitle = styled.h2`
   text-align: center;
-  color: #368591;
-  margin-bottom: 20px; /* Aumentado para separar del formulario */
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 `;
 
 const InputLabel = styled.label`
   font-size: 16px;
-  color: #555;
+  color: #34495e;
 `;
 
 const Input = styled.input`
-  padding: 15px; /* Aumentado el espacio alrededor del texto en el input */
+  padding: 15px;
   font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px; /* Aumentado el radio de borde para un aspecto más suave */
+  border: 1px solid #3498db;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 const SubmitButton = styled.button`
-  background-color: #368591;
+  background-color: #3498db;
   color: #fff;
-  padding: 15px; /* Aumentado el espacio alrededor del texto en el botón */
+  padding: 18px;
   border: none;
-  border-radius: 8px; /* Aumentado el radio de borde para un aspecto más suave */
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: #30777d;
+    background-color: #2980b9;
+    transform: scale(1.05);
   }
 `;
 
 const SuccessPopup = styled.div`
-  background-color: #4caf50;
+  background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const SuccessContent = styled.div`
+  background-color: #2ecc71;
+  padding: 30px;
+  border-radius: 10px;
   text-align: center;
-  position: absolute;
-  top: 70%; /* Ajustado para separar del borde inferior */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
 
   p {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
   }
 `;
 
@@ -204,7 +212,7 @@ const SignInLink = styled.div`
   margin-top: 20px;
 
   a {
-    color: #368591;
+    color: #3498db;
     text-decoration: none;
     font-weight: bold;
   }

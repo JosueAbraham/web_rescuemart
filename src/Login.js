@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from './AuthContext'; // Importa el contexto
 
 const Login = () => {
@@ -52,59 +52,78 @@ const Login = () => {
 
         <SubmitButton type="submit">Iniciar Sesión</SubmitButton>
       </Form>
-    </FormContainer>
+
+
+      <SignUpLink>
+        ¿No tienes una cuenta? <Link to="/register">Regístrate</Link>
+      </SignUpLink>
+
+    </FormContainer >
+
+
   );
 };
 
 const FormContainer = styled.div`
-  max-width: 400px;
-  margin: 50px auto; /* Aumentado para separar del borde superior */
-  padding: 20px;
-  background-color: #fff;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  position: relative;
+  background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
 `;
 
 const FormTitle = styled.h2`
-  color: #368591;
-  margin-bottom: 20px;
+text-align: center;
+color: #2c3e50;
+font-size: 28px;
+margin-bottom: 30px;
+font-family: 'Arial', sans-serif;
 `;
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Aumentado el espacio entre elementos */
+display: flex;
+flex-direction: column;
+gap: 30px;
 `;
 
 const InputLabel = styled.label`
-  font-size: 14px;
-  color: #555;
+font-size: 16px;
+color: #34495e;
 `;
 
 const Input = styled.input`
-  padding: 15px; /* Aumentado el espacio alrededor del texto en el input */
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px; /* Aumentado el radio de borde para un aspecto más suave */
-  transition: border-color 0.3s ease;
-
-  &:focus {
-    border-color: #368591;
-  }
+padding: 15px;
+font-size: 16px;
+border: 1px solid #3498db;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 const SubmitButton = styled.button`
-  background-color: #368591;
-  color: #fff;
-  padding: 15px; /* Aumentado el espacio alrededor del texto en el botón */
-  border: none;
-  border-radius: 8px; /* Aumentado el radio de borde para un aspecto más suave */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+background-color: #3498db;
+color: #fff;
+padding: 18px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s ease;
 
-  &:hover {
-    background-color: #30777d;
+&:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+`;
+
+const SignUpLink = styled.div`
+  text-align: center;
+  margin-top: 20px;
+
+  a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
   }
 `;
 
