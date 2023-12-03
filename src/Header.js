@@ -1,19 +1,19 @@
-// Header.js
-import React, { useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faList, faShoppingCart, faSignInAlt, faUserPlus, faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { faUser, faHome, faList, faShoppingCart, faSignInAlt, faUserPlus, faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from './AuthContext'; // Importa tu contexto de autenticación
 
 const Header = () => {
   const history = useNavigate();
+  const { isLoggedIn, logout } = useAuth(); // Utiliza el contexto de autenticación
+
   const [searchQuery, setSearchQuery] = useState('');
+
   const handleSearch = () => {
     if (searchQuery.trim() !== '') {
-      // Usar encodeURIComponent para asegurar que los caracteres especiales se manejen correctamente en la URL
       history(`/search/${encodeURIComponent(searchQuery)}`);
-      // También puedes realizar acciones adicionales, como la obtención de datos, aquí
     }
   };
 
@@ -35,17 +35,16 @@ const Header = () => {
       </MobileMenuIcon>
       <Nav menuOpen={menuOpen}>
         <SearchContainer>
-        <SearchInput
-          type="text"
-          placeholder="Buscar"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-       
-        <SearchButton onClick={handleSearch}>
-          <FontAwesomeIcon icon={faSearch} />
-        </SearchButton>
-      </SearchContainer>
+          <SearchInput
+            type="text"
+            placeholder="Buscar"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <SearchButton onClick={handleSearch}>
+            <FontAwesomeIcon icon={faSearch} />
+          </SearchButton>
+        </SearchContainer>
         <NavLinks>
           <NavLinkItem to="/" exact onClick={toggleMenu}>
             <FontAwesomeIcon icon={faHome} /> Inicio
@@ -56,12 +55,23 @@ const Header = () => {
           <NavLinkItem to="/cart" onClick={toggleMenu}>
             <FontAwesomeIcon icon={faShoppingCart} /> Carrito
           </NavLinkItem>
-          <NavLinkItem to="/login" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faSignInAlt} /> Iniciar Sesión
-          </NavLinkItem>
-          <NavLinkItem to="/register" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faUserPlus} /> Registrarse
-          </NavLinkItem>
+          {isLoggedIn ? (
+            <>
+              <NavLinkItem to="/perfil" onClick={toggleMenu}>
+              <FontAwesomeIcon icon={faUser} /> Perfil
+              </NavLinkItem>
+              <LogoutButton onClick={logout}>Cerrar Sesión</LogoutButton>
+            </>
+          ) : (
+            <>
+              <NavLinkItem to="/login" onClick={toggleMenu}>
+                <FontAwesomeIcon icon={faSignInAlt} /> Iniciar Sesión
+              </NavLinkItem>
+              <NavLinkItem to="/register" onClick={toggleMenu}>
+                <FontAwesomeIcon icon={faUserPlus} /> Registrarse
+              </NavLinkItem>
+            </>
+          )}
         </NavLinks>
       </Nav>
     </HeaderContainer>
@@ -170,6 +180,18 @@ const NavLinks = styled.div`
 const NavLinkItem = styled(NavLink)`
   text-decoration: none;
   color: #fff;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ffcc00;
+  }
+`;
+
+const LogoutButton = styled.button`
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
   transition: color 0.3s ease;
 
   &:hover {

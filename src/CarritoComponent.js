@@ -123,6 +123,7 @@ const EmptyCartMessage = styled.p`
   font-size: 18px;
   text-align: center;
   color: #555;
+  margin-bottom: 20%;
 `;
 const CarritoComponent = () => {
 

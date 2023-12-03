@@ -1,55 +1,59 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext'; // Importa el contexto
 
 const Login = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { login } = useAuth(); // Usa el hook de autenticación
 
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
     });
+  };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Datos de inicio de sesión:', formData);
+    login(); // Llama a la función de login desde el contexto
+    navigate('/Catalogo');
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Datos de inicio de sesión:', formData);
-        navigate('/Catalogo');
-    };
 
-    return (
-        <FormContainer>
-            <FormTitle>Iniciar Sesión</FormTitle>
-            <Form onSubmit={handleSubmit}>
-                <InputLabel>Correo Electrónico</InputLabel>
-                <Input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Tu correo electrónico"
-                />
+  return (
+    <FormContainer>
+      <FormTitle>Iniciar Sesión</FormTitle>
+      <Form onSubmit={handleSubmit}>
+        <InputLabel>Correo Electrónico</InputLabel>
+        <Input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Tu correo electrónico"
+        />
 
-                <InputLabel>Contraseña</InputLabel>
-                <Input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    placeholder="Tu contraseña"
-                />
+        <InputLabel>Contraseña</InputLabel>
+        <Input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Tu contraseña"
+        />
 
-                <SubmitButton type="submit">Iniciar Sesión</SubmitButton>
-            </Form>
-        </FormContainer>
-    );
+        <SubmitButton type="submit">Iniciar Sesión</SubmitButton>
+      </Form>
+    </FormContainer>
+  );
 };
 
 const FormContainer = styled.div`

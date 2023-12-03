@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import AgregarCarrito from './AgregarCarrito';
 import { Link } from 'react-router-dom';
 

@@ -73,11 +73,15 @@ const StyledCookieConsent = styled.div`
 
 const App = () => {
   const [showOverlay, setShowOverlay] = useState(true);
+  const [authenticatedUser, setAuthenticatedUser] = useState(null);
 
   const handleAccept = () => {
     setShowOverlay(false);
   };
 
+  const handleLogin = (user) => {
+    setAuthenticatedUser(user);
+  };
   return (
     <>
       <GoogleAnalytics />
