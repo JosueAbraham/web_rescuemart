@@ -72,7 +72,7 @@ const StyledButtonDelete = styled.button`
   margin: 10px auto; // Margen superior e inferior de 10px, y margen automático en los lados para centrar
   background-color: #dd2a62;
   color: white;
-  padding: 12px 20px; // Aumenta el tamaño del botón
+  padding: 12px 10px; // Aumenta el tamaño del botón
   border: none;
   border-radius: 6px;
   font-size: 18px; // Aumenta el tamaño del texto
