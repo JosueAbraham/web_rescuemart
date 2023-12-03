@@ -12,11 +12,22 @@ const ListaDeseosContainer = styled.div`
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+`;
+
+const TituloListaDeseos = styled.h1`
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
 `;
 
 const ListaDeseosList = styled.ul`
   list-style: none;
   padding: 0;
+  margin-bottom: 40px;
+
 `;
 
 const ListaDeseosItem = styled.li`
@@ -29,11 +40,14 @@ const ItemInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 `;
 
 const ItemImage = styled.img`
   max-width: 150px;
   margin-right: 10px;
+  margin-bottom: 40px;
+
 `;
 
 const ItemDetails = styled.div`
@@ -41,10 +55,12 @@ const ItemDetails = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 16px;
+  margin-bottom: 40px;
+
 `;
 
 const StyledButtonDelete = styled.button`
-  margin: 10px auto;
+  margin: 10px 0; /* Ajustamos la separación */
   background-color: #dd2a62;
   color: white;
   padding: 12px 10px;
@@ -52,6 +68,7 @@ const StyledButtonDelete = styled.button`
   border-radius: 6px;
   font-size: 18px;
   cursor: pointer;
+  
 
   &:hover {
     background-color: #ff6630;
@@ -63,6 +80,7 @@ const EmptyListaDeseosMessage = styled.p`
   text-align: center;
   color: #555;
   margin-bottom: 20%;
+  
 `;
 
 const ListaDeseosComponent = () => {
@@ -124,7 +142,7 @@ const ListaDeseosComponent = () => {
 
     return (
         <ListaDeseosContainer>
-            <h1><FontAwesomeIcon icon={faHeart} /> Lista de Deseos</h1>
+            <TituloListaDeseos><FontAwesomeIcon icon={faHeart} /> Lista de Deseos</TituloListaDeseos>
             {listaDeseos.length > 0 ? (
                 <ListaDeseosList>
                     {listaDeseos.map((item, index) => (
