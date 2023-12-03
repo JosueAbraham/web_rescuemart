@@ -9,6 +9,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import AgregarCarrito from './AgregarCarrito';
+import AgregarListaDeseos from './AgregarListaDeseos';
+
 
 const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.5);
@@ -351,7 +353,7 @@ const DetalleProducto = () => {
       try {
         const response = await fetch('/opiniones_preexistentes.json');
         const jsonOpiniones = await response.json();
-        
+
         jsonOpiniones.forEach((opinionesData) => {
           setOpiniones((prevOpiniones) => ({
             ...prevOpiniones,
@@ -362,10 +364,10 @@ const DetalleProducto = () => {
         console.error('Error fetching preexisting opinions:', error);
       }
     };
-  
+
     fetchOpinionesPreexistentes();
   }, []);
-  
+
 
   const handleComprarAhora = (product) => {
     setSelectedProduct(product);
@@ -447,6 +449,7 @@ const DetalleProducto = () => {
                     <Button onClick={() => handleComprarAhora(selectedProduct)}>
                       <FontAwesomeIcon icon={faDollarSign} /> Comprar ahora
                     </Button>
+                    <AgregarListaDeseos selectedProduct={selectedProduct} />
                   </Buttons>
 
                   <h2>Descripción</h2>
@@ -506,8 +509,8 @@ const DetalleProducto = () => {
               </OpinionesList>
             ) : (
               <p>Aún no tiene opiniones este producto.</p>
-            )}            
-            
+            )}
+
             {opinionesPreexistentes.length > 0 && (
               <>
                 <OpinionesPreexistentesList>
