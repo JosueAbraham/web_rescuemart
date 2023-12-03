@@ -17,7 +17,7 @@ import UserProfile from './UserProfile';
 import CarritoComponent from './CarritoComponent';
 import Registro from './Registro';
 import Login from './Login';
-
+import SearchResults from './SearchResults';
 
 
 const AppContainer = styled.div`
@@ -125,7 +125,7 @@ const TiendaRoutes = () => (
       <Route path="/perfil" element={<UserProfile />} />
       <Route path="/register" element={<Registro />} />
       <Route path="/login" element={<Login />} />
-
+      <Route path="/search/:query" element={<SearchResults />} />
     </Routes>
     <Footer />
   </>
