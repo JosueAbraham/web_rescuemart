@@ -3,7 +3,7 @@ import React, { useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faList, faShoppingCart, faSignInAlt, faUserPlus, faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faList, faShoppingCart, faUser, faSignInAlt, faUserPlus, faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
@@ -55,6 +55,9 @@ const Header = () => {
           </NavLinkItem>
           <NavLinkItem to="/cart" onClick={toggleMenu}>
             <FontAwesomeIcon icon={faShoppingCart} /> Carrito
+          </NavLinkItem>
+          <NavLinkItem to="/perfil" onClick={toggleMenu}>
+            <FontAwesomeIcon icon={faUser} /> Perfil
           </NavLinkItem>
           <NavLinkItem to="/login" onClick={toggleMenu}>
             <FontAwesomeIcon icon={faSignInAlt} /> Iniciar Sesión

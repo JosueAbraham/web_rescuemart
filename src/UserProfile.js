@@ -46,6 +46,8 @@ const UserProfile = () => {
       <UserInfo>
         <h2>Perfil de Usuario</h2>
         <p><strong>Nombre:</strong> {userData.name}</p>
+        <p><strong>Edad:</strong> {userData.edad}</p>
+        <p><strong>Teléfono:</strong> {userData.tel}</p>
         <p><strong>Correo:</strong> {userData.email}</p>
         <p><strong>Dirección de Envío:</strong> {userData.address}</p>
       </UserInfo>
