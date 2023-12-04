@@ -14,7 +14,7 @@ const ChangePasswordForm = ({ onSubmit, onCancel }) => {
 
   return (
     <FormContainer>
-      <FormTitle>Cambiar Contraseña</FormTitle>
+      <FormTitle></FormTitle>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="currentPassword">Contraseña Actual:</Label>
@@ -213,7 +213,7 @@ const UserProfileContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 20px;
-
+  margin-bottom: 5%;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-around;

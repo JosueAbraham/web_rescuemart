@@ -434,7 +434,7 @@ const DetalleProducto = () => {
                 <Product>
                   <ProductTitle>{selectedProduct.nombre}</ProductTitle>
                   <p>Categoría: {selectedProduct.categoria}</p>
-                  <Price><strong>Precio habitual:</strong> ${selectedProduct.precio.toFixed(2)} USD</Price>
+                  <Price><strong>Precio habitual:</strong> ${selectedProduct.precio.toFixed(2)}</Price>
                   <Quantity>
                     <QuantityLabel>Cantidad: </QuantityLabel>
                     <QuantityInput
