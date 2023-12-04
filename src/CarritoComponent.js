@@ -9,11 +9,8 @@ import { faShoppingCart,faTrash} from '@fortawesome/free-solid-svg-icons';
 
 const CarritoContainer = styled.div`
 max-width: 1000px;
-margin: 20px 10% 20px 10%; // Cambiado a 'auto' en el eje horizontal
+margin: 20px auto;
 padding: 20px;
-// Agregado para utilizar align-items
-align-items: center;
-justify-content: center; // Agregado para centrar en el eje horizontal
 border: 1px solid #ddd;
 border-radius: 8px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -35,6 +32,7 @@ const ItemInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between; // Alinea los elementos al final (derecha) del contenedor
+ 
 `;
 
 
@@ -53,6 +51,7 @@ const ItemDetails = styled.div`
   display: flex;
   flex-direction: column; // Alinea los elementos en columna
   font-size: 16px;
+  margin-right: 20%;
 `;
 const StyledButtonDeleteAll = styled.button`
 margin: 10px auto; // Margen superior e inferior de 10px, y margen automático en los lados para centrar

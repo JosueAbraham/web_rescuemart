@@ -16,11 +16,13 @@ const ListaDeseosContainer = styled.div`
 `;
 
 const TituloListaDeseos = styled.h1`
-  margin: 40px auto;
+margin-top: 0;
   padding: 20px;
   text-align: center;
   font-size: 34px;
   margin-bottom: 40px;
+  background-color: #333;
+  color: #fff;
 `;
 
 const ListaDeseosList = styled.ul`
@@ -42,6 +44,7 @@ const ListaDeseosItem = styled.li`
 const ItemInfo = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 10px;
   
 `;
 
@@ -60,6 +63,7 @@ const ItemDetails = styled.div`
   margin-bottom: 40px;
 
 `;
+
 
 const StyledButtonDelete = styled.button`
   margin: 10px 0; /* Ajustamos la separación */

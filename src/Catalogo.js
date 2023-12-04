@@ -71,16 +71,19 @@ const Catalogo = () => {
         };
     }, []);
 
-    return (
+    return (<>
+        <Title>
+            <h1>
+                <FontAwesomeIcon icon={faBox} /> Productos
+            </h1>
+            </Title>
         <CatalogoContainer>
             <Helmet>
                 <title>Catálogo de Productos - RescueMart</title>
                 <meta name="description" content="Explora nuestra amplia selección de productos de primeros auxilios en el catálogo de RescueMart. Encuentra productos de alta calidad a los mejores precios." />
                 <meta name="keywords" content="Botiquín de primeros auxilios,Productos de seguridad,Equipos de emergencia,Preparación para situaciones críticas,Refacciones para automóviles,Refacciones para motocicletas,Refacciones para camionetas,Herramientas de primeros auxilios,Soluciones confiables" />
             </Helmet>
-            <h1>
-                <FontAwesomeIcon icon={faBox} /> Productos
-            </h1>
+          
             <OrdenarButton onClick={handleClickBoton}>
                 Ordenar por
             </OrdenarButton>
@@ -106,7 +109,7 @@ const Catalogo = () => {
                     </Producto>
                 ))}
             </ProductosList>
-        </CatalogoContainer>
+        </CatalogoContainer></>
     );
 };
 
@@ -130,7 +133,13 @@ const Producto = styled.div`
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
-
+const Title = styled.h3`
+background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 0;
+`;
 const ImagenProducto = styled.img`
   max-width: 100%;
   max-height: 200px;
