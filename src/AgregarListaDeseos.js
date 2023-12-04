@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+import { useAuth } from './AuthContext';
 
 const ButtonListaDeseos = styled.button`
   margin: 10px auto;
@@ -43,6 +44,7 @@ const AgregarListaDeseos = ({ selectedProduct }) => {
     const [listaDeseos, setListaDeseos] = useState([]);
     const [mensajeAgregado, setMensajeAgregado] = useState(false);
     const [productoAgregado, setProductoAgregado] = useState(false);
+    const { isLoggedIn } = useAuth();
 
     useEffect(() => {
         const storedListaDeseos = localStorage.getItem('listaDeseos');
@@ -75,24 +77,27 @@ const AgregarListaDeseos = ({ selectedProduct }) => {
 
     return (
         <>
+          {isLoggedIn && (
             <ButtonListaDeseos onClick={handleAgregarEliminarListaDeseos} isInListaDeseos={isInListaDeseos}>
-                <FontAwesomeIcon icon={faHeart} /> {isInListaDeseos ? 'Eliminar de Lista de Deseos' : 'Agregar a Lista de Deseos'}
+              <FontAwesomeIcon icon={faHeart} /> {isInListaDeseos ? 'Eliminar de Lista de Deseos' : 'Agregar a Lista de Deseos'}
             </ButtonListaDeseos>
-            {mensajeAgregado && (
-                <>
-                    {productoAgregado ? (
-                        <AgregadoExitosamente show={mensajeAgregado}>
-                            <FontAwesomeIcon icon={faHeart} /> Producto agregado a la Lista de Deseos exitosamente
-                        </AgregadoExitosamente>
-                    ) : (
-                        <MensajeEliminado show={mensajeAgregado}>
-                            <FontAwesomeIcon icon={faHeart} /> Producto eliminado de la Lista de Deseos exitosamente
-                        </MensajeEliminado>
-                    )}
-                </>
-            )}
+          )}
+          {mensajeAgregado && (
+            <>
+              {productoAgregado ? (
+                <AgregadoExitosamente show={mensajeAgregado}>
+                  <FontAwesomeIcon icon={faHeart} /> Producto agregado a la Lista de Deseos exitosamente
+                </AgregadoExitosamente>
+              ) : (
+                <MensajeEliminado show={mensajeAgregado}>
+                  <FontAwesomeIcon icon={faHeart} /> Producto eliminado de la Lista de Deseos exitosamente
+                </MensajeEliminado>
+              )}
+            </>
+          )}
         </>
-    );
+      );
+      
 };
 
 export default AgregarListaDeseos;
