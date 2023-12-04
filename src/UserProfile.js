@@ -3,41 +3,151 @@ import styled from 'styled-components';
 import userData from './userData.json';
 import ordersData from './ordersData.json';
 import OrderPopup from './OrderPopup';
+const ChangePasswordForm = ({ onSubmit, onCancel }) => {
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
 
-const UserProfile = () => {
-
-  // Cambiar el estado de los datos del usuario
-  const [userDataState, setUserData] = useState(userData);
-
-  // Estado para las órdenes de compra
-  const [orders, setOrders] = useState(ordersData);
-
-  const handleChangePassword = () => {
-    // Lógica para cambiar la contraseña
-    console.log('Cambio de contraseña');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(currentPassword, newPassword);
   };
 
-  // Estado para la orden seleccionada
+  return (
+    <FormContainer>
+      <FormTitle>Cambiar Contraseña</FormTitle>
+      <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label htmlFor="currentPassword">Contraseña Actual:</Label>
+          <Input
+            id="currentPassword"
+            type="password"
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="newPassword">Nueva Contraseña:</Label>
+          <Input
+            id="newPassword"
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            required
+          />
+        </FormGroup>
+        <ButtonContainer>
+          <SubmitButton type="submit">Guardar Cambios</SubmitButton>
+          <CancelButton type="button" onClick={onCancel}>
+            Cancelar
+          </CancelButton>
+        </ButtonContainer>
+      </Form>
+    </FormContainer>
+  );
+};
+
+const FormContainer = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+`;
+
+const FormTitle = styled.h1`
+  color: #007bff;
+  text-align: center;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const FormGroup = styled.div`
+  margin-bottom: 15px;
+`;
+
+const Label = styled.label`
+  margin-bottom: 5px;
+  color: #007bff;
+`;
+
+const Input = styled.input`
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #007bff;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const SubmitButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  flex-grow: 1;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+const CancelButton = styled.button`
+  background-color: #d9534f;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  flex-grow: 1;
+
+  &:hover {
+    background-color: #c9302c;
+  }
+`;
+
+
+const UserProfile = () => {
+  const [userDataState, setUserData] = useState(userData);
+  const [orders, setOrders] = useState(ordersData);
   const [selectedOrder, setSelectedOrder] = useState(null);
-
-  // Nuevo estado para la ventana emergente
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isChangePasswordFormVisible, setChangePasswordFormVisible] = useState(false);
 
-  // Función para abrir la ventana emergente
+  const handleChangePassword = () => {
+    setChangePasswordFormVisible(true);
+  };
+
+  const handlePasswordChangeSubmit = (currentPassword, newPassword) => {
+    // Lógica para cambiar la contraseña
+    console.log('Contraseña actual:', currentPassword);
+    console.log('Nueva contraseña:', newPassword);
+
+    // Aquí deberías agregar la lógica para cambiar la contraseña
+    // Puedes llamar a una función o hacer una solicitud a tu servidor, por ejemplo.
+
+    // Cerrar el formulario después de cambiar la contraseña
+    setChangePasswordFormVisible(false);
+  };
+
+  const handlePasswordChangeCancel = () => {
+    // Cancelar el cambio de contraseña
+    setChangePasswordFormVisible(false);
+  };
+
   const openPopup = () => {
     setPopupOpen(true);
   };
 
-  // Función para cerrar la ventana emergente
   const closePopup = () => {
     setPopupOpen(false);
   };
 
-  // Función para manejar el clic en el número de pedido
   const handleOrderClick = (orderId) => {
-    // Establece la orden seleccionada
-    setSelectedOrder(orders.find(order => order.id === orderId));
-    // Abre la ventana emergente
+    setSelectedOrder(orders.find((order) => order.id === orderId));
     openPopup();
   };
 
@@ -83,6 +193,12 @@ const UserProfile = () => {
       <ChangePasswordContainer>
         <h1>Cambiar Contraseña</h1>
         <ChangePasswordButton onClick={handleChangePassword}>Cambiar Contraseña</ChangePasswordButton>
+        {isChangePasswordFormVisible && (
+          <ChangePasswordForm
+            onSubmit={handlePasswordChangeSubmit}
+            onCancel={handlePasswordChangeCancel}
+          />
+        )}
       </ChangePasswordContainer>
 
       {isPopupOpen && selectedOrder && (
@@ -163,7 +279,7 @@ const ChangePasswordButton = styled.button`
   background-color: #007bff;
   color: white;
   padding: 10px;
-  border: none;
+  border: 20px;
   cursor: pointer;
 
   &:hover {
