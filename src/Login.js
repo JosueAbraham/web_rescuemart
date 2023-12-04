@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from './AuthContext'; // Importa el contexto
+import { useAuth } from './AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth(); // Usa el hook de autenticación
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+
+  const [favoriteProducts, setFavoriteProducts] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,11 +25,39 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Datos de inicio de sesión:', formData);
-    login(); // Llama a la función de login desde el contexto
+    login();
     navigate('/Catalogo');
   };
 
-
+  useEffect(() => {
+    // Simular la carga de la lista de deseos al iniciar sesión
+    const fetchFavoriteProducts = async () => {
+      try {
+        // Realizar la solicitud para obtener los datos de products.json
+        const response = await fetch('/products.json');
+        if (!response.ok) {
+          throw new Error('Error al obtener los productos');
+        }
+  
+        // Convertir la respuesta a JSON
+        const products = await response.json();
+  
+        // Filtrar productos favoritos del archivo JSON
+        const favorites = products.filter((product) => product.favorito);
+  
+        // Guardar la lista de deseos en localStorage
+        localStorage.setItem('listaDeseos', JSON.stringify(favorites));
+  
+        // Actualizar el estado con la lista de deseos
+        setFavoriteProducts(favorites);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    // Llamar a la función para cargar la lista de deseos
+    fetchFavoriteProducts();
+  }, []); 
   return (
     <FormContainer>
       <FormTitle>Iniciar Sesión</FormTitle>

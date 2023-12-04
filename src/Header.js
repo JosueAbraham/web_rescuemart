@@ -63,7 +63,9 @@ const Header = () => {
               <NavLinkItem to="/perfil" onClick={toggleMenu}>
                 <FontAwesomeIcon icon={faUser} /> Perfil
               </NavLinkItem>
+              <NavLinkItem to="/" onClick={toggleMenu}>
               <LogoutButton onClick={logout}>Cerrar Sesión</LogoutButton>
+              </NavLinkItem>
             </>
           ) : (
             <>

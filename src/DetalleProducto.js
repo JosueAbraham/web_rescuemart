@@ -576,6 +576,7 @@ const DetalleProducto = () => {
 
                     </StyledLink>
                     <AgregarCarrito selectedProduct={relatedProduct} cantidad={1} />
+                    <AgregarListaDeseos selectedProduct={relatedProduct} />
                   </Producto>
                 );
               }

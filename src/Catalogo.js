@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import AgregarCarrito from './AgregarCarrito';
+import AgregarListaDeseos from './AgregarListaDeseos';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBox } from '@fortawesome/free-solid-svg-icons';
@@ -105,7 +106,8 @@ const Catalogo = () => {
                             <Titulo>{producto.nombre}</Titulo>
                             <Precio>Precio: ${producto.precio}</Precio>
                         </StyledLink>
-                        <AgregarCarrito selectedProduct={producto} cantidad={1} />
+                        <AgregarCarrito selectedProduct={producto} cantidad={1} /><br/>
+                        <AgregarListaDeseos selectedProduct={producto} />
                     </Producto>
                 ))}
             </ProductosList>
