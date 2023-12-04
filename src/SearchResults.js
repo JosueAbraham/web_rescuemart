@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import AgregarCarrito from './AgregarCarrito';
+import AgregarListaDeseos from './AgregarListaDeseos';
 import { Link } from 'react-router-dom';
 
 const ProductosList = styled.div`
@@ -205,7 +206,8 @@ const SearchResults = ({ products }) => {
               <Titulo>{product.nombre}</Titulo>
               <Precio>Precio: ${product.precio}</Precio>
             </StyledLink>
-            <AgregarCarrito selectedProduct={product} cantidad={1} />
+            <AgregarCarrito selectedProduct={product} cantidad={1} /> <br/>
+            <AgregarListaDeseos selectedProduct={product} />
           </Producto>
         ))}
       </ProductosList>
