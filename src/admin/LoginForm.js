@@ -9,6 +9,7 @@ const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #595959;
   height: 100vh;
 `;
 

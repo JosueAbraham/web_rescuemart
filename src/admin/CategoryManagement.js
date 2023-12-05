@@ -4,17 +4,22 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
+const Page = styled.div`
+ 
+`;
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 20% 70%; /* Adjust the column widths as needed */
+  grid-template-columns: 30% 60%; /* Adjust the column widths as needed */
   column-gap: 5%; /* Adjust the gap between columns as needed */
-  background-color: #f2f2f2; /* Adjust the background color as needed */
+ /* Adjust the background color as needed */
   padding: 20px;
+  background-color: #f2f2f2; 
+ 
 `;
 
 const FormContainer = styled.form`
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 10px auto;
   padding: 20px;
   background-color: #ffffff;
   border: 1px solid #ddd;
@@ -22,6 +27,7 @@ const FormContainer = styled.form`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 `;
+
 
 const Label = styled.label`
   display: block;
@@ -254,7 +260,7 @@ const CategoryManagement = () => {
   };
 
   return (
-    <div>
+    <Page>
       <TwoColumnContainer>
         <FormColumn>
           <CategoryForm
@@ -271,7 +277,7 @@ const CategoryManagement = () => {
           />
         </ListColumn>
       </TwoColumnContainer>
-    </div>
+    </Page>
   );
 };
 

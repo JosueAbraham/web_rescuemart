@@ -66,15 +66,8 @@ const TwoColumnContainer = styled.div`
   background-color: #f2f2f2; /* Adjust the background color as needed */
   padding: 20px;
 `;
-
 const FormColumn = styled.div`
-display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin-bottom: 20px;
 `;
 
 const ListColumn = styled.div`
