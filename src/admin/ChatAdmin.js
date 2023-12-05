@@ -13,10 +13,8 @@ const Container = styled.div`
   bottom: 10px;
   right: 10px;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.8); /* Fondo con transparencia */
-  border-radius: 10px; /* Bordes redondeados para un mejor aspecto */
+  /* Bordes redondeados para un mejor aspecto */
 `;
-
 const Heading = styled.h2`
   text-align: center;
   margin-bottom: 20px;
@@ -25,7 +23,7 @@ const Heading = styled.h2`
 const MessageContainer = styled.div`
   height: 300px;
   border: 1px solid #ccc;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 10px;
   overflow-y: auto;
 `;
@@ -43,7 +41,25 @@ const ToggleButton = styled.button`
   padding: 10px;
   margin-top: 20px;
   cursor: pointer;
+  border-radius: 50%; /* Bordes redondeados para formar un círculo */
+  position: fixed;
+  /* Estilo adicional para dar apariencia de mensaje */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 `;
+
+const Traslucent = styled.div`
+background: rgba(255, 255, 255, 0.8); /* Fondo con transparencia */
+  border-radius: 10px; /* Bordes redondeados */
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+
+  bottom: 10px;
+  right: 10px;
+  `;
 
 const AdminChat = () => {
   const [messages, setMessages] = useState(() => {
@@ -79,7 +95,7 @@ const AdminChat = () => {
   return (
     <Container>
       {isExpanded && (
-        <>
+        <Traslucent>
           <Heading>Chat del Administrador</Heading>
           <MessageContainer>
             {messages.map((message, index) => (
@@ -94,7 +110,7 @@ const AdminChat = () => {
             handleSendMessage={handleSendMessage}
             handleClearChat={handleClearChat}
           />
-        </>
+        </Traslucent>
       )}
       <ToggleButton onClick={handleToggleExpand}>
         {isExpanded ? 'X' : 'Abrir Chat'}

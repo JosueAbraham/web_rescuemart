@@ -13,8 +13,7 @@ const Container = styled.div`
   bottom: 10px;
   right: 10px;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.8); /* Fondo con transparencia */
-  border-radius: 10px; /* Bordes redondeados para un mejor aspecto */
+  /* Bordes redondeados para un mejor aspecto */
 `;
 const Heading = styled.h2`
   text-align: center;
@@ -34,13 +33,33 @@ const MessageItem = styled.div`
 `;
 
 const ToggleButton = styled.button`
-
+  bottom: 10px;
+  right: 10px;
   background-color: #3498db;
   color: #fff;
   border: none;
   padding: 10px;
+  margin-top: 20px;
   cursor: pointer;
+  border-radius: 50%; /* Bordes redondeados para formar un círculo */
+  position: fixed;
+  /* Estilo adicional para dar apariencia de mensaje */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 `;
+
+const Traslucent = styled.div`
+background: rgba(255, 255, 255, 0.8); /* Fondo con transparencia */
+  border-radius: 10px; /* Bordes redondeados */
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+
+  bottom: 10px;
+  right: 10px;
+  `;
 
 const UserChat = () => {
   const [messages, setMessages] = useState(() => {
@@ -76,7 +95,7 @@ const UserChat = () => {
   return (
     <Container>
       {isExpanded && (
-        <>
+        <Traslucent>
           <Heading>Chat del Usuario</Heading>
           <MessageContainer>
             {messages.map((message, index) => (
@@ -91,7 +110,7 @@ const UserChat = () => {
             handleSendMessage={handleSendMessage}
             handleClearChat={handleClearChat}
           />
-        </>
+        </Traslucent>
       )}
       <ToggleButton onClick={handleToggleExpand}>
         {isExpanded ? 'X' : 'Abrir Chat'}
