@@ -68,7 +68,7 @@ const AdminChat = () => {
   });
 
   const [newMessage, setNewMessage] = useState('');
-  const [currentUser, setCurrentUser] = useState('admin');
+  const [currentUser, setCurrentUser] = useState('Administrador');
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {

@@ -68,7 +68,7 @@ const UserChat = () => {
   });
 
   const [newMessage, setNewMessage] = useState('');
-  const [currentUser, setCurrentUser] = useState('user');
+  const [currentUser, setCurrentUser] = useState('Usuario');
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
