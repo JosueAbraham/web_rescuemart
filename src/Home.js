@@ -9,6 +9,8 @@ import AgregarListaDeseos from './AgregarListaDeseos';
 
 const Home = () => {
   const [productosDestacados, setProductosDestacados] = useState([]);
+  const [carouselKey, setCarouselKey] = useState(0);
+
 
   useEffect(() => {
     const fetchProductosDestacados = async () => {
@@ -25,6 +27,10 @@ const Home = () => {
     fetchProductosDestacados();
   }, []);
 
+  useEffect(() => {
+    setCarouselKey((prevKey) => prevKey + 1);
+  }, [productosDestacados]);
+
   return (
     <div>
       <Helmet>
@@ -38,16 +44,14 @@ const Home = () => {
           content="Rescuemart, Productos de primeros auxilios, Seguridad y bienestar, Misión y visión, Preparación en situaciones de emergencia, Excelencia, innovación, compromiso con la seguridad"
         />
       </Helmet>
-      <CustomCarousel autoPlay infiniteLoop showArrows={false} interval={2000} dynamicHeight={false}>
-        <div>
-          <img src="im2.jpg" alt="Imagen 2" />
-        </div>
-        <div>
-          <img src="im3.jpg" alt="Imagen 3" />
-        </div>
-        <div>
-          <img src="im4.jpg" alt="Imagen 4" />
-        </div>
+      <CustomCarousel key={carouselKey} autoPlay infiniteLoop showArrows={false} interval={2000} dynamicHeight={false}>
+        {productosDestacados.map((producto) => (
+          <Link to={`/productos/${producto.id}`} key={producto.id}>
+            <div>
+              <img src={process.env.PUBLIC_URL + '/' + producto.imagen} alt={producto.nombre} />
+            </div>
+          </Link>
+        ))}
       </CustomCarousel>
       <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Productos destacados</h1>
       <ProductosList>
@@ -118,13 +122,33 @@ const Home = () => {
 };
 
 const CustomCarousel = styled(Carousel)`
-  width: 100%;
-  max-height: 500px;
-  overflow: hidden;
+width: 100%;
+max-height: 650px;
+overflow: hidden;
+margin-bottom: 20px;
 
-  @media (max-width: 768px) {
-    max-height: 300px;
+.carousel {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffff;
+  border-radius: 8px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
   }
+}
+
+@media (max-width: 768px) {
+  max-height: 300px;
+}
 `;
 
 const InformationContainer = styled.div`
@@ -205,7 +229,7 @@ const ImagenProducto = styled.img`
   max-width: 100%;
   max-height: 150px;
   width: auto;
-  height: auto;
+  object-fit: cover; // Ajusta la imagen para cubrir completamente el contenedor sin deformarse
 `;
 
 const Precio = styled.p`
