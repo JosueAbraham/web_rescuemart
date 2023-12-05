@@ -19,8 +19,8 @@ import Registro from './Registro';
 import Login from './Login';
 import SearchResults from './SearchResults';
 import ListaDeseosComponent from './ListaDeseosComponent';
-
-
+import UserChat from './ChatUser';
+import AdminChat from './admin/ChatAdmin';
 
 const AppContainer = styled.div`
   font-family: Arial, sans-serif;
@@ -123,6 +123,7 @@ const App = () => {
 const TiendaRoutes = () => (
   <>
     <Header />
+    <UserChat />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Catalogo" element={<Catalogo />} />
@@ -134,9 +135,13 @@ const TiendaRoutes = () => (
       <Route path="/search/:query" element={<SearchResults />} />
       <Route path="/wishlist" element={<ListaDeseosComponent />} />
     </Routes>
+    
     <Footer />
   </>
 );
+
+
+
 const AdminRoutes = () => (
   <>
     <Menu />
@@ -145,6 +150,7 @@ const AdminRoutes = () => (
       <Route path="/categories" element={<CategoryManagement />} />
       <Route path="/users" element={<UserManagement />} />
     </Routes>
+    <AdminChat />
   </>
 );
 
