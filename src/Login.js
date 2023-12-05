@@ -38,26 +38,26 @@ const Login = () => {
         if (!response.ok) {
           throw new Error('Error al obtener los productos');
         }
-  
+
         // Convertir la respuesta a JSON
         const products = await response.json();
-  
+
         // Filtrar productos favoritos del archivo JSON
         const favorites = products.filter((product) => product.favorito);
-  
+
         // Guardar la lista de deseos en localStorage
         localStorage.setItem('listaDeseos', JSON.stringify(favorites));
-  
+
         // Actualizar el estado con la lista de deseos
         setFavoriteProducts(favorites);
       } catch (error) {
         console.error(error);
       }
     };
-  
+
     // Llamar a la función para cargar la lista de deseos
     fetchFavoriteProducts();
-  }, []); 
+  }, []);
   return (
     <FormContainer>
       <FormTitle>Iniciar Sesión</FormTitle>

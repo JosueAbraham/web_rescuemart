@@ -179,7 +179,8 @@ const SubmitButton = styled.button`
 
 const SuccessPopup = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
+  color: #000;
+  font-weight: bold;
   position: fixed;
   top: 0;
   left: 0;
