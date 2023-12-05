@@ -92,13 +92,12 @@ const TableRow = styled.tr`
 
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 20% 70%; /* Adjust the column widths as needed */
+  grid-template-columns: 30% 60%; /* Adjust the column widths as needed */
   column-gap: 5%; /* Adjust the gap between columns as needed */
 `;
 
 const FormColumn = styled.div`
-  margin-bottom: 20px; /* Add margin for separation */
-  height: 50%; /* Ensure the ImageColumn takes full height */
+  margin-bottom: 20px;
 `;
 
 const ListColumn = styled.div`
