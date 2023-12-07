@@ -8,6 +8,7 @@ const Registro = () => {
     lastName: '',
     age: '',
     phone: '',
+    direccion: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -75,6 +76,15 @@ const Registro = () => {
           value={formData.phone}
           onChange={handleChange}
           placeholder="Tu teléfono"
+        />
+
+        <InputLabel>Dirección</InputLabel>
+        <Input
+          type="text"
+          name="direccion"
+          value={formData.direccion}
+          onChange={handleChange}
+          placeholder="Tu dirección"
         />
 
         <InputLabel>Correo Electrónico</InputLabel>
