@@ -233,12 +233,16 @@ const ProductTable = styled.table`
 const TableHeader = styled.th`
   border: 1px solid #ddd;
   padding: 10px;
+  background-color: none;
   text-align: left;
 `;
 
 const TableRow = styled.tr`
+  &:nth-child(odd) {
+    background-color: none;
+  }
   &:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: none;
   }
 `;
 
